@@ -1,0 +1,1479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="btlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BanPhim">
+          <Key>
+            <PropertyRef Name="MaBP" />
+          </Key>
+          <Property Name="MaBP" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenBP" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Chip">
+          <Key>
+            <PropertyRef Name="MaChip" />
+          </Key>
+          <Property Name="MaChip" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenChip" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ChiTietHDB">
+          <Key>
+            <PropertyRef Name="MaHDB" />
+            <PropertyRef Name="MaMVT" />
+          </Key>
+          <Property Name="MaHDB" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaMVT" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Tien" Type="float" />
+          <Property Name="Soluong" Type="int" />
+          <Property Name="ThanhTien" Type="float" />
+        </EntityType>
+        <EntityType Name="ChiTietHDN">
+          <Key>
+            <PropertyRef Name="MaHDN" />
+            <PropertyRef Name="MaMVT" />
+          </Key>
+          <Property Name="MaHDN" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaMVT" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Soluong" Type="int" />
+          <Property Name="Dongia" Type="float" />
+          <Property Name="Thanhtien" Type="float" />
+        </EntityType>
+        <EntityType Name="Chuot">
+          <Key>
+            <PropertyRef Name="MaChuot" />
+          </Key>
+          <Property Name="MaChuot" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenChuot" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CoMH">
+          <Key>
+            <PropertyRef Name="MaCo" />
+          </Key>
+          <Property Name="MaCo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenCo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Dungluong">
+          <Key>
+            <PropertyRef Name="MaDL" />
+          </Key>
+          <Property Name="MaDL" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenDL" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HangSX">
+          <Key>
+            <PropertyRef Name="MaHSX" />
+          </Key>
+          <Property Name="MaHSX" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenHSX" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HoaDonBan">
+          <Key>
+            <PropertyRef Name="MaHDB" />
+          </Key>
+          <Property Name="MaHDB" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="NgayBan" Type="date" />
+          <Property Name="MaNV" Type="char" MaxLength="5" />
+          <Property Name="MaKH" Type="char" MaxLength="5" />
+          <Property Name="Tien" Type="float" />
+        </EntityType>
+        <EntityType Name="HoaDonNhap">
+          <Key>
+            <PropertyRef Name="MaHDN" />
+          </Key>
+          <Property Name="MaHDN" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="NgayNhap" Type="date" />
+          <Property Name="MaNV" Type="char" MaxLength="5" />
+          <Property Name="MaNCC" Type="char" MaxLength="5" />
+          <Property Name="ThanhTien" Type="float" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenKH" Type="nvarchar" MaxLength="100" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dienthoai" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Loa">
+          <Key>
+            <PropertyRef Name="MaLoa" />
+          </Key>
+          <Property Name="MaLoa" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenLoa" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LoaiMay">
+          <Key>
+            <PropertyRef Name="MaLm" />
+          </Key>
+          <Property Name="MaLm" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenLm" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ManHinh">
+          <Key>
+            <PropertyRef Name="MaMH" />
+          </Key>
+          <Property Name="MaMH" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenMH" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MayVT">
+          <Key>
+            <PropertyRef Name="MaMVT" />
+          </Key>
+          <Property Name="MaMVT" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenMVT" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaLm" Type="char" MaxLength="5" />
+          <Property Name="MaChip" Type="char" MaxLength="5" />
+          <Property Name="MaOC" Type="char" MaxLength="5" />
+          <Property Name="MaDL" Type="char" MaxLength="5" />
+          <Property Name="MaTD" Type="char" MaxLength="5" />
+          <Property Name="MaO" Type="char" MaxLength="5" />
+          <Property Name="MaMH" Type="char" MaxLength="5" />
+          <Property Name="MaCo" Type="char" MaxLength="5" />
+          <Property Name="MaChuot" Type="char" MaxLength="5" />
+          <Property Name="MaBP" Type="char" MaxLength="5" />
+          <Property Name="MaOUSB" Type="char" MaxLength="5" />
+          <Property Name="MaR" Type="char" MaxLength="5" />
+          <Property Name="MaLoa" Type="char" MaxLength="5" />
+          <Property Name="MaHSX" Type="char" MaxLength="5" />
+          <Property Name="Gianhap" Type="float" />
+          <Property Name="Giaban" Type="float" />
+          <Property Name="ThoiGianBH" Type="date" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="Anh" Type="varbinary(max)" />
+          <Property Name="Ghichu" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NhaCC">
+          <Key>
+            <PropertyRef Name="MaNCC" />
+          </Key>
+          <Property Name="MaNCC" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenNCC" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dienthoai" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="MaNV" />
+          </Key>
+          <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenNV" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="Gioitinh" Type="bit" />
+          <Property Name="Dienthoai" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="OCD">
+          <Key>
+            <PropertyRef Name="MaO" />
+          </Key>
+          <Property Name="MaO" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenO" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OCung">
+          <Key>
+            <PropertyRef Name="MaOC" />
+          </Key>
+          <Property Name="MaOC" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenOC" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ram">
+          <Key>
+            <PropertyRef Name="MaR" />
+          </Key>
+          <Property Name="MaR" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenR" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TocDo">
+          <Key>
+            <PropertyRef Name="MaTD" />
+          </Key>
+          <Property Name="MaTD" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenTD" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USB">
+          <Key>
+            <PropertyRef Name="MaOUSB" />
+          </Key>
+          <Property Name="MaOUSB" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TenOUSB" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dungluong" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <Association Name="FK__ChiTietHD__MaHDB__74AE54BC">
+          <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="1" />
+          <End Role="ChiTietHDB" Type="Self.ChiTietHDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDonBan">
+              <PropertyRef Name="MaHDB" />
+            </Principal>
+            <Dependent Role="ChiTietHDB">
+              <PropertyRef Name="MaHDB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietHD__MaHDN__6C190EBB">
+          <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="1" />
+          <End Role="ChiTietHDN" Type="Self.ChiTietHDN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDonNhap">
+              <PropertyRef Name="MaHDN" />
+            </Principal>
+            <Dependent Role="ChiTietHDN">
+              <PropertyRef Name="MaHDN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietHD__MaMVT__6D0D32F4">
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="1" />
+          <End Role="ChiTietHDN" Type="Self.ChiTietHDN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayVT">
+              <PropertyRef Name="MaMVT" />
+            </Principal>
+            <Dependent Role="ChiTietHDN">
+              <PropertyRef Name="MaMVT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietHD__MaMVT__75A278F5">
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="1" />
+          <End Role="ChiTietHDB" Type="Self.ChiTietHDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayVT">
+              <PropertyRef Name="MaMVT" />
+            </Principal>
+            <Dependent Role="ChiTietHDB">
+              <PropertyRef Name="MaMVT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonBan__MaKH__70DDC3D8">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+          <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="HoaDonBan">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonBan__MaNV__6FE99F9F">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="HoaDonBan">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonNha__MaNCC__693CA210">
+          <End Role="NhaCC" Type="Self.NhaCC" Multiplicity="0..1" />
+          <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaCC">
+              <PropertyRef Name="MaNCC" />
+            </Principal>
+            <Dependent Role="HoaDonNhap">
+              <PropertyRef Name="MaNCC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonNhap__MaNV__68487DD7">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="HoaDonNhap">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaBP__619B8048">
+          <End Role="BanPhim" Type="Self.BanPhim" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BanPhim">
+              <PropertyRef Name="MaBP" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaBP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaChip__59FA5E80">
+          <End Role="Chip" Type="Self.Chip" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chip">
+              <PropertyRef Name="MaChip" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaChip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaChuot__60A75C0F">
+          <End Role="Chuot" Type="Self.Chuot" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chuot">
+              <PropertyRef Name="MaChuot" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaChuot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaCo__5FB337D6">
+          <End Role="CoMH" Type="Self.CoMH" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoMH">
+              <PropertyRef Name="MaCo" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaCo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaDL__5BE2A6F2">
+          <End Role="Dungluong" Type="Self.Dungluong" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dungluong">
+              <PropertyRef Name="MaDL" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaDL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaHSX__656C112C">
+          <End Role="HangSX" Type="Self.HangSX" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HangSX">
+              <PropertyRef Name="MaHSX" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaHSX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaLm__59063A47">
+          <End Role="LoaiMay" Type="Self.LoaiMay" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiMay">
+              <PropertyRef Name="MaLm" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaLm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaLoa__6477ECF3">
+          <End Role="Loa" Type="Self.Loa" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loa">
+              <PropertyRef Name="MaLoa" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaLoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaMH__5EBF139D">
+          <End Role="ManHinh" Type="Self.ManHinh" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManHinh">
+              <PropertyRef Name="MaMH" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaMH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaO__5DCAEF64">
+          <End Role="OCD" Type="Self.OCD" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OCD">
+              <PropertyRef Name="MaO" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaOC__5AEE82B9">
+          <End Role="OCung" Type="Self.OCung" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OCung">
+              <PropertyRef Name="MaOC" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaOUSB__628FA481">
+          <End Role="USB" Type="Self.USB" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USB">
+              <PropertyRef Name="MaOUSB" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaOUSB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaR__6383C8BA">
+          <End Role="Ram" Type="Self.Ram" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ram">
+              <PropertyRef Name="MaR" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaTD__5CD6CB2B">
+          <End Role="TocDo" Type="Self.TocDo" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TocDo">
+              <PropertyRef Name="MaTD" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaTD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="btlModelStoreContainer">
+          <EntitySet Name="BanPhim" EntityType="Self.BanPhim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chip" EntityType="Self.Chip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietHDB" EntityType="Self.ChiTietHDB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietHDN" EntityType="Self.ChiTietHDN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chuot" EntityType="Self.Chuot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoMH" EntityType="Self.CoMH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dungluong" EntityType="Self.Dungluong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HangSX" EntityType="Self.HangSX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDonBan" EntityType="Self.HoaDonBan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDonNhap" EntityType="Self.HoaDonNhap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loa" EntityType="Self.Loa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiMay" EntityType="Self.LoaiMay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManHinh" EntityType="Self.ManHinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MayVT" EntityType="Self.MayVT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhaCC" EntityType="Self.NhaCC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OCD" EntityType="Self.OCD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OCung" EntityType="Self.OCung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ram" EntityType="Self.Ram" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TocDo" EntityType="Self.TocDo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USB" EntityType="Self.USB" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ChiTietHD__MaHDB__74AE54BC" Association="Self.FK__ChiTietHD__MaHDB__74AE54BC">
+            <End Role="HoaDonBan" EntitySet="HoaDonBan" />
+            <End Role="ChiTietHDB" EntitySet="ChiTietHDB" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietHD__MaHDN__6C190EBB" Association="Self.FK__ChiTietHD__MaHDN__6C190EBB">
+            <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
+            <End Role="ChiTietHDN" EntitySet="ChiTietHDN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietHD__MaMVT__6D0D32F4" Association="Self.FK__ChiTietHD__MaMVT__6D0D32F4">
+            <End Role="MayVT" EntitySet="MayVT" />
+            <End Role="ChiTietHDN" EntitySet="ChiTietHDN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietHD__MaMVT__75A278F5" Association="Self.FK__ChiTietHD__MaMVT__75A278F5">
+            <End Role="MayVT" EntitySet="MayVT" />
+            <End Role="ChiTietHDB" EntitySet="ChiTietHDB" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonBan__MaKH__70DDC3D8" Association="Self.FK__HoaDonBan__MaKH__70DDC3D8">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="HoaDonBan" EntitySet="HoaDonBan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonBan__MaNV__6FE99F9F" Association="Self.FK__HoaDonBan__MaNV__6FE99F9F">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="HoaDonBan" EntitySet="HoaDonBan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonNha__MaNCC__693CA210" Association="Self.FK__HoaDonNha__MaNCC__693CA210">
+            <End Role="NhaCC" EntitySet="NhaCC" />
+            <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonNhap__MaNV__68487DD7" Association="Self.FK__HoaDonNhap__MaNV__68487DD7">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaBP__619B8048" Association="Self.FK__MayVT__MaBP__619B8048">
+            <End Role="BanPhim" EntitySet="BanPhim" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaChip__59FA5E80" Association="Self.FK__MayVT__MaChip__59FA5E80">
+            <End Role="Chip" EntitySet="Chip" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaChuot__60A75C0F" Association="Self.FK__MayVT__MaChuot__60A75C0F">
+            <End Role="Chuot" EntitySet="Chuot" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaCo__5FB337D6" Association="Self.FK__MayVT__MaCo__5FB337D6">
+            <End Role="CoMH" EntitySet="CoMH" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaDL__5BE2A6F2" Association="Self.FK__MayVT__MaDL__5BE2A6F2">
+            <End Role="Dungluong" EntitySet="Dungluong" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaHSX__656C112C" Association="Self.FK__MayVT__MaHSX__656C112C">
+            <End Role="HangSX" EntitySet="HangSX" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaLm__59063A47" Association="Self.FK__MayVT__MaLm__59063A47">
+            <End Role="LoaiMay" EntitySet="LoaiMay" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaLoa__6477ECF3" Association="Self.FK__MayVT__MaLoa__6477ECF3">
+            <End Role="Loa" EntitySet="Loa" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaMH__5EBF139D" Association="Self.FK__MayVT__MaMH__5EBF139D">
+            <End Role="ManHinh" EntitySet="ManHinh" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaO__5DCAEF64" Association="Self.FK__MayVT__MaO__5DCAEF64">
+            <End Role="OCD" EntitySet="OCD" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaOC__5AEE82B9" Association="Self.FK__MayVT__MaOC__5AEE82B9">
+            <End Role="OCung" EntitySet="OCung" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaOUSB__628FA481" Association="Self.FK__MayVT__MaOUSB__628FA481">
+            <End Role="USB" EntitySet="USB" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaR__6383C8BA" Association="Self.FK__MayVT__MaR__6383C8BA">
+            <End Role="Ram" EntitySet="Ram" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaTD__5CD6CB2B" Association="Self.FK__MayVT__MaTD__5CD6CB2B">
+            <End Role="TocDo" EntitySet="TocDo" />
+            <End Role="MayVT" EntitySet="MayVT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="btlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BanPhim">
+          <Key>
+            <PropertyRef Name="MaBP" />
+          </Key>
+          <Property Name="MaBP" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenBP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaBP__619B8048" FromRole="BanPhim" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="Chip">
+          <Key>
+            <PropertyRef Name="MaChip" />
+          </Key>
+          <Property Name="MaChip" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenChip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaChip__59FA5E80" FromRole="Chip" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="ChiTietHDB">
+          <Key>
+            <PropertyRef Name="MaHDB" />
+            <PropertyRef Name="MaMVT" />
+          </Key>
+          <Property Name="MaHDB" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaMVT" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Tien" Type="Double" />
+          <Property Name="Soluong" Type="Int32" />
+          <Property Name="ThanhTien" Type="Double" />
+          <NavigationProperty Name="HoaDonBan" Relationship="Self.FK__ChiTietHD__MaHDB__74AE54BC" FromRole="ChiTietHDB" ToRole="HoaDonBan" />
+          <NavigationProperty Name="MayVT" Relationship="Self.FK__ChiTietHD__MaMVT__75A278F5" FromRole="ChiTietHDB" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="ChiTietHDN">
+          <Key>
+            <PropertyRef Name="MaHDN" />
+            <PropertyRef Name="MaMVT" />
+          </Key>
+          <Property Name="MaHDN" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaMVT" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Soluong" Type="Int32" />
+          <Property Name="Dongia" Type="Double" />
+          <Property Name="Thanhtien" Type="Double" />
+          <NavigationProperty Name="HoaDonNhap" Relationship="Self.FK__ChiTietHD__MaHDN__6C190EBB" FromRole="ChiTietHDN" ToRole="HoaDonNhap" />
+          <NavigationProperty Name="MayVT" Relationship="Self.FK__ChiTietHD__MaMVT__6D0D32F4" FromRole="ChiTietHDN" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="Chuot">
+          <Key>
+            <PropertyRef Name="MaChuot" />
+          </Key>
+          <Property Name="MaChuot" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenChuot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaChuot__60A75C0F" FromRole="Chuot" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="CoMH">
+          <Key>
+            <PropertyRef Name="MaCo" />
+          </Key>
+          <Property Name="MaCo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenCo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaCo__5FB337D6" FromRole="CoMH" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="Dungluong">
+          <Key>
+            <PropertyRef Name="MaDL" />
+          </Key>
+          <Property Name="MaDL" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenDL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaDL__5BE2A6F2" FromRole="Dungluong" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="HangSX">
+          <Key>
+            <PropertyRef Name="MaHSX" />
+          </Key>
+          <Property Name="MaHSX" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenHSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaHSX__656C112C" FromRole="HangSX" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="HoaDonBan">
+          <Key>
+            <PropertyRef Name="MaHDB" />
+          </Key>
+          <Property Name="MaHDB" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NgayBan" Type="DateTime" Precision="0" />
+          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Tien" Type="Double" />
+          <NavigationProperty Name="ChiTietHDBs" Relationship="Self.FK__ChiTietHD__MaHDB__74AE54BC" FromRole="HoaDonBan" ToRole="ChiTietHDB" />
+          <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDonBan__MaKH__70DDC3D8" FromRole="HoaDonBan" ToRole="KhachHang" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonBan__MaNV__6FE99F9F" FromRole="HoaDonBan" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="HoaDonNhap">
+          <Key>
+            <PropertyRef Name="MaHDN" />
+          </Key>
+          <Property Name="MaHDN" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NgayNhap" Type="DateTime" Precision="0" />
+          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaNCC" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="ThanhTien" Type="Double" />
+          <NavigationProperty Name="ChiTietHDNs" Relationship="Self.FK__ChiTietHD__MaHDN__6C190EBB" FromRole="HoaDonNhap" ToRole="ChiTietHDN" />
+          <NavigationProperty Name="NhaCC" Relationship="Self.FK__HoaDonNha__MaNCC__693CA210" FromRole="HoaDonNhap" ToRole="NhaCC" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonNhap__MaNV__68487DD7" FromRole="HoaDonNhap" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenKH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dienthoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="HoaDonBans" Relationship="Self.FK__HoaDonBan__MaKH__70DDC3D8" FromRole="KhachHang" ToRole="HoaDonBan" />
+        </EntityType>
+        <EntityType Name="Loa">
+          <Key>
+            <PropertyRef Name="MaLoa" />
+          </Key>
+          <Property Name="MaLoa" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenLoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaLoa__6477ECF3" FromRole="Loa" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="LoaiMay">
+          <Key>
+            <PropertyRef Name="MaLm" />
+          </Key>
+          <Property Name="MaLm" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenLm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaLm__59063A47" FromRole="LoaiMay" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="ManHinh">
+          <Key>
+            <PropertyRef Name="MaMH" />
+          </Key>
+          <Property Name="MaMH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaMH__5EBF139D" FromRole="ManHinh" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="MayVT">
+          <Key>
+            <PropertyRef Name="MaMVT" />
+          </Key>
+          <Property Name="MaMVT" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenMVT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaLm" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaChip" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaOC" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaDL" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaTD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaO" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaMH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaCo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaChuot" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaBP" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaOUSB" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaR" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaLoa" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MaHSX" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Gianhap" Type="Double" />
+          <Property Name="Giaban" Type="Double" />
+          <Property Name="ThoiGianBH" Type="DateTime" Precision="0" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="Anh" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Ghichu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BanPhim" Relationship="Self.FK__MayVT__MaBP__619B8048" FromRole="MayVT" ToRole="BanPhim" />
+          <NavigationProperty Name="Chip" Relationship="Self.FK__MayVT__MaChip__59FA5E80" FromRole="MayVT" ToRole="Chip" />
+          <NavigationProperty Name="ChiTietHDBs" Relationship="Self.FK__ChiTietHD__MaMVT__75A278F5" FromRole="MayVT" ToRole="ChiTietHDB" />
+          <NavigationProperty Name="ChiTietHDNs" Relationship="Self.FK__ChiTietHD__MaMVT__6D0D32F4" FromRole="MayVT" ToRole="ChiTietHDN" />
+          <NavigationProperty Name="Chuot" Relationship="Self.FK__MayVT__MaChuot__60A75C0F" FromRole="MayVT" ToRole="Chuot" />
+          <NavigationProperty Name="CoMH" Relationship="Self.FK__MayVT__MaCo__5FB337D6" FromRole="MayVT" ToRole="CoMH" />
+          <NavigationProperty Name="Dungluong" Relationship="Self.FK__MayVT__MaDL__5BE2A6F2" FromRole="MayVT" ToRole="Dungluong" />
+          <NavigationProperty Name="HangSX" Relationship="Self.FK__MayVT__MaHSX__656C112C" FromRole="MayVT" ToRole="HangSX" />
+          <NavigationProperty Name="Loa" Relationship="Self.FK__MayVT__MaLoa__6477ECF3" FromRole="MayVT" ToRole="Loa" />
+          <NavigationProperty Name="LoaiMay" Relationship="Self.FK__MayVT__MaLm__59063A47" FromRole="MayVT" ToRole="LoaiMay" />
+          <NavigationProperty Name="ManHinh" Relationship="Self.FK__MayVT__MaMH__5EBF139D" FromRole="MayVT" ToRole="ManHinh" />
+          <NavigationProperty Name="OCD" Relationship="Self.FK__MayVT__MaO__5DCAEF64" FromRole="MayVT" ToRole="OCD" />
+          <NavigationProperty Name="OCung" Relationship="Self.FK__MayVT__MaOC__5AEE82B9" FromRole="MayVT" ToRole="OCung" />
+          <NavigationProperty Name="USB" Relationship="Self.FK__MayVT__MaOUSB__628FA481" FromRole="MayVT" ToRole="USB" />
+          <NavigationProperty Name="Ram" Relationship="Self.FK__MayVT__MaR__6383C8BA" FromRole="MayVT" ToRole="Ram" />
+          <NavigationProperty Name="TocDo" Relationship="Self.FK__MayVT__MaTD__5CD6CB2B" FromRole="MayVT" ToRole="TocDo" />
+        </EntityType>
+        <EntityType Name="NhaCC">
+          <Key>
+            <PropertyRef Name="MaNCC" />
+          </Key>
+          <Property Name="MaNCC" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenNCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dienthoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="HoaDonNhaps" Relationship="Self.FK__HoaDonNha__MaNCC__693CA210" FromRole="NhaCC" ToRole="HoaDonNhap" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="MaNV" />
+          </Key>
+          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenNV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="Gioitinh" Type="Boolean" />
+          <Property Name="Dienthoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="HoaDonBans" Relationship="Self.FK__HoaDonBan__MaNV__6FE99F9F" FromRole="NhanVien" ToRole="HoaDonBan" />
+          <NavigationProperty Name="HoaDonNhaps" Relationship="Self.FK__HoaDonNhap__MaNV__68487DD7" FromRole="NhanVien" ToRole="HoaDonNhap" />
+        </EntityType>
+        <EntityType Name="OCD">
+          <Key>
+            <PropertyRef Name="MaO" />
+          </Key>
+          <Property Name="MaO" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaO__5DCAEF64" FromRole="OCD" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="OCung">
+          <Key>
+            <PropertyRef Name="MaOC" />
+          </Key>
+          <Property Name="MaOC" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenOC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaOC__5AEE82B9" FromRole="OCung" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="Ram">
+          <Key>
+            <PropertyRef Name="MaR" />
+          </Key>
+          <Property Name="MaR" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaR__6383C8BA" FromRole="Ram" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TocDo">
+          <Key>
+            <PropertyRef Name="MaTD" />
+          </Key>
+          <Property Name="MaTD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenTD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaTD__5CD6CB2B" FromRole="TocDo" ToRole="MayVT" />
+        </EntityType>
+        <EntityType Name="USB">
+          <Key>
+            <PropertyRef Name="MaOUSB" />
+          </Key>
+          <Property Name="MaOUSB" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenOUSB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dungluong" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaOUSB__628FA481" FromRole="USB" ToRole="MayVT" />
+        </EntityType>
+        <Association Name="FK__MayVT__MaBP__619B8048">
+          <End Role="BanPhim" Type="Self.BanPhim" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BanPhim">
+              <PropertyRef Name="MaBP" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaBP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaChip__59FA5E80">
+          <End Role="Chip" Type="Self.Chip" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chip">
+              <PropertyRef Name="MaChip" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaChip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietHD__MaHDB__74AE54BC">
+          <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="1" />
+          <End Role="ChiTietHDB" Type="Self.ChiTietHDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDonBan">
+              <PropertyRef Name="MaHDB" />
+            </Principal>
+            <Dependent Role="ChiTietHDB">
+              <PropertyRef Name="MaHDB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietHD__MaMVT__75A278F5">
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="1" />
+          <End Role="ChiTietHDB" Type="Self.ChiTietHDB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayVT">
+              <PropertyRef Name="MaMVT" />
+            </Principal>
+            <Dependent Role="ChiTietHDB">
+              <PropertyRef Name="MaMVT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietHD__MaHDN__6C190EBB">
+          <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="1" />
+          <End Role="ChiTietHDN" Type="Self.ChiTietHDN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDonNhap">
+              <PropertyRef Name="MaHDN" />
+            </Principal>
+            <Dependent Role="ChiTietHDN">
+              <PropertyRef Name="MaHDN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietHD__MaMVT__6D0D32F4">
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="1" />
+          <End Role="ChiTietHDN" Type="Self.ChiTietHDN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayVT">
+              <PropertyRef Name="MaMVT" />
+            </Principal>
+            <Dependent Role="ChiTietHDN">
+              <PropertyRef Name="MaMVT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaChuot__60A75C0F">
+          <End Role="Chuot" Type="Self.Chuot" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chuot">
+              <PropertyRef Name="MaChuot" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaChuot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaCo__5FB337D6">
+          <End Role="CoMH" Type="Self.CoMH" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoMH">
+              <PropertyRef Name="MaCo" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaCo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaDL__5BE2A6F2">
+          <End Role="Dungluong" Type="Self.Dungluong" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dungluong">
+              <PropertyRef Name="MaDL" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaDL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaHSX__656C112C">
+          <End Role="HangSX" Type="Self.HangSX" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HangSX">
+              <PropertyRef Name="MaHSX" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaHSX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonBan__MaKH__70DDC3D8">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+          <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="HoaDonBan">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonBan__MaNV__6FE99F9F">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="HoaDonBan">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonNha__MaNCC__693CA210">
+          <End Role="NhaCC" Type="Self.NhaCC" Multiplicity="0..1" />
+          <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaCC">
+              <PropertyRef Name="MaNCC" />
+            </Principal>
+            <Dependent Role="HoaDonNhap">
+              <PropertyRef Name="MaNCC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonNhap__MaNV__68487DD7">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="HoaDonNhap">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaLoa__6477ECF3">
+          <End Role="Loa" Type="Self.Loa" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loa">
+              <PropertyRef Name="MaLoa" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaLoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaLm__59063A47">
+          <End Role="LoaiMay" Type="Self.LoaiMay" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiMay">
+              <PropertyRef Name="MaLm" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaLm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaMH__5EBF139D">
+          <End Role="ManHinh" Type="Self.ManHinh" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManHinh">
+              <PropertyRef Name="MaMH" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaMH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaO__5DCAEF64">
+          <End Role="OCD" Type="Self.OCD" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OCD">
+              <PropertyRef Name="MaO" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaOC__5AEE82B9">
+          <End Role="OCung" Type="Self.OCung" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OCung">
+              <PropertyRef Name="MaOC" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaOUSB__628FA481">
+          <End Role="USB" Type="Self.USB" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USB">
+              <PropertyRef Name="MaOUSB" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaOUSB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaR__6383C8BA">
+          <End Role="Ram" Type="Self.Ram" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ram">
+              <PropertyRef Name="MaR" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayVT__MaTD__5CD6CB2B">
+          <End Role="TocDo" Type="Self.TocDo" Multiplicity="0..1" />
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TocDo">
+              <PropertyRef Name="MaTD" />
+            </Principal>
+            <Dependent Role="MayVT">
+              <PropertyRef Name="MaTD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BanPhims" EntityType="Self.BanPhim" />
+          <EntitySet Name="Chips" EntityType="Self.Chip" />
+          <EntitySet Name="ChiTietHDBs" EntityType="Self.ChiTietHDB" />
+          <EntitySet Name="ChiTietHDNs" EntityType="Self.ChiTietHDN" />
+          <EntitySet Name="Chuots" EntityType="Self.Chuot" />
+          <EntitySet Name="CoMHs" EntityType="Self.CoMH" />
+          <EntitySet Name="Dungluongs" EntityType="Self.Dungluong" />
+          <EntitySet Name="HangSXes" EntityType="Self.HangSX" />
+          <EntitySet Name="HoaDonBans" EntityType="Self.HoaDonBan" />
+          <EntitySet Name="HoaDonNhaps" EntityType="Self.HoaDonNhap" />
+          <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+          <EntitySet Name="Loas" EntityType="Self.Loa" />
+          <EntitySet Name="LoaiMays" EntityType="Self.LoaiMay" />
+          <EntitySet Name="ManHinhs" EntityType="Self.ManHinh" />
+          <EntitySet Name="MayVTs" EntityType="Self.MayVT" />
+          <EntitySet Name="NhaCCs" EntityType="Self.NhaCC" />
+          <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="OCDs" EntityType="Self.OCD" />
+          <EntitySet Name="OCungs" EntityType="Self.OCung" />
+          <EntitySet Name="Rams" EntityType="Self.Ram" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TocDoes" EntityType="Self.TocDo" />
+          <EntitySet Name="USBs" EntityType="Self.USB" />
+          <AssociationSet Name="FK__MayVT__MaBP__619B8048" Association="Self.FK__MayVT__MaBP__619B8048">
+            <End Role="BanPhim" EntitySet="BanPhims" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaChip__59FA5E80" Association="Self.FK__MayVT__MaChip__59FA5E80">
+            <End Role="Chip" EntitySet="Chips" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietHD__MaHDB__74AE54BC" Association="Self.FK__ChiTietHD__MaHDB__74AE54BC">
+            <End Role="HoaDonBan" EntitySet="HoaDonBans" />
+            <End Role="ChiTietHDB" EntitySet="ChiTietHDBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietHD__MaMVT__75A278F5" Association="Self.FK__ChiTietHD__MaMVT__75A278F5">
+            <End Role="MayVT" EntitySet="MayVTs" />
+            <End Role="ChiTietHDB" EntitySet="ChiTietHDBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietHD__MaHDN__6C190EBB" Association="Self.FK__ChiTietHD__MaHDN__6C190EBB">
+            <End Role="HoaDonNhap" EntitySet="HoaDonNhaps" />
+            <End Role="ChiTietHDN" EntitySet="ChiTietHDNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietHD__MaMVT__6D0D32F4" Association="Self.FK__ChiTietHD__MaMVT__6D0D32F4">
+            <End Role="MayVT" EntitySet="MayVTs" />
+            <End Role="ChiTietHDN" EntitySet="ChiTietHDNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaChuot__60A75C0F" Association="Self.FK__MayVT__MaChuot__60A75C0F">
+            <End Role="Chuot" EntitySet="Chuots" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaCo__5FB337D6" Association="Self.FK__MayVT__MaCo__5FB337D6">
+            <End Role="CoMH" EntitySet="CoMHs" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaDL__5BE2A6F2" Association="Self.FK__MayVT__MaDL__5BE2A6F2">
+            <End Role="Dungluong" EntitySet="Dungluongs" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaHSX__656C112C" Association="Self.FK__MayVT__MaHSX__656C112C">
+            <End Role="HangSX" EntitySet="HangSXes" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonBan__MaKH__70DDC3D8" Association="Self.FK__HoaDonBan__MaKH__70DDC3D8">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="HoaDonBan" EntitySet="HoaDonBans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonBan__MaNV__6FE99F9F" Association="Self.FK__HoaDonBan__MaNV__6FE99F9F">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="HoaDonBan" EntitySet="HoaDonBans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonNha__MaNCC__693CA210" Association="Self.FK__HoaDonNha__MaNCC__693CA210">
+            <End Role="NhaCC" EntitySet="NhaCCs" />
+            <End Role="HoaDonNhap" EntitySet="HoaDonNhaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonNhap__MaNV__68487DD7" Association="Self.FK__HoaDonNhap__MaNV__68487DD7">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="HoaDonNhap" EntitySet="HoaDonNhaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaLoa__6477ECF3" Association="Self.FK__MayVT__MaLoa__6477ECF3">
+            <End Role="Loa" EntitySet="Loas" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaLm__59063A47" Association="Self.FK__MayVT__MaLm__59063A47">
+            <End Role="LoaiMay" EntitySet="LoaiMays" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaMH__5EBF139D" Association="Self.FK__MayVT__MaMH__5EBF139D">
+            <End Role="ManHinh" EntitySet="ManHinhs" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaO__5DCAEF64" Association="Self.FK__MayVT__MaO__5DCAEF64">
+            <End Role="OCD" EntitySet="OCDs" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaOC__5AEE82B9" Association="Self.FK__MayVT__MaOC__5AEE82B9">
+            <End Role="OCung" EntitySet="OCungs" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaOUSB__628FA481" Association="Self.FK__MayVT__MaOUSB__628FA481">
+            <End Role="USB" EntitySet="USBs" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaR__6383C8BA" Association="Self.FK__MayVT__MaR__6383C8BA">
+            <End Role="Ram" EntitySet="Rams" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayVT__MaTD__5CD6CB2B" Association="Self.FK__MayVT__MaTD__5CD6CB2B">
+            <End Role="TocDo" EntitySet="TocDoes" />
+            <End Role="MayVT" EntitySet="MayVTs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="btlModelStoreContainer" CdmEntityContainer="Entity">
+          <EntitySetMapping Name="BanPhims">
+            <EntityTypeMapping TypeName="btlModel.BanPhim">
+              <MappingFragment StoreEntitySet="BanPhim">
+                <ScalarProperty Name="MaBP" ColumnName="MaBP" />
+                <ScalarProperty Name="TenBP" ColumnName="TenBP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chips">
+            <EntityTypeMapping TypeName="btlModel.Chip">
+              <MappingFragment StoreEntitySet="Chip">
+                <ScalarProperty Name="MaChip" ColumnName="MaChip" />
+                <ScalarProperty Name="TenChip" ColumnName="TenChip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietHDBs">
+            <EntityTypeMapping TypeName="btlModel.ChiTietHDB">
+              <MappingFragment StoreEntitySet="ChiTietHDB">
+                <ScalarProperty Name="MaHDB" ColumnName="MaHDB" />
+                <ScalarProperty Name="MaMVT" ColumnName="MaMVT" />
+                <ScalarProperty Name="Tien" ColumnName="Tien" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietHDNs">
+            <EntityTypeMapping TypeName="btlModel.ChiTietHDN">
+              <MappingFragment StoreEntitySet="ChiTietHDN">
+                <ScalarProperty Name="MaHDN" ColumnName="MaHDN" />
+                <ScalarProperty Name="MaMVT" ColumnName="MaMVT" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="Dongia" ColumnName="Dongia" />
+                <ScalarProperty Name="Thanhtien" ColumnName="Thanhtien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chuots">
+            <EntityTypeMapping TypeName="btlModel.Chuot">
+              <MappingFragment StoreEntitySet="Chuot">
+                <ScalarProperty Name="MaChuot" ColumnName="MaChuot" />
+                <ScalarProperty Name="TenChuot" ColumnName="TenChuot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoMHs">
+            <EntityTypeMapping TypeName="btlModel.CoMH">
+              <MappingFragment StoreEntitySet="CoMH">
+                <ScalarProperty Name="MaCo" ColumnName="MaCo" />
+                <ScalarProperty Name="TenCo" ColumnName="TenCo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dungluongs">
+            <EntityTypeMapping TypeName="btlModel.Dungluong">
+              <MappingFragment StoreEntitySet="Dungluong">
+                <ScalarProperty Name="MaDL" ColumnName="MaDL" />
+                <ScalarProperty Name="TenDL" ColumnName="TenDL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HangSXes">
+            <EntityTypeMapping TypeName="btlModel.HangSX">
+              <MappingFragment StoreEntitySet="HangSX">
+                <ScalarProperty Name="MaHSX" ColumnName="MaHSX" />
+                <ScalarProperty Name="TenHSX" ColumnName="TenHSX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDonBans">
+            <EntityTypeMapping TypeName="btlModel.HoaDonBan">
+              <MappingFragment StoreEntitySet="HoaDonBan">
+                <ScalarProperty Name="MaHDB" ColumnName="MaHDB" />
+                <ScalarProperty Name="NgayBan" ColumnName="NgayBan" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="Tien" ColumnName="Tien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDonNhaps">
+            <EntityTypeMapping TypeName="btlModel.HoaDonNhap">
+              <MappingFragment StoreEntitySet="HoaDonNhap">
+                <ScalarProperty Name="MaHDN" ColumnName="MaHDN" />
+                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="btlModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Dienthoai" ColumnName="Dienthoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loas">
+            <EntityTypeMapping TypeName="btlModel.Loa">
+              <MappingFragment StoreEntitySet="Loa">
+                <ScalarProperty Name="MaLoa" ColumnName="MaLoa" />
+                <ScalarProperty Name="TenLoa" ColumnName="TenLoa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiMays">
+            <EntityTypeMapping TypeName="btlModel.LoaiMay">
+              <MappingFragment StoreEntitySet="LoaiMay">
+                <ScalarProperty Name="MaLm" ColumnName="MaLm" />
+                <ScalarProperty Name="TenLm" ColumnName="TenLm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManHinhs">
+            <EntityTypeMapping TypeName="btlModel.ManHinh">
+              <MappingFragment StoreEntitySet="ManHinh">
+                <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+                <ScalarProperty Name="TenMH" ColumnName="TenMH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MayVTs">
+            <EntityTypeMapping TypeName="btlModel.MayVT">
+              <MappingFragment StoreEntitySet="MayVT">
+                <ScalarProperty Name="MaMVT" ColumnName="MaMVT" />
+                <ScalarProperty Name="TenMVT" ColumnName="TenMVT" />
+                <ScalarProperty Name="MaLm" ColumnName="MaLm" />
+                <ScalarProperty Name="MaChip" ColumnName="MaChip" />
+                <ScalarProperty Name="MaOC" ColumnName="MaOC" />
+                <ScalarProperty Name="MaDL" ColumnName="MaDL" />
+                <ScalarProperty Name="MaTD" ColumnName="MaTD" />
+                <ScalarProperty Name="MaO" ColumnName="MaO" />
+                <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+                <ScalarProperty Name="MaCo" ColumnName="MaCo" />
+                <ScalarProperty Name="MaChuot" ColumnName="MaChuot" />
+                <ScalarProperty Name="MaBP" ColumnName="MaBP" />
+                <ScalarProperty Name="MaOUSB" ColumnName="MaOUSB" />
+                <ScalarProperty Name="MaR" ColumnName="MaR" />
+                <ScalarProperty Name="MaLoa" ColumnName="MaLoa" />
+                <ScalarProperty Name="MaHSX" ColumnName="MaHSX" />
+                <ScalarProperty Name="Gianhap" ColumnName="Gianhap" />
+                <ScalarProperty Name="Giaban" ColumnName="Giaban" />
+                <ScalarProperty Name="ThoiGianBH" ColumnName="ThoiGianBH" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhaCCs">
+            <EntityTypeMapping TypeName="btlModel.NhaCC">
+              <MappingFragment StoreEntitySet="NhaCC">
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+                <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Dienthoai" ColumnName="Dienthoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="btlModel.NhanVien">
+              <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="Gioitinh" ColumnName="Gioitinh" />
+                <ScalarProperty Name="Dienthoai" ColumnName="Dienthoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OCDs">
+            <EntityTypeMapping TypeName="btlModel.OCD">
+              <MappingFragment StoreEntitySet="OCD">
+                <ScalarProperty Name="MaO" ColumnName="MaO" />
+                <ScalarProperty Name="TenO" ColumnName="TenO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OCungs">
+            <EntityTypeMapping TypeName="btlModel.OCung">
+              <MappingFragment StoreEntitySet="OCung">
+                <ScalarProperty Name="MaOC" ColumnName="MaOC" />
+                <ScalarProperty Name="TenOC" ColumnName="TenOC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rams">
+            <EntityTypeMapping TypeName="btlModel.Ram">
+              <MappingFragment StoreEntitySet="Ram">
+                <ScalarProperty Name="MaR" ColumnName="MaR" />
+                <ScalarProperty Name="TenR" ColumnName="TenR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="btlModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TocDoes">
+            <EntityTypeMapping TypeName="btlModel.TocDo">
+              <MappingFragment StoreEntitySet="TocDo">
+                <ScalarProperty Name="MaTD" ColumnName="MaTD" />
+                <ScalarProperty Name="TenTD" ColumnName="TenTD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USBs">
+            <EntityTypeMapping TypeName="btlModel.USB">
+              <MappingFragment StoreEntitySet="USB">
+                <ScalarProperty Name="MaOUSB" ColumnName="MaOUSB" />
+                <ScalarProperty Name="TenOUSB" ColumnName="TenOUSB" />
+                <ScalarProperty Name="Dungluong" ColumnName="Dungluong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
