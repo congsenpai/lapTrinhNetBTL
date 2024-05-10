@@ -1,0 +1,15 @@
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Release\QuanLyCuaHangMayTinh.exe.config
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Release\QuanLyCuaHangMayTinh.exe
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Release\QuanLyCuaHangMayTinh.pdb
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Release\EntityFramework.dll
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Release\EntityFramework.SqlServer.dll
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Release\EntityFramework.xml
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Release\EntityFramework.SqlServer.xml
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Release\QuanLyCuaHangMayTinh.csproj.AssemblyReference.cache
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Release\QuanLyCuaHangMayTinh.Properties.Resources.resources
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Release\QuanLyCuaHangMayTinh.Views.frmMain.resources
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Release\QuanLyCuaHangMayTinh.csproj.GenerateResource.cache
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Release\QuanLyCuaHangMayTinh.csproj.CoreCompileInputs.cache
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Release\QuanLyCu.F3DFA545.Up2Date
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Release\QuanLyCuaHangMayTinh.exe
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Release\QuanLyCuaHangMayTinh.pdb

@@ -9,12 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyCuaHangMayTinh.Model;
+using QuanLyCuaHangMayTinh.Presenter;
 
 namespace QuanLyCuaHangMayTinh.Views
 {
     public partial class frmMain : Form
     {
-        Entity connect= new Entity();
+        prsMain present = new prsMain();
+
+        Entity db = new Entity();
         public frmMain()
         {
             InitializeComponent();
@@ -22,22 +25,26 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            LoadDataToDataGridView();
-        }
-        private void LoadDataToDataGridView()
-        {
-            // Lấy dữ liệu từ cơ sở dữ liệu sử dụng Entity Framework
-            var data = connect.BanPhims.ToList(); // Thay "BanPhims" bằng tên của bảng trong cơ sở dữ liệu của bạn
-
-            // Gán dữ liệu cho DataSource của DataGridView
+            textBox1.Text = "Light Speed Pink";
+            var data = db.BanPhims.ToList();
             dataGridView1.DataSource = data;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnShow_Click(object sender, EventArgs e)
         {
-            BanPhim banPhim = new BanPhim();
+            var data = db.BanPhims.ToList();
+            dataGridView1.DataSource = data;    
 
-            textBox1.Text = banPhim.autoGenCode().ToString();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            present.addBanPhim(textBox1.Text);
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            present.removeBanPhim(textBox1.Text);
         }
     }
 }

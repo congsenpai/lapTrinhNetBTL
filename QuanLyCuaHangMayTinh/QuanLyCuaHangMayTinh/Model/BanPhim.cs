@@ -44,8 +44,26 @@ namespace QuanLyCuaHangMayTinh.Model
                 else
                 {
                     MessageBox.Show("Cơ sở dữ liệu chưa có dữ liệu", "Lỗi tìm kiếm", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-                    return "";
+                    return "BP0";
                 }
+            }
+        }
+        public void addData(string Name)
+        {
+            using (var db = new Entity())
+            {
+                BanPhim bp = new BanPhim() { MaBP = autoGenCode(), TenBP = Name };
+                db.BanPhims.Add(bp);
+                db.SaveChanges();
+            }
+        }
+        public void removeData(string ID)
+        {
+            using (var db = new Entity())
+            {
+                BanPhim bp = db.BanPhims.Where(p => p.MaBP == ID).SingleOrDefault();
+                db.BanPhims.Remove(bp);
+                db.SaveChanges();
             }
         }
     }
