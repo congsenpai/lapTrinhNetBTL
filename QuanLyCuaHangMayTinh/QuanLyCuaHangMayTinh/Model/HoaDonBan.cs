@@ -24,7 +24,7 @@ namespace QuanLyCuaHangMayTinh.Model
         public Nullable<System.DateTime> NgayBan { get; set; }
         public string MaNV { get; set; }
         public string MaKH { get; set; }
-        public Nullable<double> Tien { get; set; }
+        public Nullable<double> TongTien { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHDB> ChiTietHDBs { get; set; }

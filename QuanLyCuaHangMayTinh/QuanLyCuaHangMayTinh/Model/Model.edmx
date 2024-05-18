@@ -26,9 +26,8 @@
           </Key>
           <Property Name="MaHDB" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="MaMVT" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="Tien" Type="float" />
           <Property Name="Soluong" Type="int" />
-          <Property Name="ThanhTien" Type="float" />
+          <Property Name="Dongia" Type="float" />
         </EntityType>
         <EntityType Name="ChiTietHDN">
           <Key>
@@ -39,7 +38,6 @@
           <Property Name="MaMVT" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="Soluong" Type="int" />
           <Property Name="Dongia" Type="float" />
-          <Property Name="Thanhtien" Type="float" />
         </EntityType>
         <EntityType Name="Chuot">
           <Key>
@@ -77,7 +75,7 @@
           <Property Name="NgayBan" Type="date" />
           <Property Name="MaNV" Type="char" MaxLength="5" />
           <Property Name="MaKH" Type="char" MaxLength="5" />
-          <Property Name="Tien" Type="float" />
+          <Property Name="TongTien" Type="float" />
         </EntityType>
         <EntityType Name="HoaDonNhap">
           <Key>
@@ -162,7 +160,7 @@
           <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="TenNV" Type="nvarchar" MaxLength="100" />
           <Property Name="NgaySinh" Type="date" />
-          <Property Name="Gioitinh" Type="bit" />
+          <Property Name="Gioitinh" Type="nvarchar" MaxLength="10" />
           <Property Name="Dienthoai" Type="char" MaxLength="10" />
         </EntityType>
         <EntityType Name="OCD">
@@ -186,16 +184,6 @@
           <Property Name="MaR" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="TenR" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TocDo">
           <Key>
             <PropertyRef Name="MaTD" />
@@ -211,7 +199,7 @@
           <Property Name="TenOUSB" Type="nvarchar" MaxLength="50" />
           <Property Name="Dungluong" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
-        <Association Name="FK__ChiTietHD__MaHDB__74AE54BC">
+        <Association Name="FK__ChiTietHD__MaHDB__5FB337D6">
           <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="1" />
           <End Role="ChiTietHDB" Type="Self.ChiTietHDB" Multiplicity="*" />
           <ReferentialConstraint>
@@ -223,7 +211,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHD__MaHDN__6C190EBB">
+        <Association Name="FK__ChiTietHD__MaHDN__619B8048">
           <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="1" />
           <End Role="ChiTietHDN" Type="Self.ChiTietHDN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -235,19 +223,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHD__MaMVT__6D0D32F4">
-          <End Role="MayVT" Type="Self.MayVT" Multiplicity="1" />
-          <End Role="ChiTietHDN" Type="Self.ChiTietHDN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MayVT">
-              <PropertyRef Name="MaMVT" />
-            </Principal>
-            <Dependent Role="ChiTietHDN">
-              <PropertyRef Name="MaMVT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ChiTietHD__MaMVT__75A278F5">
+        <Association Name="FK__ChiTietHD__MaMVT__60A75C0F">
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="1" />
           <End Role="ChiTietHDB" Type="Self.ChiTietHDB" Multiplicity="*" />
           <ReferentialConstraint>
@@ -259,7 +235,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonBan__MaKH__70DDC3D8">
+        <Association Name="FK__ChiTietHD__MaMVT__628FA481">
+          <End Role="MayVT" Type="Self.MayVT" Multiplicity="1" />
+          <End Role="ChiTietHDN" Type="Self.ChiTietHDN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayVT">
+              <PropertyRef Name="MaMVT" />
+            </Principal>
+            <Dependent Role="ChiTietHDN">
+              <PropertyRef Name="MaMVT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDonBan__MaKH__6383C8BA">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -271,7 +259,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonBan__MaNV__6FE99F9F">
+        <Association Name="FK__HoaDonBan__MaNV__5CD6CB2B">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -283,7 +271,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonNha__MaNCC__693CA210">
+        <Association Name="FK__HoaDonNha__MaNCC__656C112C">
           <End Role="NhaCC" Type="Self.NhaCC" Multiplicity="0..1" />
           <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
           <ReferentialConstraint>
@@ -295,7 +283,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonNhap__MaNV__68487DD7">
+        <Association Name="FK__HoaDonNhap__MaNV__5535A963">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
           <ReferentialConstraint>
@@ -307,7 +295,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaBP__619B8048">
+        <Association Name="FK__MayVT__MaBP__6754599E">
           <End Role="BanPhim" Type="Self.BanPhim" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -319,7 +307,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaChip__59FA5E80">
+        <Association Name="FK__MayVT__MaChip__68487DD7">
           <End Role="Chip" Type="Self.Chip" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -331,7 +319,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaChuot__60A75C0F">
+        <Association Name="FK__MayVT__MaChuot__693CA210">
           <End Role="Chuot" Type="Self.Chuot" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -343,7 +331,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaCo__5FB337D6">
+        <Association Name="FK__MayVT__MaCo__6A30C649">
           <End Role="CoMH" Type="Self.CoMH" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -355,7 +343,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaDL__5BE2A6F2">
+        <Association Name="FK__MayVT__MaDL__6B24EA82">
           <End Role="Dungluong" Type="Self.Dungluong" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -367,7 +355,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaHSX__656C112C">
+        <Association Name="FK__MayVT__MaHSX__6C190EBB">
           <End Role="HangSX" Type="Self.HangSX" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -379,7 +367,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaLm__59063A47">
+        <Association Name="FK__MayVT__MaLm__6D0D32F4">
           <End Role="LoaiMay" Type="Self.LoaiMay" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -391,7 +379,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaLoa__6477ECF3">
+        <Association Name="FK__MayVT__MaLoa__6E01572D">
           <End Role="Loa" Type="Self.Loa" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -403,7 +391,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaMH__5EBF139D">
+        <Association Name="FK__MayVT__MaMH__6EF57B66">
           <End Role="ManHinh" Type="Self.ManHinh" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -415,7 +403,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaO__5DCAEF64">
+        <Association Name="FK__MayVT__MaO__6FE99F9F">
           <End Role="OCD" Type="Self.OCD" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -427,7 +415,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaOC__5AEE82B9">
+        <Association Name="FK__MayVT__MaOC__70DDC3D8">
           <End Role="OCung" Type="Self.OCung" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -439,7 +427,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaOUSB__628FA481">
+        <Association Name="FK__MayVT__MaOUSB__71D1E811">
           <End Role="USB" Type="Self.USB" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -451,7 +439,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaR__6383C8BA">
+        <Association Name="FK__MayVT__MaR__72C60C4A">
           <End Role="Ram" Type="Self.Ram" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -463,7 +451,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaTD__5CD6CB2B">
+        <Association Name="FK__MayVT__MaTD__73BA3083">
           <End Role="TocDo" Type="Self.TocDo" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -496,94 +484,93 @@
           <EntitySet Name="OCD" EntityType="Self.OCD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OCung" EntityType="Self.OCung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ram" EntityType="Self.Ram" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TocDo" EntityType="Self.TocDo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USB" EntityType="Self.USB" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ChiTietHD__MaHDB__74AE54BC" Association="Self.FK__ChiTietHD__MaHDB__74AE54BC">
+          <AssociationSet Name="FK__ChiTietHD__MaHDB__5FB337D6" Association="Self.FK__ChiTietHD__MaHDB__5FB337D6">
             <End Role="HoaDonBan" EntitySet="HoaDonBan" />
             <End Role="ChiTietHDB" EntitySet="ChiTietHDB" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHD__MaHDN__6C190EBB" Association="Self.FK__ChiTietHD__MaHDN__6C190EBB">
+          <AssociationSet Name="FK__ChiTietHD__MaHDN__619B8048" Association="Self.FK__ChiTietHD__MaHDN__619B8048">
             <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
             <End Role="ChiTietHDN" EntitySet="ChiTietHDN" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHD__MaMVT__6D0D32F4" Association="Self.FK__ChiTietHD__MaMVT__6D0D32F4">
-            <End Role="MayVT" EntitySet="MayVT" />
-            <End Role="ChiTietHDN" EntitySet="ChiTietHDN" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHD__MaMVT__75A278F5" Association="Self.FK__ChiTietHD__MaMVT__75A278F5">
+          <AssociationSet Name="FK__ChiTietHD__MaMVT__60A75C0F" Association="Self.FK__ChiTietHD__MaMVT__60A75C0F">
             <End Role="MayVT" EntitySet="MayVT" />
             <End Role="ChiTietHDB" EntitySet="ChiTietHDB" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonBan__MaKH__70DDC3D8" Association="Self.FK__HoaDonBan__MaKH__70DDC3D8">
+          <AssociationSet Name="FK__ChiTietHD__MaMVT__628FA481" Association="Self.FK__ChiTietHD__MaMVT__628FA481">
+            <End Role="MayVT" EntitySet="MayVT" />
+            <End Role="ChiTietHDN" EntitySet="ChiTietHDN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDonBan__MaKH__6383C8BA" Association="Self.FK__HoaDonBan__MaKH__6383C8BA">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="HoaDonBan" EntitySet="HoaDonBan" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonBan__MaNV__6FE99F9F" Association="Self.FK__HoaDonBan__MaNV__6FE99F9F">
+          <AssociationSet Name="FK__HoaDonBan__MaNV__5CD6CB2B" Association="Self.FK__HoaDonBan__MaNV__5CD6CB2B">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDonBan" EntitySet="HoaDonBan" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonNha__MaNCC__693CA210" Association="Self.FK__HoaDonNha__MaNCC__693CA210">
+          <AssociationSet Name="FK__HoaDonNha__MaNCC__656C112C" Association="Self.FK__HoaDonNha__MaNCC__656C112C">
             <End Role="NhaCC" EntitySet="NhaCC" />
             <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonNhap__MaNV__68487DD7" Association="Self.FK__HoaDonNhap__MaNV__68487DD7">
+          <AssociationSet Name="FK__HoaDonNhap__MaNV__5535A963" Association="Self.FK__HoaDonNhap__MaNV__5535A963">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaBP__619B8048" Association="Self.FK__MayVT__MaBP__619B8048">
+          <AssociationSet Name="FK__MayVT__MaBP__6754599E" Association="Self.FK__MayVT__MaBP__6754599E">
             <End Role="BanPhim" EntitySet="BanPhim" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaChip__59FA5E80" Association="Self.FK__MayVT__MaChip__59FA5E80">
+          <AssociationSet Name="FK__MayVT__MaChip__68487DD7" Association="Self.FK__MayVT__MaChip__68487DD7">
             <End Role="Chip" EntitySet="Chip" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaChuot__60A75C0F" Association="Self.FK__MayVT__MaChuot__60A75C0F">
+          <AssociationSet Name="FK__MayVT__MaChuot__693CA210" Association="Self.FK__MayVT__MaChuot__693CA210">
             <End Role="Chuot" EntitySet="Chuot" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaCo__5FB337D6" Association="Self.FK__MayVT__MaCo__5FB337D6">
+          <AssociationSet Name="FK__MayVT__MaCo__6A30C649" Association="Self.FK__MayVT__MaCo__6A30C649">
             <End Role="CoMH" EntitySet="CoMH" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaDL__5BE2A6F2" Association="Self.FK__MayVT__MaDL__5BE2A6F2">
+          <AssociationSet Name="FK__MayVT__MaDL__6B24EA82" Association="Self.FK__MayVT__MaDL__6B24EA82">
             <End Role="Dungluong" EntitySet="Dungluong" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaHSX__656C112C" Association="Self.FK__MayVT__MaHSX__656C112C">
+          <AssociationSet Name="FK__MayVT__MaHSX__6C190EBB" Association="Self.FK__MayVT__MaHSX__6C190EBB">
             <End Role="HangSX" EntitySet="HangSX" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaLm__59063A47" Association="Self.FK__MayVT__MaLm__59063A47">
+          <AssociationSet Name="FK__MayVT__MaLm__6D0D32F4" Association="Self.FK__MayVT__MaLm__6D0D32F4">
             <End Role="LoaiMay" EntitySet="LoaiMay" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaLoa__6477ECF3" Association="Self.FK__MayVT__MaLoa__6477ECF3">
+          <AssociationSet Name="FK__MayVT__MaLoa__6E01572D" Association="Self.FK__MayVT__MaLoa__6E01572D">
             <End Role="Loa" EntitySet="Loa" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaMH__5EBF139D" Association="Self.FK__MayVT__MaMH__5EBF139D">
+          <AssociationSet Name="FK__MayVT__MaMH__6EF57B66" Association="Self.FK__MayVT__MaMH__6EF57B66">
             <End Role="ManHinh" EntitySet="ManHinh" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaO__5DCAEF64" Association="Self.FK__MayVT__MaO__5DCAEF64">
+          <AssociationSet Name="FK__MayVT__MaO__6FE99F9F" Association="Self.FK__MayVT__MaO__6FE99F9F">
             <End Role="OCD" EntitySet="OCD" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaOC__5AEE82B9" Association="Self.FK__MayVT__MaOC__5AEE82B9">
+          <AssociationSet Name="FK__MayVT__MaOC__70DDC3D8" Association="Self.FK__MayVT__MaOC__70DDC3D8">
             <End Role="OCung" EntitySet="OCung" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaOUSB__628FA481" Association="Self.FK__MayVT__MaOUSB__628FA481">
+          <AssociationSet Name="FK__MayVT__MaOUSB__71D1E811" Association="Self.FK__MayVT__MaOUSB__71D1E811">
             <End Role="USB" EntitySet="USB" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaR__6383C8BA" Association="Self.FK__MayVT__MaR__6383C8BA">
+          <AssociationSet Name="FK__MayVT__MaR__72C60C4A" Association="Self.FK__MayVT__MaR__72C60C4A">
             <End Role="Ram" EntitySet="Ram" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaTD__5CD6CB2B" Association="Self.FK__MayVT__MaTD__5CD6CB2B">
+          <AssociationSet Name="FK__MayVT__MaTD__73BA3083" Association="Self.FK__MayVT__MaTD__73BA3083">
             <End Role="TocDo" EntitySet="TocDo" />
             <End Role="MayVT" EntitySet="MayVT" />
           </AssociationSet>
@@ -599,7 +586,7 @@
           </Key>
           <Property Name="MaBP" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenBP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaBP__619B8048" FromRole="BanPhim" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaBP__6754599E" FromRole="BanPhim" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="Chip">
           <Key>
@@ -607,7 +594,7 @@
           </Key>
           <Property Name="MaChip" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenChip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaChip__59FA5E80" FromRole="Chip" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaChip__68487DD7" FromRole="Chip" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="ChiTietHDB">
           <Key>
@@ -616,11 +603,10 @@
           </Key>
           <Property Name="MaHDB" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="MaMVT" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Tien" Type="Double" />
           <Property Name="Soluong" Type="Int32" />
-          <Property Name="ThanhTien" Type="Double" />
-          <NavigationProperty Name="HoaDonBan" Relationship="Self.FK__ChiTietHD__MaHDB__74AE54BC" FromRole="ChiTietHDB" ToRole="HoaDonBan" />
-          <NavigationProperty Name="MayVT" Relationship="Self.FK__ChiTietHD__MaMVT__75A278F5" FromRole="ChiTietHDB" ToRole="MayVT" />
+          <Property Name="Dongia" Type="Double" />
+          <NavigationProperty Name="HoaDonBan" Relationship="Self.FK__ChiTietHD__MaHDB__5FB337D6" FromRole="ChiTietHDB" ToRole="HoaDonBan" />
+          <NavigationProperty Name="MayVT" Relationship="Self.FK__ChiTietHD__MaMVT__60A75C0F" FromRole="ChiTietHDB" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="ChiTietHDN">
           <Key>
@@ -631,9 +617,8 @@
           <Property Name="MaMVT" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Soluong" Type="Int32" />
           <Property Name="Dongia" Type="Double" />
-          <Property Name="Thanhtien" Type="Double" />
-          <NavigationProperty Name="HoaDonNhap" Relationship="Self.FK__ChiTietHD__MaHDN__6C190EBB" FromRole="ChiTietHDN" ToRole="HoaDonNhap" />
-          <NavigationProperty Name="MayVT" Relationship="Self.FK__ChiTietHD__MaMVT__6D0D32F4" FromRole="ChiTietHDN" ToRole="MayVT" />
+          <NavigationProperty Name="HoaDonNhap" Relationship="Self.FK__ChiTietHD__MaHDN__619B8048" FromRole="ChiTietHDN" ToRole="HoaDonNhap" />
+          <NavigationProperty Name="MayVT" Relationship="Self.FK__ChiTietHD__MaMVT__628FA481" FromRole="ChiTietHDN" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="Chuot">
           <Key>
@@ -641,7 +626,7 @@
           </Key>
           <Property Name="MaChuot" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenChuot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaChuot__60A75C0F" FromRole="Chuot" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaChuot__693CA210" FromRole="Chuot" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="CoMH">
           <Key>
@@ -649,7 +634,7 @@
           </Key>
           <Property Name="MaCo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenCo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaCo__5FB337D6" FromRole="CoMH" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaCo__6A30C649" FromRole="CoMH" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="Dungluong">
           <Key>
@@ -657,7 +642,7 @@
           </Key>
           <Property Name="MaDL" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenDL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaDL__5BE2A6F2" FromRole="Dungluong" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaDL__6B24EA82" FromRole="Dungluong" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="HangSX">
           <Key>
@@ -665,7 +650,7 @@
           </Key>
           <Property Name="MaHSX" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenHSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaHSX__656C112C" FromRole="HangSX" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaHSX__6C190EBB" FromRole="HangSX" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="HoaDonBan">
           <Key>
@@ -675,10 +660,10 @@
           <Property Name="NgayBan" Type="DateTime" Precision="0" />
           <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Name="Tien" Type="Double" />
-          <NavigationProperty Name="ChiTietHDBs" Relationship="Self.FK__ChiTietHD__MaHDB__74AE54BC" FromRole="HoaDonBan" ToRole="ChiTietHDB" />
-          <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDonBan__MaKH__70DDC3D8" FromRole="HoaDonBan" ToRole="KhachHang" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonBan__MaNV__6FE99F9F" FromRole="HoaDonBan" ToRole="NhanVien" />
+          <Property Name="TongTien" Type="Double" />
+          <NavigationProperty Name="ChiTietHDBs" Relationship="Self.FK__ChiTietHD__MaHDB__5FB337D6" FromRole="HoaDonBan" ToRole="ChiTietHDB" />
+          <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDonBan__MaKH__6383C8BA" FromRole="HoaDonBan" ToRole="KhachHang" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonBan__MaNV__5CD6CB2B" FromRole="HoaDonBan" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="HoaDonNhap">
           <Key>
@@ -689,9 +674,9 @@
           <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="MaNCC" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="ThanhTien" Type="Double" />
-          <NavigationProperty Name="ChiTietHDNs" Relationship="Self.FK__ChiTietHD__MaHDN__6C190EBB" FromRole="HoaDonNhap" ToRole="ChiTietHDN" />
-          <NavigationProperty Name="NhaCC" Relationship="Self.FK__HoaDonNha__MaNCC__693CA210" FromRole="HoaDonNhap" ToRole="NhaCC" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonNhap__MaNV__68487DD7" FromRole="HoaDonNhap" ToRole="NhanVien" />
+          <NavigationProperty Name="ChiTietHDNs" Relationship="Self.FK__ChiTietHD__MaHDN__619B8048" FromRole="HoaDonNhap" ToRole="ChiTietHDN" />
+          <NavigationProperty Name="NhaCC" Relationship="Self.FK__HoaDonNha__MaNCC__656C112C" FromRole="HoaDonNhap" ToRole="NhaCC" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonNhap__MaNV__5535A963" FromRole="HoaDonNhap" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="KhachHang">
           <Key>
@@ -701,7 +686,7 @@
           <Property Name="TenKH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Dienthoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="HoaDonBans" Relationship="Self.FK__HoaDonBan__MaKH__70DDC3D8" FromRole="KhachHang" ToRole="HoaDonBan" />
+          <NavigationProperty Name="HoaDonBans" Relationship="Self.FK__HoaDonBan__MaKH__6383C8BA" FromRole="KhachHang" ToRole="HoaDonBan" />
         </EntityType>
         <EntityType Name="Loa">
           <Key>
@@ -709,7 +694,7 @@
           </Key>
           <Property Name="MaLoa" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenLoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaLoa__6477ECF3" FromRole="Loa" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaLoa__6E01572D" FromRole="Loa" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="LoaiMay">
           <Key>
@@ -717,7 +702,7 @@
           </Key>
           <Property Name="MaLm" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenLm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaLm__59063A47" FromRole="LoaiMay" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaLm__6D0D32F4" FromRole="LoaiMay" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="ManHinh">
           <Key>
@@ -725,7 +710,7 @@
           </Key>
           <Property Name="MaMH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaMH__5EBF139D" FromRole="ManHinh" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaMH__6EF57B66" FromRole="ManHinh" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="MayVT">
           <Key>
@@ -753,22 +738,22 @@
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="Anh" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Ghichu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BanPhim" Relationship="Self.FK__MayVT__MaBP__619B8048" FromRole="MayVT" ToRole="BanPhim" />
-          <NavigationProperty Name="Chip" Relationship="Self.FK__MayVT__MaChip__59FA5E80" FromRole="MayVT" ToRole="Chip" />
-          <NavigationProperty Name="ChiTietHDBs" Relationship="Self.FK__ChiTietHD__MaMVT__75A278F5" FromRole="MayVT" ToRole="ChiTietHDB" />
-          <NavigationProperty Name="ChiTietHDNs" Relationship="Self.FK__ChiTietHD__MaMVT__6D0D32F4" FromRole="MayVT" ToRole="ChiTietHDN" />
-          <NavigationProperty Name="Chuot" Relationship="Self.FK__MayVT__MaChuot__60A75C0F" FromRole="MayVT" ToRole="Chuot" />
-          <NavigationProperty Name="CoMH" Relationship="Self.FK__MayVT__MaCo__5FB337D6" FromRole="MayVT" ToRole="CoMH" />
-          <NavigationProperty Name="Dungluong" Relationship="Self.FK__MayVT__MaDL__5BE2A6F2" FromRole="MayVT" ToRole="Dungluong" />
-          <NavigationProperty Name="HangSX" Relationship="Self.FK__MayVT__MaHSX__656C112C" FromRole="MayVT" ToRole="HangSX" />
-          <NavigationProperty Name="Loa" Relationship="Self.FK__MayVT__MaLoa__6477ECF3" FromRole="MayVT" ToRole="Loa" />
-          <NavigationProperty Name="LoaiMay" Relationship="Self.FK__MayVT__MaLm__59063A47" FromRole="MayVT" ToRole="LoaiMay" />
-          <NavigationProperty Name="ManHinh" Relationship="Self.FK__MayVT__MaMH__5EBF139D" FromRole="MayVT" ToRole="ManHinh" />
-          <NavigationProperty Name="OCD" Relationship="Self.FK__MayVT__MaO__5DCAEF64" FromRole="MayVT" ToRole="OCD" />
-          <NavigationProperty Name="OCung" Relationship="Self.FK__MayVT__MaOC__5AEE82B9" FromRole="MayVT" ToRole="OCung" />
-          <NavigationProperty Name="USB" Relationship="Self.FK__MayVT__MaOUSB__628FA481" FromRole="MayVT" ToRole="USB" />
-          <NavigationProperty Name="Ram" Relationship="Self.FK__MayVT__MaR__6383C8BA" FromRole="MayVT" ToRole="Ram" />
-          <NavigationProperty Name="TocDo" Relationship="Self.FK__MayVT__MaTD__5CD6CB2B" FromRole="MayVT" ToRole="TocDo" />
+          <NavigationProperty Name="BanPhim" Relationship="Self.FK__MayVT__MaBP__6754599E" FromRole="MayVT" ToRole="BanPhim" />
+          <NavigationProperty Name="Chip" Relationship="Self.FK__MayVT__MaChip__68487DD7" FromRole="MayVT" ToRole="Chip" />
+          <NavigationProperty Name="ChiTietHDBs" Relationship="Self.FK__ChiTietHD__MaMVT__60A75C0F" FromRole="MayVT" ToRole="ChiTietHDB" />
+          <NavigationProperty Name="ChiTietHDNs" Relationship="Self.FK__ChiTietHD__MaMVT__628FA481" FromRole="MayVT" ToRole="ChiTietHDN" />
+          <NavigationProperty Name="Chuot" Relationship="Self.FK__MayVT__MaChuot__693CA210" FromRole="MayVT" ToRole="Chuot" />
+          <NavigationProperty Name="CoMH" Relationship="Self.FK__MayVT__MaCo__6A30C649" FromRole="MayVT" ToRole="CoMH" />
+          <NavigationProperty Name="Dungluong" Relationship="Self.FK__MayVT__MaDL__6B24EA82" FromRole="MayVT" ToRole="Dungluong" />
+          <NavigationProperty Name="HangSX" Relationship="Self.FK__MayVT__MaHSX__6C190EBB" FromRole="MayVT" ToRole="HangSX" />
+          <NavigationProperty Name="Loa" Relationship="Self.FK__MayVT__MaLoa__6E01572D" FromRole="MayVT" ToRole="Loa" />
+          <NavigationProperty Name="LoaiMay" Relationship="Self.FK__MayVT__MaLm__6D0D32F4" FromRole="MayVT" ToRole="LoaiMay" />
+          <NavigationProperty Name="ManHinh" Relationship="Self.FK__MayVT__MaMH__6EF57B66" FromRole="MayVT" ToRole="ManHinh" />
+          <NavigationProperty Name="OCD" Relationship="Self.FK__MayVT__MaO__6FE99F9F" FromRole="MayVT" ToRole="OCD" />
+          <NavigationProperty Name="OCung" Relationship="Self.FK__MayVT__MaOC__70DDC3D8" FromRole="MayVT" ToRole="OCung" />
+          <NavigationProperty Name="USB" Relationship="Self.FK__MayVT__MaOUSB__71D1E811" FromRole="MayVT" ToRole="USB" />
+          <NavigationProperty Name="Ram" Relationship="Self.FK__MayVT__MaR__72C60C4A" FromRole="MayVT" ToRole="Ram" />
+          <NavigationProperty Name="TocDo" Relationship="Self.FK__MayVT__MaTD__73BA3083" FromRole="MayVT" ToRole="TocDo" />
         </EntityType>
         <EntityType Name="NhaCC">
           <Key>
@@ -778,7 +763,7 @@
           <Property Name="TenNCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Dienthoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="HoaDonNhaps" Relationship="Self.FK__HoaDonNha__MaNCC__693CA210" FromRole="NhaCC" ToRole="HoaDonNhap" />
+          <NavigationProperty Name="HoaDonNhaps" Relationship="Self.FK__HoaDonNha__MaNCC__656C112C" FromRole="NhaCC" ToRole="HoaDonNhap" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -787,10 +772,10 @@
           <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenNV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
-          <Property Name="Gioitinh" Type="Boolean" />
+          <Property Name="Gioitinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Dienthoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="HoaDonBans" Relationship="Self.FK__HoaDonBan__MaNV__6FE99F9F" FromRole="NhanVien" ToRole="HoaDonBan" />
-          <NavigationProperty Name="HoaDonNhaps" Relationship="Self.FK__HoaDonNhap__MaNV__68487DD7" FromRole="NhanVien" ToRole="HoaDonNhap" />
+          <NavigationProperty Name="HoaDonBans" Relationship="Self.FK__HoaDonBan__MaNV__5CD6CB2B" FromRole="NhanVien" ToRole="HoaDonBan" />
+          <NavigationProperty Name="HoaDonNhaps" Relationship="Self.FK__HoaDonNhap__MaNV__5535A963" FromRole="NhanVien" ToRole="HoaDonNhap" />
         </EntityType>
         <EntityType Name="OCD">
           <Key>
@@ -798,7 +783,7 @@
           </Key>
           <Property Name="MaO" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaO__5DCAEF64" FromRole="OCD" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaO__6FE99F9F" FromRole="OCD" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="OCung">
           <Key>
@@ -806,7 +791,7 @@
           </Key>
           <Property Name="MaOC" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenOC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaOC__5AEE82B9" FromRole="OCung" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaOC__70DDC3D8" FromRole="OCung" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="Ram">
           <Key>
@@ -814,17 +799,7 @@
           </Key>
           <Property Name="MaR" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaR__6383C8BA" FromRole="Ram" ToRole="MayVT" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaR__72C60C4A" FromRole="Ram" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="TocDo">
           <Key>
@@ -832,7 +807,7 @@
           </Key>
           <Property Name="MaTD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenTD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaTD__5CD6CB2B" FromRole="TocDo" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaTD__73BA3083" FromRole="TocDo" ToRole="MayVT" />
         </EntityType>
         <EntityType Name="USB">
           <Key>
@@ -841,9 +816,9 @@
           <Property Name="MaOUSB" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenOUSB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Dungluong" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaOUSB__628FA481" FromRole="USB" ToRole="MayVT" />
+          <NavigationProperty Name="MayVTs" Relationship="Self.FK__MayVT__MaOUSB__71D1E811" FromRole="USB" ToRole="MayVT" />
         </EntityType>
-        <Association Name="FK__MayVT__MaBP__619B8048">
+        <Association Name="FK__MayVT__MaBP__6754599E">
           <End Role="BanPhim" Type="Self.BanPhim" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -855,7 +830,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaChip__59FA5E80">
+        <Association Name="FK__MayVT__MaChip__68487DD7">
           <End Role="Chip" Type="Self.Chip" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -867,7 +842,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHD__MaHDB__74AE54BC">
+        <Association Name="FK__ChiTietHD__MaHDB__5FB337D6">
           <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="1" />
           <End Role="ChiTietHDB" Type="Self.ChiTietHDB" Multiplicity="*" />
           <ReferentialConstraint>
@@ -879,7 +854,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHD__MaMVT__75A278F5">
+        <Association Name="FK__ChiTietHD__MaMVT__60A75C0F">
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="1" />
           <End Role="ChiTietHDB" Type="Self.ChiTietHDB" Multiplicity="*" />
           <ReferentialConstraint>
@@ -891,7 +866,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHD__MaHDN__6C190EBB">
+        <Association Name="FK__ChiTietHD__MaHDN__619B8048">
           <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="1" />
           <End Role="ChiTietHDN" Type="Self.ChiTietHDN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -903,7 +878,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHD__MaMVT__6D0D32F4">
+        <Association Name="FK__ChiTietHD__MaMVT__628FA481">
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="1" />
           <End Role="ChiTietHDN" Type="Self.ChiTietHDN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -915,7 +890,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaChuot__60A75C0F">
+        <Association Name="FK__MayVT__MaChuot__693CA210">
           <End Role="Chuot" Type="Self.Chuot" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -927,7 +902,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaCo__5FB337D6">
+        <Association Name="FK__MayVT__MaCo__6A30C649">
           <End Role="CoMH" Type="Self.CoMH" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -939,7 +914,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaDL__5BE2A6F2">
+        <Association Name="FK__MayVT__MaDL__6B24EA82">
           <End Role="Dungluong" Type="Self.Dungluong" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -951,7 +926,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaHSX__656C112C">
+        <Association Name="FK__MayVT__MaHSX__6C190EBB">
           <End Role="HangSX" Type="Self.HangSX" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -963,7 +938,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonBan__MaKH__70DDC3D8">
+        <Association Name="FK__HoaDonBan__MaKH__6383C8BA">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -975,7 +950,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonBan__MaNV__6FE99F9F">
+        <Association Name="FK__HoaDonBan__MaNV__5CD6CB2B">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -987,7 +962,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonNha__MaNCC__693CA210">
+        <Association Name="FK__HoaDonNha__MaNCC__656C112C">
           <End Role="NhaCC" Type="Self.NhaCC" Multiplicity="0..1" />
           <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
           <ReferentialConstraint>
@@ -999,7 +974,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonNhap__MaNV__68487DD7">
+        <Association Name="FK__HoaDonNhap__MaNV__5535A963">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1011,7 +986,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaLoa__6477ECF3">
+        <Association Name="FK__MayVT__MaLoa__6E01572D">
           <End Role="Loa" Type="Self.Loa" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1023,7 +998,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaLm__59063A47">
+        <Association Name="FK__MayVT__MaLm__6D0D32F4">
           <End Role="LoaiMay" Type="Self.LoaiMay" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1035,7 +1010,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaMH__5EBF139D">
+        <Association Name="FK__MayVT__MaMH__6EF57B66">
           <End Role="ManHinh" Type="Self.ManHinh" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1047,7 +1022,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaO__5DCAEF64">
+        <Association Name="FK__MayVT__MaO__6FE99F9F">
           <End Role="OCD" Type="Self.OCD" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1059,7 +1034,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaOC__5AEE82B9">
+        <Association Name="FK__MayVT__MaOC__70DDC3D8">
           <End Role="OCung" Type="Self.OCung" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1071,7 +1046,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaOUSB__628FA481">
+        <Association Name="FK__MayVT__MaOUSB__71D1E811">
           <End Role="USB" Type="Self.USB" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1083,7 +1058,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaR__6383C8BA">
+        <Association Name="FK__MayVT__MaR__72C60C4A">
           <End Role="Ram" Type="Self.Ram" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1095,7 +1070,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MayVT__MaTD__5CD6CB2B">
+        <Association Name="FK__MayVT__MaTD__73BA3083">
           <End Role="TocDo" Type="Self.TocDo" Multiplicity="0..1" />
           <End Role="MayVT" Type="Self.MayVT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1128,94 +1103,93 @@
           <EntitySet Name="OCDs" EntityType="Self.OCD" />
           <EntitySet Name="OCungs" EntityType="Self.OCung" />
           <EntitySet Name="Rams" EntityType="Self.Ram" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TocDoes" EntityType="Self.TocDo" />
           <EntitySet Name="USBs" EntityType="Self.USB" />
-          <AssociationSet Name="FK__MayVT__MaBP__619B8048" Association="Self.FK__MayVT__MaBP__619B8048">
+          <AssociationSet Name="FK__MayVT__MaBP__6754599E" Association="Self.FK__MayVT__MaBP__6754599E">
             <End Role="BanPhim" EntitySet="BanPhims" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaChip__59FA5E80" Association="Self.FK__MayVT__MaChip__59FA5E80">
+          <AssociationSet Name="FK__MayVT__MaChip__68487DD7" Association="Self.FK__MayVT__MaChip__68487DD7">
             <End Role="Chip" EntitySet="Chips" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHD__MaHDB__74AE54BC" Association="Self.FK__ChiTietHD__MaHDB__74AE54BC">
+          <AssociationSet Name="FK__ChiTietHD__MaHDB__5FB337D6" Association="Self.FK__ChiTietHD__MaHDB__5FB337D6">
             <End Role="HoaDonBan" EntitySet="HoaDonBans" />
             <End Role="ChiTietHDB" EntitySet="ChiTietHDBs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHD__MaMVT__75A278F5" Association="Self.FK__ChiTietHD__MaMVT__75A278F5">
+          <AssociationSet Name="FK__ChiTietHD__MaMVT__60A75C0F" Association="Self.FK__ChiTietHD__MaMVT__60A75C0F">
             <End Role="MayVT" EntitySet="MayVTs" />
             <End Role="ChiTietHDB" EntitySet="ChiTietHDBs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHD__MaHDN__6C190EBB" Association="Self.FK__ChiTietHD__MaHDN__6C190EBB">
+          <AssociationSet Name="FK__ChiTietHD__MaHDN__619B8048" Association="Self.FK__ChiTietHD__MaHDN__619B8048">
             <End Role="HoaDonNhap" EntitySet="HoaDonNhaps" />
             <End Role="ChiTietHDN" EntitySet="ChiTietHDNs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHD__MaMVT__6D0D32F4" Association="Self.FK__ChiTietHD__MaMVT__6D0D32F4">
+          <AssociationSet Name="FK__ChiTietHD__MaMVT__628FA481" Association="Self.FK__ChiTietHD__MaMVT__628FA481">
             <End Role="MayVT" EntitySet="MayVTs" />
             <End Role="ChiTietHDN" EntitySet="ChiTietHDNs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaChuot__60A75C0F" Association="Self.FK__MayVT__MaChuot__60A75C0F">
+          <AssociationSet Name="FK__MayVT__MaChuot__693CA210" Association="Self.FK__MayVT__MaChuot__693CA210">
             <End Role="Chuot" EntitySet="Chuots" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaCo__5FB337D6" Association="Self.FK__MayVT__MaCo__5FB337D6">
+          <AssociationSet Name="FK__MayVT__MaCo__6A30C649" Association="Self.FK__MayVT__MaCo__6A30C649">
             <End Role="CoMH" EntitySet="CoMHs" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaDL__5BE2A6F2" Association="Self.FK__MayVT__MaDL__5BE2A6F2">
+          <AssociationSet Name="FK__MayVT__MaDL__6B24EA82" Association="Self.FK__MayVT__MaDL__6B24EA82">
             <End Role="Dungluong" EntitySet="Dungluongs" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaHSX__656C112C" Association="Self.FK__MayVT__MaHSX__656C112C">
+          <AssociationSet Name="FK__MayVT__MaHSX__6C190EBB" Association="Self.FK__MayVT__MaHSX__6C190EBB">
             <End Role="HangSX" EntitySet="HangSXes" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonBan__MaKH__70DDC3D8" Association="Self.FK__HoaDonBan__MaKH__70DDC3D8">
+          <AssociationSet Name="FK__HoaDonBan__MaKH__6383C8BA" Association="Self.FK__HoaDonBan__MaKH__6383C8BA">
             <End Role="KhachHang" EntitySet="KhachHangs" />
             <End Role="HoaDonBan" EntitySet="HoaDonBans" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonBan__MaNV__6FE99F9F" Association="Self.FK__HoaDonBan__MaNV__6FE99F9F">
+          <AssociationSet Name="FK__HoaDonBan__MaNV__5CD6CB2B" Association="Self.FK__HoaDonBan__MaNV__5CD6CB2B">
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="HoaDonBan" EntitySet="HoaDonBans" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonNha__MaNCC__693CA210" Association="Self.FK__HoaDonNha__MaNCC__693CA210">
+          <AssociationSet Name="FK__HoaDonNha__MaNCC__656C112C" Association="Self.FK__HoaDonNha__MaNCC__656C112C">
             <End Role="NhaCC" EntitySet="NhaCCs" />
             <End Role="HoaDonNhap" EntitySet="HoaDonNhaps" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonNhap__MaNV__68487DD7" Association="Self.FK__HoaDonNhap__MaNV__68487DD7">
+          <AssociationSet Name="FK__HoaDonNhap__MaNV__5535A963" Association="Self.FK__HoaDonNhap__MaNV__5535A963">
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="HoaDonNhap" EntitySet="HoaDonNhaps" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaLoa__6477ECF3" Association="Self.FK__MayVT__MaLoa__6477ECF3">
+          <AssociationSet Name="FK__MayVT__MaLoa__6E01572D" Association="Self.FK__MayVT__MaLoa__6E01572D">
             <End Role="Loa" EntitySet="Loas" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaLm__59063A47" Association="Self.FK__MayVT__MaLm__59063A47">
+          <AssociationSet Name="FK__MayVT__MaLm__6D0D32F4" Association="Self.FK__MayVT__MaLm__6D0D32F4">
             <End Role="LoaiMay" EntitySet="LoaiMays" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaMH__5EBF139D" Association="Self.FK__MayVT__MaMH__5EBF139D">
+          <AssociationSet Name="FK__MayVT__MaMH__6EF57B66" Association="Self.FK__MayVT__MaMH__6EF57B66">
             <End Role="ManHinh" EntitySet="ManHinhs" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaO__5DCAEF64" Association="Self.FK__MayVT__MaO__5DCAEF64">
+          <AssociationSet Name="FK__MayVT__MaO__6FE99F9F" Association="Self.FK__MayVT__MaO__6FE99F9F">
             <End Role="OCD" EntitySet="OCDs" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaOC__5AEE82B9" Association="Self.FK__MayVT__MaOC__5AEE82B9">
+          <AssociationSet Name="FK__MayVT__MaOC__70DDC3D8" Association="Self.FK__MayVT__MaOC__70DDC3D8">
             <End Role="OCung" EntitySet="OCungs" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaOUSB__628FA481" Association="Self.FK__MayVT__MaOUSB__628FA481">
+          <AssociationSet Name="FK__MayVT__MaOUSB__71D1E811" Association="Self.FK__MayVT__MaOUSB__71D1E811">
             <End Role="USB" EntitySet="USBs" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaR__6383C8BA" Association="Self.FK__MayVT__MaR__6383C8BA">
+          <AssociationSet Name="FK__MayVT__MaR__72C60C4A" Association="Self.FK__MayVT__MaR__72C60C4A">
             <End Role="Ram" EntitySet="Rams" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__MayVT__MaTD__5CD6CB2B" Association="Self.FK__MayVT__MaTD__5CD6CB2B">
+          <AssociationSet Name="FK__MayVT__MaTD__73BA3083" Association="Self.FK__MayVT__MaTD__73BA3083">
             <End Role="TocDo" EntitySet="TocDoes" />
             <End Role="MayVT" EntitySet="MayVTs" />
           </AssociationSet>
@@ -1247,9 +1221,8 @@
               <MappingFragment StoreEntitySet="ChiTietHDB">
                 <ScalarProperty Name="MaHDB" ColumnName="MaHDB" />
                 <ScalarProperty Name="MaMVT" ColumnName="MaMVT" />
-                <ScalarProperty Name="Tien" ColumnName="Tien" />
                 <ScalarProperty Name="Soluong" ColumnName="Soluong" />
-                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+                <ScalarProperty Name="Dongia" ColumnName="Dongia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1260,7 +1233,6 @@
                 <ScalarProperty Name="MaMVT" ColumnName="MaMVT" />
                 <ScalarProperty Name="Soluong" ColumnName="Soluong" />
                 <ScalarProperty Name="Dongia" ColumnName="Dongia" />
-                <ScalarProperty Name="Thanhtien" ColumnName="Thanhtien" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1303,7 +1275,7 @@
                 <ScalarProperty Name="NgayBan" ColumnName="NgayBan" />
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-                <ScalarProperty Name="Tien" ColumnName="Tien" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1422,17 +1394,6 @@
               <MappingFragment StoreEntitySet="Ram">
                 <ScalarProperty Name="MaR" ColumnName="MaR" />
                 <ScalarProperty Name="TenR" ColumnName="TenR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="btlModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

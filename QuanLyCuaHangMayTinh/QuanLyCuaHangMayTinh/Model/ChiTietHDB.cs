@@ -16,9 +16,8 @@ namespace QuanLyCuaHangMayTinh.Model
     {
         public string MaHDB { get; set; }
         public string MaMVT { get; set; }
-        public Nullable<double> Tien { get; set; }
         public Nullable<int> Soluong { get; set; }
-        public Nullable<double> ThanhTien { get; set; }
+        public Nullable<double> Dongia { get; set; }
     
         public virtual HoaDonBan HoaDonBan { get; set; }
         public virtual MayVT MayVT { get; set; }

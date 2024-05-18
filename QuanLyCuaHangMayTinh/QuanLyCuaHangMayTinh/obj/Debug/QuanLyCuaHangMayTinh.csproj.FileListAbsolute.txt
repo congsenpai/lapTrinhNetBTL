@@ -13,3 +13,4 @@ D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\Q
 D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.exe
 D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.pdb
 D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.frmMain.resources
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.khachhang.resources

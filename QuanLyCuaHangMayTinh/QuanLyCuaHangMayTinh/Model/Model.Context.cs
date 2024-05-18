@@ -45,7 +45,6 @@ namespace QuanLyCuaHangMayTinh.Model
         public virtual DbSet<OCD> OCDs { get; set; }
         public virtual DbSet<OCung> OCungs { get; set; }
         public virtual DbSet<Ram> Rams { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TocDo> TocDoes { get; set; }
         public virtual DbSet<USB> USBs { get; set; }
     }

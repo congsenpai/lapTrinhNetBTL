@@ -24,7 +24,7 @@ namespace QuanLyCuaHangMayTinh.Model
         public string MaNV { get; set; }
         public string TenNV { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
-        public Nullable<bool> Gioitinh { get; set; }
+        public string Gioitinh { get; set; }
         public string Dienthoai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

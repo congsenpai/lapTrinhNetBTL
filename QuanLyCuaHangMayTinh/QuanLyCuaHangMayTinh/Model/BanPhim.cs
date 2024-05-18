@@ -32,12 +32,12 @@ namespace QuanLyCuaHangMayTinh.Model
             using (var context = new Entity())
             {
                 var lastQuery = context.BanPhims.OrderByDescending(p => p.MaBP).FirstOrDefault();
-                MaBP=lastQuery.MaBP;
+                MaBP = lastQuery.MaBP;
 
                 if (lastQuery != null)
                 {
                     // Xử lý lastQuery
-                    int temp = Convert.ToInt32(MaBP.Substring(2)) +1;
+                    int temp = Convert.ToInt32(MaBP.Substring(2)) + 1;
                     string newcode = "BP" + temp.ToString();
                     return newcode;
                 }
@@ -67,5 +67,4 @@ namespace QuanLyCuaHangMayTinh.Model
             }
         }
     }
-    
 }
