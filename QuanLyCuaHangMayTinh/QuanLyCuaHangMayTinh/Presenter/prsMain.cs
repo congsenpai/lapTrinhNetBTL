@@ -45,6 +45,11 @@ namespace QuanLyCuaHangMayTinh.Presenter
         }
         public DataTable ConvertToDataTable<T>(List<T> items)
         {
+            if (items == null || items.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu","Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return null;
+            }
             DataTable dataTable = new DataTable(typeof(T).Name);
 
             // Lấy tất cả các thuộc tính của lớp T, bỏ qua các thuộc tính quan hệ

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OfficeOpenXml;
 using QuanLyCuaHangMayTinh.Presenter;
 namespace QuanLyCuaHangMayTinh.Views
 {
@@ -16,44 +18,65 @@ namespace QuanLyCuaHangMayTinh.Views
         public khachhang()
         {
             InitializeComponent();
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
         private void khachhang_Load(object sender, EventArgs e)
         {
             DTGV.DataSource = present.loadDTGV();
-            DataTable dt = present.loadCreateManBox();
-            if (dt != null && dt.Rows.Count > 0)
+            rdID.Checked = true;
+            rdASC.Checked = true;
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            if (rdASC.Checked == true)
             {
-                foreach (DataRow row in dt.Rows)
+                if(rdID.Checked == true)
                 {
-                    cbCreateMan.Items.Add(row["TenNV"].ToString());
+                    DTGV.DataSource=present.findByID(txtSearch.Text,"ASC");
                 }
+                if(rdName.Checked == true)
+                {
+                    DTGV.DataSource = present.findByName(txtSearch.Text, "ASC");
+                }
+                if(rdAddress.Checked == true)
+                {
+                    DTGV.DataSource = present.findByAddress(txtSearch.Text, "ASC");
+                }
+                if (rdPhone.Checked == true)
+                {
+                    DTGV.DataSource = present.findByPhone(txtSearch.Text, "ASC");
+                }
+
+            }
+            if (rdDESC.Checked == true)
+            {
+                if (rdID.Checked == true)
+                {
+                    DTGV.DataSource = present.findByID(txtSearch.Text, "DESC");
+                }
+                if (rdName.Checked == true)
+                {
+                    DTGV.DataSource = present.findByName(txtSearch.Text, "DESC");
+                }
+                if (rdAddress.Checked == true)
+                {
+                    DTGV.DataSource = present.findByAddress(txtSearch.Text, "DESC");
+                }
+                if (rdPhone.Checked == true)
+                {
+                    DTGV.DataSource = present.findByPhone(txtSearch.Text, "DESC");
+                }
+
             }
 
-            rdBtnCreateDateFullTime.AutoCheck = true;
-            rdBtnLastTranFullTime.AutoCheck = true;
-            cbCreateDateMonth.Visible = false;
-            cbLastTranMonth.Visible = false;
         }
 
-        private void rdBtnCreateDateOther_CheckedChanged(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            cbCreateDateMonth.Visible = true;
-
+            DTGV.DataSource = present.loadDTGV();
         }
 
-        private void rdBtnLastTranOther_CheckedChanged(object sender, EventArgs e)
-        {
-            cbLastTranMonth.Visible=true;
-        }
-
-        private void rdBtnCreateDateFullTime_CheckedChanged(object sender, EventArgs e)
-        {
-            cbCreateDateMonth.Visible = false;
-        }
-
-        private void rdBtnLastTranFullTime_CheckedChanged(object sender, EventArgs e)
-        {
-            cbLastTranMonth.Visible = false;
-        }
+       
     }
 }
