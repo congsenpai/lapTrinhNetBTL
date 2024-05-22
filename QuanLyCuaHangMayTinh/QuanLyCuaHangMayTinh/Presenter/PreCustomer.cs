@@ -24,7 +24,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
             var khachhangs = Db.KhachHangs.ToList();
             return khachhangs;
         }
-        public DataTable loadDTGV()
+        public DataTable loadCustomer()
         {
             var khachHangs = listCustomer();
             DataTable a = pre.ConvertToDataTable(khachHangs);

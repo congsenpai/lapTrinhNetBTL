@@ -22,7 +22,7 @@ namespace QuanLyCuaHangMayTinh.Views
         }
         private void khachhang_Load(object sender, EventArgs e)
         {
-            DTGV.DataSource = present.loadDTGV();
+            DTGV.DataSource = present.loadCustomer();
             rdID.Checked = true;
             rdASC.Checked = true;
         }
@@ -74,9 +74,9 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DTGV.DataSource = present.loadDTGV();
+            DTGV.DataSource = present.loadCustomer();
         }
 
-       
+
     }
 }

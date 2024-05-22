@@ -56,6 +56,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
             PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance)
                                            .Where(p => !IsNavigationProperty(p))
                                            .ToArray();
+            
 
             foreach (PropertyInfo prop in Props)
             {
