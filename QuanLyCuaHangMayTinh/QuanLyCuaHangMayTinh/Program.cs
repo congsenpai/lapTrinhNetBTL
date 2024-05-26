@@ -15,7 +15,11 @@ namespace QuanLyCuaHangMayTinh
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< Updated upstream
             Application.Run(new Sale());
+=======
+            Application.Run(new hanghoa());
+>>>>>>> Stashed changes
         }
     }
 }

@@ -28,5 +28,39 @@ D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\S
 D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Memory.xml
 D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Numerics.Vectors.xml
 D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+<<<<<<< Updated upstream
 D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.csproj.ResolveComReference.cache
 D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.Sale.resources
+=======
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\QuanLyCuaHangMayTinh.exe.config
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\QuanLyCuaHangMayTinh.exe
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\QuanLyCuaHangMayTinh.pdb
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\EntityFramework.dll
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\EntityFramework.SqlServer.dll
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\EPPlus.dll
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\EPPlus.Interfaces.dll
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\EPPlus.System.Drawing.dll
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Buffers.dll
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.ComponentModel.Annotations.dll
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Memory.dll
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Numerics.Vectors.dll
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\EntityFramework.xml
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\EntityFramework.SqlServer.xml
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\EPPlus.xml
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Buffers.xml
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Memory.xml
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Numerics.Vectors.xml
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.csproj.AssemblyReference.cache
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Properties.Resources.resources
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.khachhang.resources
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.csproj.GenerateResource.cache
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.csproj.CoreCompileInputs.cache
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.csproj.CopyComplete
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.exe
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.pdb
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.hanghoa.resources
+>>>>>>> Stashed changes
