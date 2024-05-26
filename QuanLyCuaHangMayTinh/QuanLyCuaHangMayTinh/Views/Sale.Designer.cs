@@ -64,12 +64,13 @@
             this.cbEmployee = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbSearch = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.lbTime = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.DtgvItems = new System.Windows.Forms.DataGridView();
+            this.txtSoluong = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupbox.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -269,9 +270,9 @@
             this.lbPayBack.ForeColor = System.Drawing.Color.Blue;
             this.lbPayBack.Location = new System.Drawing.Point(211, 300);
             this.lbPayBack.Name = "lbPayBack";
-            this.lbPayBack.Size = new System.Drawing.Size(39, 29);
+            this.lbPayBack.Size = new System.Drawing.Size(26, 29);
             this.lbPayBack.TabIndex = 12;
-            this.lbPayBack.Text = "10";
+            this.lbPayBack.Text = "0";
             // 
             // txtCusPay
             // 
@@ -280,6 +281,8 @@
             this.txtCusPay.Name = "txtCusPay";
             this.txtCusPay.Size = new System.Drawing.Size(155, 35);
             this.txtCusPay.TabIndex = 11;
+            this.txtCusPay.TextChanged += new System.EventHandler(this.txtCusPay_TextChanged);
+            this.txtCusPay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCusPay_KeyPress);
             // 
             // label6
             // 
@@ -308,9 +311,9 @@
             this.lbTotalCost.ForeColor = System.Drawing.Color.Blue;
             this.lbTotalCost.Location = new System.Drawing.Point(211, 162);
             this.lbTotalCost.Name = "lbTotalCost";
-            this.lbTotalCost.Size = new System.Drawing.Size(52, 29);
+            this.lbTotalCost.Size = new System.Drawing.Size(26, 29);
             this.lbTotalCost.TabIndex = 8;
-            this.lbTotalCost.Text = "100";
+            this.lbTotalCost.Text = "0";
             // 
             // label3
             // 
@@ -332,6 +335,7 @@
             this.btnBuy.TabIndex = 6;
             this.btnBuy.Text = "Thanh toán";
             this.btnBuy.UseVisualStyleBackColor = false;
+            this.btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
             // 
             // label2
             // 
@@ -359,7 +363,7 @@
             this.cbEmployee.FormattingEnabled = true;
             this.cbEmployee.Location = new System.Drawing.Point(130, 29);
             this.cbEmployee.Name = "cbEmployee";
-            this.cbEmployee.Size = new System.Drawing.Size(201, 37);
+            this.cbEmployee.Size = new System.Drawing.Size(241, 37);
             this.cbEmployee.TabIndex = 2;
             this.cbEmployee.TextChanged += new System.EventHandler(this.cbEmployee_TextChanged);
             // 
@@ -374,15 +378,26 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtSoluong);
+            this.groupBox2.Controls.Add(this.cbSearch);
             this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.btnFind);
-            this.groupBox2.Controls.Add(this.txtSearch);
+            this.groupBox2.Controls.Add(this.btnAdd);
             this.groupBox2.Controls.Add(this.lbTime);
             this.groupBox2.Location = new System.Drawing.Point(12, 50);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1116, 67);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
+            // 
+            // cbSearch
+            // 
+            this.cbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSearch.FormattingEnabled = true;
+            this.cbSearch.Location = new System.Drawing.Point(6, 16);
+            this.cbSearch.Name = "cbSearch";
+            this.cbSearch.Size = new System.Drawing.Size(448, 37);
+            this.cbSearch.TabIndex = 9;
+            this.cbSearch.TextChanged += new System.EventHandler(this.cbSearch_TextChanged);
             // 
             // button2
             // 
@@ -394,24 +409,16 @@
             this.button2.Text = "Tạo hóa đơn mới";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // btnFind
+            // btnAdd
             // 
-            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind.Location = new System.Drawing.Point(578, 12);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(65, 52);
-            this.btnFind.TabIndex = 1;
-            this.btnFind.Text = "Tìm";
-            this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(6, 19);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(556, 35);
-            this.txtSearch.TabIndex = 0;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(565, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(90, 52);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lbTime
             // 
@@ -438,6 +445,14 @@
             this.DtgvItems.RowTemplate.Height = 28;
             this.DtgvItems.Size = new System.Drawing.Size(682, 559);
             this.DtgvItems.TabIndex = 6;
+            // 
+            // txtSoluong
+            // 
+            this.txtSoluong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoluong.Location = new System.Drawing.Point(471, 19);
+            this.txtSoluong.Name = "txtSoluong";
+            this.txtSoluong.Size = new System.Drawing.Size(88, 35);
+            this.txtSoluong.TabIndex = 10;
             // 
             // Sale
             // 
@@ -494,8 +509,7 @@
         private System.Windows.Forms.Label lbTime;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnFind;
-        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnBuy;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
@@ -507,5 +521,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripMenuItem nhânViênToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbKhachHang;
+        private System.Windows.Forms.ComboBox cbSearch;
+        private System.Windows.Forms.TextBox txtSoluong;
     }
 }
