@@ -21,10 +21,10 @@ namespace QuanLyCuaHangMayTinh.Model
         {
             this.MayVTs = new HashSet<MayVT>();
         }
-    
+
         public string MaChip { get; set; }
         public string TenChip { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MayVT> MayVTs { get; set; }
         public string autoGenCode()

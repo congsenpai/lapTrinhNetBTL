@@ -215,5 +215,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="loginAccouts">
+      <EntityTypeMapping TypeName="btlModel.loginAccout">
+        <MappingFragment StoreEntitySet="loginAccout">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

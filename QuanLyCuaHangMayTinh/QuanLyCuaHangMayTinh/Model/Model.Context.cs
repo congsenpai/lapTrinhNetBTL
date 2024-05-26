@@ -47,5 +47,6 @@ namespace QuanLyCuaHangMayTinh.Model
         public virtual DbSet<Ram> Rams { get; set; }
         public virtual DbSet<TocDo> TocDoes { get; set; }
         public virtual DbSet<USB> USBs { get; set; }
+        public virtual DbSet<loginAccout> loginAccouts { get; set; }
     }
 }

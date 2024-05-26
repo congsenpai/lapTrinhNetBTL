@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Globalization;
-
 namespace QuanLyCuaHangMayTinh.Views
 {
     public partial class Sale : Form
@@ -116,6 +115,34 @@ namespace QuanLyCuaHangMayTinh.Views
         private void btnFind_Click(object sender, EventArgs e)
         {
             DtgvItems.DataSource = computers.findComputer(txtSearch.Text);
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void hàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            // Hiển thị hộp thoại xác nhận thoát
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                // Đóng form menu
+                this.Close();
+
+                // Hiển thị lại form đăng nhập
+
+                Login loginForm = new Login();
+                loginForm.Show();
+                this.Hide();
+            }
         }
     }
     }
