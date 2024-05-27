@@ -16,6 +16,7 @@ namespace QuanLyCuaHangMayTinh.Model
 
     public partial class HoaDonBan
     {
+        Entity db = new Entity();
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HoaDonBan()
         {
@@ -23,16 +24,23 @@ namespace QuanLyCuaHangMayTinh.Model
         }
         public string autoGenCode()
         {
-            using (var context = new Entity())
-            {
-                var lastQuery = context.HoaDonBans.OrderByDescending(p => p.MaHDB).FirstOrDefault();
+                var lastQuery = db.HoaDonBans.OrderByDescending(p => p.MaHDB).FirstOrDefault();
                 MaHDB = lastQuery.MaHDB;
 
                 if (lastQuery != null)
                 {
                     // Xử lý lastQuery
                     int temp = Convert.ToInt32(MaHDB.Substring(3)) + 1;
-                    string newcode = "HDB" + temp.ToString();
+                    string code = "";
+                    if (temp < 10)
+                    {
+                        code = "0" + temp.ToString();
+                    }
+                    else
+                    {
+                        code =temp.ToString();
+                    }
+                    string newcode = "HDB" + code;
                     return newcode;
                 }
                 else
@@ -40,16 +48,13 @@ namespace QuanLyCuaHangMayTinh.Model
                     MessageBox.Show("Cơ sở dữ liệu chưa có dữ liệu", "Lỗi tìm kiếm", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                     return "HDB0";
                 }
-            }
         }
         public void addData(DateTime ngayban, String maNV, String maKH, Double TongTien)
         {
-            using (var db = new Entity())
-            {
-                HoaDonBan hoaDonBan = new HoaDonBan() { MaHDB= autoGenCode(),NgayBan=ngayban,MaNV=maNV,MaKH=maKH,TongTien=TongTien };
+                HoaDonBan hoaDonBan = new HoaDonBan() { MaHDB = autoGenCode(), NgayBan = ngayban, MaNV = maNV, MaKH = maKH, TongTien = TongTien };
                 db.HoaDonBans.Add(hoaDonBan);
                 db.SaveChanges();
-            }
+
         }
 
         public string MaHDB { get; set; }
@@ -57,7 +62,7 @@ namespace QuanLyCuaHangMayTinh.Model
         public string MaNV { get; set; }
         public string MaKH { get; set; }
         public Nullable<double> TongTien { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHDB> ChiTietHDBs { get; set; }
         public virtual KhachHang KhachHang { get; set; }

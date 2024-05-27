@@ -24,7 +24,6 @@ namespace QuanLyCuaHangMayTinh.Presenter
         }
         public DataTable loadEmployee()
         {
-
                 var nhanViens = listEmployee();
                 DataTable a = prsMain.ConvertToDataTable(nhanViens);
                 return a;

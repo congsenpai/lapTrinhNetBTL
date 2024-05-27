@@ -15,34 +15,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
 
         public Entity Db { get => db; set => db = value; }
 
-        public String takeCode(string className)
-        {
-            switch (className)
-            {
-                case "BanPhim":
-                    BanPhim bp = new BanPhim();
-                    return bp.autoGenCode();
 
-                case "Chip":
-                    Chip c = new Chip();
-                    return c.autoGenCode();
-
-                // Thêm các trường hợp khác cần xử lý ở đây
-
-                default:
-                    return "Error Class Name";
-            }
-        }
-        public void addBanPhim(string Name)
-        {
-            BanPhim b = new BanPhim();
-            b.addData(Name);
-        }
-        public void removeBanPhim(string ID)
-        {
-            BanPhim banPhim = new BanPhim();
-            banPhim.removeData(ID);
-        }
         public DataTable ConvertToDataTable<T>(List<T> items)
         {
             if (items == null || items.Count == 0)

@@ -66,7 +66,6 @@ namespace QuanLyCuaHangMayTinh.Views
         {
             if (cbEmployee.Text != null)
             {
-                DataTable a = employees.loadEmployee();
                 List<string> foundItems = originalItemsEmploy.FindAll(x => x.ToLower().Contains(cbEmployee.Text.ToLower()));
                 cbEmployee.Items.Clear();
                 foreach (string item in foundItems)
@@ -137,7 +136,6 @@ namespace QuanLyCuaHangMayTinh.Views
         {
             if (cbSearch.Text != null)
             {
-                DataTable a = computers.loadComputer();
                 List<string> foundItems = originalItemsCom.FindAll(x => x.ToLower().Contains(cbSearch.Text.ToLower()));
                 cbSearch.Items.Clear();
                 foreach (string item in foundItems)
@@ -156,6 +154,34 @@ namespace QuanLyCuaHangMayTinh.Views
                 loadCBComputers();
             }
         }
+        public string getCodeByNameChoice(string Name, Boolean a)
+        {
+            if (a == true)
+            {
+                DataTable employeesTable = employees.loadEmployee();
+                foreach (DataRow row in employeesTable.Rows)
+                {
+                    if (row["TenNV"].ToString() == Name)
+                    {
+                        return row["MaNV"].ToString();
+                    }
+                }
+            }
+            else
+            {
+                DataTable customerTable = customers.loadCustomer();
+                foreach (DataRow row in customerTable.Rows)
+                {
+                    if (row["TenKH"].ToString() == Name)
+                    {
+                        return row["MaKH"].ToString();
+                    }
+                }
+            }
+            return null;
+           
+        }
+
         private int checkExit()
         {
             if (hoadon.Rows.Count == 0)
@@ -212,7 +238,7 @@ namespace QuanLyCuaHangMayTinh.Views
             double cost = 0, cuspay = 0;
             foreach(DataRow row in hoadon.Rows)
             {
-                cost = cost + (double)row["DonGia"] * (int)row["SoLuong"];
+                cost = cost + (double)((double)row["DonGia"] * (int)row["SoLuong"]);
             }
             lbTotalCost.Text = cost.ToString();
             if (txtCusPay.Text.Length == 0)
@@ -221,7 +247,7 @@ namespace QuanLyCuaHangMayTinh.Views
             }
             else
             {
-                cuspay=cost - Convert.ToDouble(txtCusPay.Text);
+                cuspay = Convert.ToDouble(txtCusPay.Text) - cost;
             }
             lbPayBack.Text = cuspay.ToString();
         }
@@ -236,32 +262,46 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void txtCusPay_TextChanged(object sender, EventArgs e)
         {
-            double cost=Convert.ToDouble(lbTotalCost.Text);
-            double cuspay = 0;
-            if (txtCusPay.Text.Length == 0)
+            double cost = 0; double cuspay = 0;double payback = 0;
+            Double.TryParse(lbTotalCost.Text, out cost);
+            if (string.IsNullOrEmpty(txtCusPay.Text))
             {
                 cuspay = -cost;
             }
             else
             {
-                cuspay = cost - Convert.ToDouble(txtCusPay.Text);
+                cuspay = Convert.ToDouble(txtCusPay.Text);
+                payback =cuspay-cost;
             }
-            lbPayBack.Text = cuspay.ToString();
+
+            lbPayBack.Text = payback.ToString();
         }
+
 
         private void btnBuy_Click(object sender, EventArgs e)
         {
             string manv="", makh="";
             DateTime ngayban= DateTime.Now;
-            double totalcost= Convert.ToDouble(lbTotalCost.Text);
-            // kiểm tra xem nhập nhân viên chưa, nếu chưa thì bắt nhập
-            if(cbEmployee.Text.Length ==0) 
-            {
-                MessageBox.Show("Chưa nhập nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            double totalcost = 0;
+            if(lbTotalCost.Text.Length ==0) {
+
+                MessageBox.Show("Chưa có sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
             {
-                manv = cbEmployee.Text;
+                totalcost=Convert.ToDouble(lbTotalCost.Text);
+            }
+            // kiểm tra xem nhập nhân viên chưa, nếu chưa thì bắt nhập
+            if (cbEmployee.Text.Length ==0) 
+            {
+                MessageBox.Show("Chưa nhập nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                manv = getCodeByNameChoice(cbEmployee.Text, true);
+
             }
             if(cbKhachHang.Text.Length == 0)
             {
@@ -269,20 +309,21 @@ namespace QuanLyCuaHangMayTinh.Views
             }
             else
             {
-                makh = cbKhachHang.Text;
+                makh = getCodeByNameChoice(cbKhachHang.Text, false);
             }
             present.AddBuyDetails(hoadon, ngayban, manv, makh, totalcost);
             resetOrder();
         }
         public void resetOrder()
         {
-            cbSearch.Text = "";
-            cbEmployee.Text = "";
-            cbKhachHang.Text = "";
+            txtSoluong.Text = "";
+            cbSearch.Items.Clear();
+            cbEmployee.Items.Clear();
+            cbKhachHang.Items.Clear();
             lbTotalCost.Text = "";
             lbPayBack.Text = "";
             txtCusPay.Text = "";
-            DtgvItems.Rows.Clear();
+            DtgvItems.DataSource = null;
         }
     }
 }

@@ -21,15 +21,13 @@ namespace QuanLyCuaHangMayTinh.Presenter
         {
             HoaDonBan newHoadon = new HoaDonBan();
             newHoadon.addData(ngayban,maNV, maKH, TongTien);
-            Db.HoaDonBans.Add(newHoadon);
-            Db.SaveChanges();
             return newHoadon;
         }
         public void AddBuyDetails(DataTable hoadon, DateTime ngayban, String maNV, String maKH, Double TongTien)
         {
+            HoaDonBan a = Buy(ngayban, maNV, maKH, TongTien);
             foreach (DataRow dr in hoadon.Rows)
-            {
-                HoaDonBan a=Buy(ngayban,maNV,maKH,TongTien);
+            {   
                 ChiTietHDB chitiet = new ChiTietHDB
                 {
                     MaHDB = a.MaHDB,
@@ -37,10 +35,10 @@ namespace QuanLyCuaHangMayTinh.Presenter
                     Soluong = (int?)dr["SoLuong"],
                     Dongia = (double?)dr["DonGia"]
                 };
+                Console.WriteLine(a.MaHDB);
                 Db.ChiTietHDBs.Add(chitiet);
                 Db.SaveChanges();
             }
-            
         }
         
     }
