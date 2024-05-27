@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Globalization;
-
 namespace QuanLyCuaHangMayTinh.Views
 {
     public partial class Sale : Form
@@ -22,7 +21,7 @@ namespace QuanLyCuaHangMayTinh.Views
         List<String> originalItemsEmploy = new List<string>();
         List<String> originalItemsCus = new List<string>();
         List<String> originalItemsCom = new List<string>();
-        DataTable hoadon= new DataTable()
+        DataTable hoadon = new DataTable()
         {
             Columns =
             {
@@ -36,13 +35,15 @@ namespace QuanLyCuaHangMayTinh.Views
         {
             InitializeComponent();
             loadCBEmployee();
-            loadCBCustomer();
-            loadCBComputers();
+            loadLBCustomer();
+            loadLBComputers();
         }
-        private void Sale_Load(object sender, EventArgs e)
+        private void Sale1_Load(object sender, EventArgs e)
         {
             lbTime.Text = DateTime.Now.ToString(" dd/MM/yyyy HH:mm");
             timer1.Start();
+            lbComputerItems.Visible = false;
+            lbCustomer.Visible = false;
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -62,96 +63,49 @@ namespace QuanLyCuaHangMayTinh.Views
             }
         }
 
-        private void cbEmployee_TextChanged(object sender, EventArgs e)
-        {
-            if (cbEmployee.Text != null)
-            {
-                List<string> foundItems = originalItemsEmploy.FindAll(x => x.ToLower().Contains(cbEmployee.Text.ToLower()));
-                cbEmployee.Items.Clear();
-                foreach (string item in foundItems)
-                {
-                    cbEmployee.Items.Add(item);
-                }
-                cbEmployee.SelectionStart = cbEmployee.Text.Length;
-
-                if (cbEmployee.Items.Count > 0)
-                {
-                    cbEmployee.DroppedDown = true;
-                }
-            }
-            else
-            {
-                loadCBEmployee();
-            }
-        }
-        public void loadCBCustomer()
+        public void loadLBCustomer()
         {
             DataTable dt = customers.loadCustomer();
             if (dt != null && dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)
                 {
-                    cbKhachHang.Items.Add(row["TenKH"].ToString());
+                    lbCustomer.Items.Add(row["TenKH"].ToString());
                     originalItemsCus.Add(row["TenKH"].ToString());
                 }
             }
 
         }
 
-        private void cbKhachHang_TextChanged(object sender, EventArgs e)
-        {
-            if (cbKhachHang.Text != null)
-            {
-                List<string> foundItems = originalItemsCus.FindAll(x => x.ToLower().Contains(cbKhachHang.Text.ToLower()));
-                cbKhachHang.Items.Clear();
-                foreach (string item in foundItems)
-                {
-                    cbKhachHang.Items.Add(item);
-                }
-                cbKhachHang.SelectionStart = cbKhachHang.Text.Length;
 
-                if (cbKhachHang.Items.Count > 0)
-                {
-                    cbKhachHang.DroppedDown = true;
-                }
-            }
-            else
-            {
-                loadCBCustomer();
-            }
-        }
-        public void loadCBComputers()
+        public void loadLBComputers()
         {
             DataTable dt = computers.loadComputer();
             if (dt != null && dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)
                 {
-                    cbSearch.Items.Add(row["TenMVT"].ToString());
+                    lbComputerItems.Items.Add(row["TenMVT"].ToString());
                     originalItemsCom.Add(row["TenMVT"].ToString());
                 }
             }
         }
-        private void cbSearch_TextChanged(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (cbSearch.Text != null)
+            lbComputerItems.Visible = true;
+            if (txtSearch.Text != null)
             {
-                List<string> foundItems = originalItemsCom.FindAll(x => x.ToLower().Contains(cbSearch.Text.ToLower()));
-                cbSearch.Items.Clear();
+                List<string> foundItems = originalItemsCom.FindAll(x => x.ToLower().Contains(txtSearch.Text.ToLower()));
+                lbComputerItems.Items.Clear();
                 foreach (string item in foundItems)
                 {
-                    cbSearch.Items.Add(item);
+                    lbComputerItems.Items.Add(item);
                 }
-                cbSearch.SelectionStart = cbSearch.Text.Length;
-
-                if (cbSearch.Items.Count > 0)
-                {
-                    cbSearch.DroppedDown = true;
-                }
+                txtSearch.SelectionStart = txtSearch.Text.Length;
             }
             else
             {
-                loadCBComputers();
+                loadLBComputers();
             }
         }
         public string getCodeByNameChoice(string Name, Boolean a)
@@ -179,7 +133,7 @@ namespace QuanLyCuaHangMayTinh.Views
                 }
             }
             return null;
-           
+
         }
 
         private int checkExit()
@@ -188,7 +142,7 @@ namespace QuanLyCuaHangMayTinh.Views
             {
                 return -1;
             }
-            DataTable source = computers.findComputer(cbSearch.Text);
+            DataTable source = computers.findComputer(txtSearch.Text);
             for (int i = 0; i < hoadon.Rows.Count; i++)
             {
                 if (hoadon.Rows[i]["MaMVT"].ToString() == source.Rows[0]["MaMVT"].ToString())
@@ -208,15 +162,15 @@ namespace QuanLyCuaHangMayTinh.Views
                 txtSoluong.Focus();
                 return;
             }
-            if (string.IsNullOrWhiteSpace(cbSearch.Text))
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
             {
                 MessageBox.Show("Chưa chọn sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
-                DataTable source = computers.findComputer(cbSearch.Text);
-                if (checkExit() <0)
+                DataTable source = computers.findComputer(txtSearch.Text);
+                if (checkExit() < 0)
                 {
                     foreach (DataRow row in source.Rows)
                     {
@@ -230,13 +184,13 @@ namespace QuanLyCuaHangMayTinh.Views
                 }
                 else
                 {
-                    hoadon.Rows[checkExit()]["Soluong"]=Convert.ToInt32(txtSoluong.Text)+ Convert.ToInt32(hoadon.Rows[checkExit()]["Soluong"].ToString());
+                    hoadon.Rows[checkExit()]["Soluong"] = Convert.ToInt32(txtSoluong.Text) + Convert.ToInt32(hoadon.Rows[checkExit()]["Soluong"].ToString());
                 }
-                
+
                 DtgvItems.DataSource = hoadon;
             }
             double cost = 0, cuspay = 0;
-            foreach(DataRow row in hoadon.Rows)
+            foreach (DataRow row in hoadon.Rows)
             {
                 cost = cost + (double)((double)row["DonGia"] * (int)row["SoLuong"]);
             }
@@ -262,7 +216,7 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void txtCusPay_TextChanged(object sender, EventArgs e)
         {
-            double cost = 0; double cuspay = 0;double payback = 0;
+            double cost = 0; double cuspay = 0; double payback = 0;
             Double.TryParse(lbTotalCost.Text, out cost);
             if (string.IsNullOrEmpty(txtCusPay.Text))
             {
@@ -271,7 +225,7 @@ namespace QuanLyCuaHangMayTinh.Views
             else
             {
                 cuspay = Convert.ToDouble(txtCusPay.Text);
-                payback =cuspay-cost;
+                payback = cuspay - cost;
             }
 
             lbPayBack.Text = payback.ToString();
@@ -280,20 +234,26 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void btnBuy_Click(object sender, EventArgs e)
         {
-            string manv="", makh="";
-            DateTime ngayban= DateTime.Now;
+            if (hoadon.Rows.Count == 0)
+            {
+                MessageBox.Show("Chưa có sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string manv = "", makh = "";
+            DateTime ngayban = DateTime.Now;
             double totalcost = 0;
-            if(lbTotalCost.Text.Length ==0) {
+            if (lbTotalCost.Text.Length == 0)
+            {
 
                 MessageBox.Show("Chưa có sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
-                totalcost=Convert.ToDouble(lbTotalCost.Text);
+                totalcost = Convert.ToDouble(lbTotalCost.Text);
             }
             // kiểm tra xem nhập nhân viên chưa, nếu chưa thì bắt nhập
-            if (cbEmployee.Text.Length ==0) 
+            if (cbEmployee.Text.Length == 0)
             {
                 MessageBox.Show("Chưa nhập nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -303,27 +263,95 @@ namespace QuanLyCuaHangMayTinh.Views
                 manv = getCodeByNameChoice(cbEmployee.Text, true);
 
             }
-            if(cbKhachHang.Text.Length == 0)
+            if (txtCustomer.Text.Length == 0)
             {
                 makh = "KH0";
             }
             else
             {
-                makh = getCodeByNameChoice(cbKhachHang.Text, false);
+                makh = getCodeByNameChoice(txtCustomer.Text, false);
             }
             present.AddBuyDetails(hoadon, ngayban, manv, makh, totalcost);
             resetOrder();
         }
         public void resetOrder()
         {
+            txtSearch.Text = "";
             txtSoluong.Text = "";
-            cbSearch.Items.Clear();
-            cbEmployee.Items.Clear();
-            cbKhachHang.Items.Clear();
+            txtCustomer.Text = "";
+            lbComputerItems.Items.Clear();
+            lbComputerItems.Visible = false;
+            lbCustomer.Items.Clear();
+            lbCustomer.Visible = false;
             lbTotalCost.Text = "";
             lbPayBack.Text = "";
             txtCusPay.Text = "";
             DtgvItems.DataSource = null;
+        }
+
+        private void txtCustomer_TextChanged(object sender, EventArgs e)
+        {
+            lbCustomer.Visible = true;
+            if (txtCustomer.Text != null)
+            {
+                List<string> foundItems = originalItemsCus.FindAll(x => x.ToLower().Contains(txtCustomer.Text.ToLower()));
+                lbCustomer.Items.Clear();
+                foreach (string item in foundItems)
+                {
+                    lbCustomer.Items.Add(item);
+                }
+                txtCustomer.SelectionStart = txtCustomer.Text.Length;
+            }
+        }
+
+        private void lbComputerItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbComputerItems.SelectedItem != null)
+            {
+                txtSearch.Text = lbComputerItems.SelectedItem.ToString();
+            }
+            lbComputerItems.Visible = false;
+        }
+
+        private void lbCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbCustomer.SelectedItem != null)
+            {
+                txtCustomer.Text = lbCustomer.SelectedItem.ToString();
+            }
+            lbCustomer.Visible = false;
+        }
+
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+            lbComputerItems.Visible = true;
+        }
+
+
+        private void txtCustomer_Enter(object sender, EventArgs e)
+        {
+            lbCustomer.Visible = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            resetOrder();
+            cbEmployee.Text = "";
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            if (txtSearch.Text.Length == 0)
+            {
+                lbComputerItems.Visible = false;
+            }
+        }
+        private void txtCustomer_Leave(object sender, EventArgs e)
+        {
+            if (txtCustomer.Text.Length == 0)
+            {
+                lbCustomer.Visible = false;
+            }
         }
     }
 }

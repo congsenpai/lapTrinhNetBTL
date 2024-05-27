@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{527BE34D-3B2C-4151-A3A3-7E30BC83CE74}|QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh.csproj|D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\quanlycuahangmaytinh\\views\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{527BE34D-3B2C-4151-A3A3-7E30BC83CE74}|QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh.csproj|d:\\monhoc\\dotnet\\baitaplon\\quanlycuahangmaytinh\\quanlycuahangmaytinh\\views\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{527BE34D-3B2C-4151-A3A3-7E30BC83CE74}|QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh.csproj|solutionrelative:quanlycuahangmaytinh\\views\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{527BE34D-3B2C-4151-A3A3-7E30BC83CE74}|QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh.csproj|d:\\monhoc\\dotnet\\baitaplon\\quanlycuahangmaytinh\\quanlycuahangmaytinh\\views\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{527BE34D-3B2C-4151-A3A3-7E30BC83CE74}|QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh.csproj|solutionrelative:quanlycuahangmaytinh\\views\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{527BE34D-3B2C-4151-A3A3-7E30BC83CE74}|QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh.csproj|D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\quanlycuahangmaytinh\\presenter\\presale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{527BE34D-3B2C-4151-A3A3-7E30BC83CE74}|QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh.csproj|d:\\monhoc\\dotnet\\baitaplon\\quanlycuahangmaytinh\\quanlycuahangmaytinh\\presenter\\presale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{527BE34D-3B2C-4151-A3A3-7E30BC83CE74}|QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh.csproj|solutionrelative:quanlycuahangmaytinh\\presenter\\presale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{527BE34D-3B2C-4151-A3A3-7E30BC83CE74}|QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh.csproj|D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\quanlycuahangmaytinh\\views\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{527BE34D-3B2C-4151-A3A3-7E30BC83CE74}|QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh.csproj|solutionrelative:quanlycuahangmaytinh\\views\\sale.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,52 +22,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Sale.cs [Design]",
               "DocumentMoniker": "D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh\\Views\\Sale.cs",
               "RelativeDocumentMoniker": "QuanLyCuaHangMayTinh\\Views\\Sale.cs",
               "ToolTip": "D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh\\Views\\Sale.cs [Design]",
               "RelativeToolTip": "QuanLyCuaHangMayTinh\\Views\\Sale.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-19T06:19:57.947Z",
+              "WhenOpened": "2024-05-27T13:59:50.636Z",
               "IsPinned": true,
               "EditorCaption": " [Design]"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Sale.cs",
-              "DocumentMoniker": "D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh\\Views\\Sale.cs",
-              "RelativeDocumentMoniker": "QuanLyCuaHangMayTinh\\Views\\Sale.cs",
-              "ToolTip": "D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh\\Views\\Sale.cs",
-              "RelativeToolTip": "QuanLyCuaHangMayTinh\\Views\\Sale.cs",
-              "ViewState": "AQIAACsBAAAAAAAAAAAIwDsBAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T01:00:22.965Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "PreSale.cs",
               "DocumentMoniker": "D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh\\Presenter\\PreSale.cs",
               "RelativeDocumentMoniker": "QuanLyCuaHangMayTinh\\Presenter\\PreSale.cs",
               "ToolTip": "D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh\\Presenter\\PreSale.cs",
               "RelativeToolTip": "QuanLyCuaHangMayTinh\\Presenter\\PreSale.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwCUAAAArAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-27T10:46:49.037Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-05-27T15:40:57.254Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Sale.cs",
+              "DocumentMoniker": "D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh\\Views\\Sale.cs",
+              "RelativeDocumentMoniker": "QuanLyCuaHangMayTinh\\Views\\Sale.cs",
+              "ToolTip": "D:\\Monhoc\\DotNet\\baiTapLon\\QuanLyCuaHangMayTinh\\QuanLyCuaHangMayTinh\\Views\\Sale.cs",
+              "RelativeToolTip": "QuanLyCuaHangMayTinh\\Views\\Sale.cs",
+              "ViewState": "AQIAAEQBAAAAAAAAAAA8wGABAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T13:55:43.676Z",
+              "EditorCaption": ""
             }
           ]
         }

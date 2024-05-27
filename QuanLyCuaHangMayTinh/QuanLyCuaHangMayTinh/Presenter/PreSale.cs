@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using QuanLyCuaHangMayTinh.Model;
 namespace QuanLyCuaHangMayTinh.Presenter
 {
@@ -35,7 +36,6 @@ namespace QuanLyCuaHangMayTinh.Presenter
                     Soluong = (int?)dr["SoLuong"],
                     Dongia = (double?)dr["DonGia"]
                 };
-                Console.WriteLine(a.MaHDB);
                 Db.ChiTietHDBs.Add(chitiet);
                 Db.SaveChanges();
             }
