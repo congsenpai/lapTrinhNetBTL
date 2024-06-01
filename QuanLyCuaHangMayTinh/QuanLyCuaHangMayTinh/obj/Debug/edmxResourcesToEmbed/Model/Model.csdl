@@ -196,6 +196,7 @@
     <Property Name="Dienthoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <NavigationProperty Name="HoaDonBans" Relationship="Self.FK__HoaDonBan__MaNV__5CD6CB2B" FromRole="NhanVien" ToRole="HoaDonBan" />
     <NavigationProperty Name="HoaDonNhaps" Relationship="Self.FK__HoaDonNhap__MaNV__5535A963" FromRole="NhanVien" ToRole="HoaDonNhap" />
+    <NavigationProperty Name="loginAccout" Relationship="btlModel.FK_login_NhanVien" FromRole="NhanVien" ToRole="loginAccout" />
   </EntityType>
   <EntityType Name="OCD">
     <Key>
@@ -613,5 +614,41 @@
       <End Role="TocDo" EntitySet="TocDoes" />
       <End Role="MayVT" EntitySet="MayVTs" />
     </AssociationSet>
+    <EntitySet Name="loginAccouts" EntityType="btlModel.loginAccout" />
+    <EntitySet Name="sysdiagrams" EntityType="btlModel.sysdiagram" />
+    <AssociationSet Name="FK_login_NhanVien" Association="btlModel.FK_login_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="loginAccout" EntitySet="loginAccouts" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="loginAccout">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NhanVien" Relationship="btlModel.FK_login_NhanVien" FromRole="loginAccout" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_login_NhanVien">
+    <End Type="btlModel.NhanVien" Role="NhanVien" Multiplicity="1" />
+    <End Type="btlModel.loginAccout" Role="loginAccout" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="loginAccout">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

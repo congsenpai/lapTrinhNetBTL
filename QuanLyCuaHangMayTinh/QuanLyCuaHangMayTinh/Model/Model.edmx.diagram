@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1941098e91de4eab954d005cc569153a" Name="Diagram1" ZoomLevel="65">
+      <Diagram DiagramId="1941098e91de4eab954d005cc569153a" Name="Diagram1" ZoomLevel="39">
         <EntityTypeShape EntityType="btlModel.BanPhim" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="btlModel.Chip" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="btlModel.ChiTietHDB" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
@@ -49,6 +49,9 @@
         <AssociationConnector Association="btlModel.FK__MayVT__MaOUSB__71D1E811" ManuallyRouted="false" />
         <AssociationConnector Association="btlModel.FK__MayVT__MaR__72C60C4A" ManuallyRouted="false" />
         <AssociationConnector Association="btlModel.FK__MayVT__MaTD__73BA3083" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="btlModel.loginAccout" Width="1.5" PointX="3" PointY="37" />
+        <EntityTypeShape EntityType="btlModel.sysdiagram" Width="1.5" PointX="7.375" PointY="0.75" />
+        <AssociationConnector Association="btlModel.FK_login_NhanVien" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

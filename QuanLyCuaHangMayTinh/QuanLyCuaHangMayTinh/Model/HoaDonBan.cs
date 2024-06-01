@@ -16,7 +16,6 @@ namespace QuanLyCuaHangMayTinh.Model
 
     public partial class HoaDonBan
     {
-        Entity db = new Entity();
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HoaDonBan()
         {
@@ -24,7 +23,9 @@ namespace QuanLyCuaHangMayTinh.Model
         }
         public string autoGenCode()
         {
-                var lastQuery = db.HoaDonBans.OrderByDescending(p => p.MaHDB).FirstOrDefault();
+            using (var context = new Entity())
+            {
+                var lastQuery = context.HoaDonBans.OrderByDescending(p => p.MaHDB).FirstOrDefault();
                 MaHDB = lastQuery.MaHDB;
 
                 if (lastQuery != null)
@@ -36,10 +37,6 @@ namespace QuanLyCuaHangMayTinh.Model
                     {
                         code = "0" + temp.ToString();
                     }
-                    else
-                    {
-                        code =temp.ToString();
-                    }
                     string newcode = "HDB" + code;
                     return newcode;
                 }
@@ -48,13 +45,16 @@ namespace QuanLyCuaHangMayTinh.Model
                     MessageBox.Show("Cơ sở dữ liệu chưa có dữ liệu", "Lỗi tìm kiếm", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                     return "HDB0";
                 }
+            }
         }
         public void addData(DateTime ngayban, String maNV, String maKH, Double TongTien)
         {
+            using (var db = new Entity())
+            {
                 HoaDonBan hoaDonBan = new HoaDonBan() { MaHDB = autoGenCode(), NgayBan = ngayban, MaNV = maNV, MaKH = maKH, TongTien = TongTien };
                 db.HoaDonBans.Add(hoaDonBan);
                 db.SaveChanges();
-
+            }
         }
 
         public string MaHDB { get; set; }

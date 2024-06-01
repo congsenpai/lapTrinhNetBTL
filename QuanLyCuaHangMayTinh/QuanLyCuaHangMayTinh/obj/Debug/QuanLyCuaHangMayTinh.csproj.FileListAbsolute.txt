@@ -30,3 +30,4 @@ D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\S
 D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.csproj.ResolveComReference.cache
 D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.Sale.resources
+D:\Monhoc\DotNet\baiTapLon\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.Login.resources
