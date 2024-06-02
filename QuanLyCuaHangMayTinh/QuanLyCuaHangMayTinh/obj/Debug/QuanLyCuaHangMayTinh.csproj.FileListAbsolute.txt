@@ -64,3 +64,5 @@ D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyC
 D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.pdb
 D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.hanghoa.resources
 >>>>>>> Stashed changes
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.csproj.ResolveComReference.cache
+D:\Slide các môn\Lập trình .Net\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.Sale.resources

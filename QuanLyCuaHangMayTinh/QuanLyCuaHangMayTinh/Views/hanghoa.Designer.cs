@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnXem = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.DTGV = new System.Windows.Forms.DataGridView();
@@ -46,22 +46,27 @@
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TimTheoNgoaiVi = new System.Windows.Forms.CheckedListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TimTheoNoiVi = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.DTGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnXem
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(676, 77);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 32);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "Xem";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnXem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXem.Location = new System.Drawing.Point(676, 77);
+            this.btnXem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(67, 32);
+            this.btnXem.TabIndex = 37;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // btnFind
             // 
@@ -73,6 +78,7 @@
             this.btnFind.TabIndex = 34;
             this.btnFind.Text = "Tìm";
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // txtSearch
             // 
@@ -201,49 +207,71 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // checkedListBox1
+            // groupBox1
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Mã máy vi tính",
-            "Tên máy vi tính",
+            this.groupBox1.Controls.Add(this.TimTheoNgoaiVi);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 147);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(234, 162);
+            this.groupBox1.TabIndex = 39;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tìm theo thiết bị nội vi";
+            // 
+            // TimTheoNgoaiVi
+            // 
+            this.TimTheoNgoaiVi.CheckOnClick = true;
+            this.TimTheoNgoaiVi.FormattingEnabled = true;
+            this.TimTheoNgoaiVi.Items.AddRange(new object[] {
+            "Tên máy",
             "Loại máy",
             "Chip",
             "Ổ cứng",
-            "Dung lượng",
-            "Tốc độ",
-            "OCD",
-            "Màn hình",
-            "Cỡ màn hình",
-            "Chuột",
-            "Bàn phím",
+            "Mã ổ",
+            "Cỡ",
             "Ổ USB",
             "RAM",
-            "Loa",
-            "Hãng sản xuất"});
-            this.checkedListBox1.Location = new System.Drawing.Point(20, 183);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(216, 225);
-            this.checkedListBox1.TabIndex = 38;
+            "Hãng",
+            "Tốc độ",
+            "Dung lượng"});
+            this.TimTheoNgoaiVi.Location = new System.Drawing.Point(12, 29);
+            this.TimTheoNgoaiVi.Name = "TimTheoNgoaiVi";
+            this.TimTheoNgoaiVi.Size = new System.Drawing.Size(208, 104);
+            this.TimTheoNgoaiVi.TabIndex = 0;
             // 
-            // label2
+            // groupBox2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 147);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 22);
-            this.label2.TabIndex = 39;
-            this.label2.Text = "Cách tìm kiếm";
+            this.groupBox2.Controls.Add(this.TimTheoNoiVi);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(12, 344);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(234, 162);
+            this.groupBox2.TabIndex = 40;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tìm theo thiết bị ngoại vi";
+            // 
+            // TimTheoNoiVi
+            // 
+            this.TimTheoNoiVi.CheckOnClick = true;
+            this.TimTheoNoiVi.FormattingEnabled = true;
+            this.TimTheoNoiVi.Items.AddRange(new object[] {
+            "Màn hình",
+            "Chuột",
+            "Bàn phím",
+            "Loa"});
+            this.TimTheoNoiVi.Location = new System.Drawing.Point(12, 29);
+            this.TimTheoNoiVi.Name = "TimTheoNoiVi";
+            this.TimTheoNoiVi.Size = new System.Drawing.Size(208, 104);
+            this.TimTheoNoiVi.TabIndex = 1;
             // 
             // hanghoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 555);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnXem);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.DTGV);
@@ -252,9 +280,12 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "hanghoa";
             this.Text = "Hàng hóa";
+            this.Load += new System.EventHandler(this.hanghoa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DTGV)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,7 +293,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView DTGV;
@@ -279,7 +310,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckedListBox TimTheoNgoaiVi;
+        private System.Windows.Forms.CheckedListBox TimTheoNoiVi;
     }
 }
