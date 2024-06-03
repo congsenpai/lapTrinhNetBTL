@@ -191,6 +191,12 @@
     <Compile Include="Views\Sale.Designer.cs">
       <DependentUpon>Sale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ThemHangHoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ThemHangHoa.Designer.cs">
+      <DependentUpon>ThemHangHoa.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sale.resx">
       <DependentUpon>Sale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ThemHangHoa.resx">
+      <DependentUpon>ThemHangHoa.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
