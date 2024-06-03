@@ -19,9 +19,9 @@ namespace QuanLyCuaHangMayTinh.Presenter
         public Entity Db { get => db; set => db = value; }
         public List<NhanVien> listEmployee()
         {
-            var nhanviens= Db.NhanViens.ToList();
+            var nhanviens=Db.NhanViens.ToList();
             return nhanviens;
-        }
+        }  
         public DataTable loadEmployee()
         {
                 var nhanViens = listEmployee();
