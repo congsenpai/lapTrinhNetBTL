@@ -25,7 +25,6 @@ namespace QuanLyCuaHangMayTinh.Views
         {
 
         }
-        DataTable dtable;
         private void btnlogin_Click(object sender, EventArgs e)
         {
             string MaNV, password;
@@ -35,11 +34,8 @@ namespace QuanLyCuaHangMayTinh.Views
             try
             {
 
-<<<<<<< Updated upstream
                 if (prelogin.findByID(MaNV, password))// Kiểm tra xem dtable có dữ liệu hay không
-=======
                 if (prelogin.findByID(MaNV, password))
->>>>>>> Stashed changes
                 {
                     Sale sale = new Sale();
                     sale.Show();
@@ -51,11 +47,6 @@ namespace QuanLyCuaHangMayTinh.Views
                     MessageBox.Show("Invalid login details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtusername.Clear();
                     txtpassword.Clear();
-<<<<<<< Updated upstream
-
-                    //to focus username
-=======
->>>>>>> Stashed changes
                     txtusername.Focus();
                 }
             }

@@ -1,6 +1,6 @@
 ﻿namespace QuanLyCuaHangMayTinh.Views
 {
-    partial class hanghoa
+    partial class DanhSachhanghoa
     {
         /// <summary>
         /// Required designer variable.

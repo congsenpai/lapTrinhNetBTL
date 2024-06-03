@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace QuanLyCuaHangMayTinh.Views
 {
-    public partial class hanghoa : Form
+    public partial class DanhSachhanghoa : Form
     {
         preComputer present = new preComputer();
-        public hanghoa()
+        public DanhSachhanghoa()
         {
             InitializeComponent();
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;

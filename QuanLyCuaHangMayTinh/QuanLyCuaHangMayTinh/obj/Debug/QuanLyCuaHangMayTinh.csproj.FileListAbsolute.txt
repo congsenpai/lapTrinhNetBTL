@@ -70,3 +70,4 @@ D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangM
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.pdb
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\bin\Debug\MaterialSkin.dll
 >>>>>>> Stashed changes
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.ThemHangHoa.resources

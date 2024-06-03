@@ -14,31 +14,197 @@ namespace QuanLyCuaHangMayTinh.Presenter
 
     public class preComputer
     {
-        prsMain prsMain = new prsMain();
+        prsMain prs = new prsMain();
         Entity db = new Entity();
 
 
         public Entity Db { get => db; set => db = value; }
-        public List<MayVT> listComputer()
+
+        // Call List From DB
+        private List<MayVT> listComputer()
         {
             var computers = Db.MayVTs.ToList();
             return computers;
+        }
+        private List<LoaiMay> listComputerType()
+        {
+            var type= Db.LoaiMays.ToList();
+            return type;
+        }
+        private List<Chip> listChip()
+        {
+            var chip = Db.Chips.ToList();
+            return chip;
+        }
+        private List<OCung> listOCung()
+        {
+            var O = Db.OCungs.ToList();
+            return O;
+        }
+        private List<OCD> listOCD()
+        {
+            var OCD = Db.OCDs.ToList();
+            return OCD;
+        }
+        private List<CoMH> listCoMH()
+        {
+            var co = Db.CoMHs.ToList();
+            return co;
+        }
+        private List<USB> listUSB()
+        {
+            var USB = Db.USBs.ToList();
+            return USB;
+        }
+        private List<Ram> listRam()
+        {
+            var type = Db.Rams.ToList();
+            return type;
+        }
+        private List<HangSX> listHSX()
+        {
+            var type = Db.HangSXes.ToList();
+            return type;
+        }
+        private List<TocDo> listTocDo()
+        {
+            var type = Db.TocDoes.ToList();
+            return type;
+        }
+        private List<Dungluong> listDL()
+        {
+            var type = Db.Dungluongs.ToList();
+            return type;
+        }
+        private List<ManHinh> listMH()
+        {
+            var type = Db.ManHinhs.ToList();
+            return type;
+        }
+        private List<Chuot> listMouse()
+        {
+            var type = Db.Chuots.ToList();
+            return type;
+        }
+        private List<BanPhim> listBP()
+        {
+            var type = Db.BanPhims.ToList();
+            return type;
+        }
+        private List<Loa> listLoa()
+        {
+            var type = Db.Loas.ToList();
+            return type;
+        }
+
+        // Convert to Datatable
+
+        public DataTable loadComputerType()
+        {
+
+            var type = listComputerType();
+            DataTable a = prs.ConvertToDataTable(type);
+            return a;
         }
         public DataTable loadComputer()
         {
 
             var computers=listComputer();
-            DataTable a = prsMain.ConvertToDataTable(computers);
+            DataTable a = prs.ConvertToDataTable(computers);
             return a;
         }
-<<<<<<< Updated upstream
-        public DataTable findComputer(string SearchString)
+        public DataTable loadChip()
         {
-            var computers = Db.MayVTs
-                      .Where(m => m.TenMVT.Contains(SearchString) || m.MaMVT.Contains(SearchString))
-                      .ToList();
-            DataTable a= prsMain.ConvertToDataTable(computers);
-=======
+
+            var computers = listChip();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadOCung()
+        {
+
+            var computers = listOCung();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadOCD()
+        {
+
+            var computers = listOCD();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadCoManHinh()
+        {
+
+            var computers = listCoMH();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadUSB()
+        {
+
+            var computers = listUSB();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadRam()
+        {
+
+            var computers = listRam();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadHSX()
+        {
+
+            var computers = listHSX();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadTocDo()
+        {
+
+            var computers = listTocDo();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadDungLuong()
+        {
+
+            var computers = listDL();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadScreen()
+        {
+
+            var computers = listMH();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadChuot()
+        {
+
+            var computers = listMouse();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadKeyBoard()
+        {
+
+            var computers = listBP();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+        public DataTable loadSpeaker()
+        {
+
+            var computers = listLoa();
+            DataTable a = prs.ConvertToDataTable(computers);
+            return a;
+        }
+
         public DataTable ComputerListHasName(DataTable a)
         {
             DataTable dataTable = new DataTable();
@@ -237,7 +403,6 @@ namespace QuanLyCuaHangMayTinh.Presenter
                 .Where(m => m.Loa.MaLoa.Contains(spkr) || m.Loa.TenLoa.Contains(spkr))
                 .ToList();
             DataTable a = prs.ConvertToDataTable(query);
->>>>>>> Stashed changes
             return a;
         }
 
