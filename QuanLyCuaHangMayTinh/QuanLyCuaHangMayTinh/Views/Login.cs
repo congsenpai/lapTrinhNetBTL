@@ -37,7 +37,7 @@ namespace QuanLyCuaHangMayTinh.Views
                 if (prelogin.findByID(MaNV, password))// Kiểm tra xem dtable có dữ liệu hay không
                 if (prelogin.findByID(MaNV, password))
                 {
-                    Sale sale = new Sale();
+                    BanHang sale = new BanHang();
                     sale.Show();
                     this.Hide();
                 }

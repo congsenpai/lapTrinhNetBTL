@@ -18,6 +18,68 @@ namespace QuanLyCuaHangMayTinh.Presenter
         PreCustomer customers= new PreCustomer();
         preEmployee employees=new preEmployee();
         preComputer computers=new preComputer();
+        private List<HoaDonBan> listHoaDon()
+        {
+            var hoadon = Db.HoaDonBans.ToList();
+            return hoadon;
+        }
+        public DataTable loadHoaDonBan()
+        {
+            var hoadons = listHoaDon();
+            DataTable a = prsMain.ConvertToDataTable(hoadons);
+            return a;
+        }
+        public DataTable FindHoaDon(String SearchString, DateTime From, DateTime To, String MaNV, String MaKH)
+        {
+            List<HoaDonBan> hoadons=null;
+            if (employees.CheckExits(MaNV) == false)
+            {
+                if (customers.CheckExits(MaKH) == false)
+                {
+                    hoadons = Db.HoaDonBans
+                          .Where(m => m.MaHDB.Contains(SearchString)
+                                  && m.NgayBan >= From
+                                  && m.NgayBan <= To)
+                                  .ToList();
+                }
+                else
+                {
+                    hoadons = Db.HoaDonBans
+                         .Where(m => m.MaHDB.Contains(SearchString)
+                                 && m.NgayBan >= From
+                                 && m.NgayBan <= To
+                                 && m.MaKH == MaKH)
+                                .ToList();
+                }
+            }
+            else
+            {
+                if (customers.CheckExits(MaKH) == false)
+                {
+                    hoadons = Db.HoaDonBans
+                          .Where(m => m.MaHDB.Contains(SearchString)
+                                  && m.NgayBan >= From
+                                  && m.NgayBan <= To
+                                  && m.MaNV == MaNV)
+                                  .ToList();
+                }
+                else
+                {
+                    hoadons = Db.HoaDonBans
+                         .Where(m => m.MaHDB.Contains(SearchString)
+                                 && m.NgayBan >= From
+                                 && m.NgayBan <= To
+                                 && m.MaNV == MaNV
+                                 && m.MaKH == MaKH)
+                                .ToList();
+                }
+            }
+            
+                       
+            DataTable a = prsMain.ConvertToDataTable(hoadons);
+            return a;
+        }
+
         private HoaDonBan Buy(DateTime ngayban, String maNV, String maKH, Double TongTien)
         {
             HoaDonBan newHoadon = new HoaDonBan();

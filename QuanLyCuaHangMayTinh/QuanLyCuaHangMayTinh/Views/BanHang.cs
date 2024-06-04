@@ -12,7 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Globalization;
 namespace QuanLyCuaHangMayTinh.Views
 {
-    public partial class Sale : Form
+    public partial class BanHang : Form
     {
         PreSale present = new PreSale();
         preEmployee employees = new preEmployee();
@@ -31,7 +31,7 @@ namespace QuanLyCuaHangMayTinh.Views
                 new DataColumn("DonGia", typeof(double))
             }
         };
-        public Sale()
+        public BanHang()
         {
             InitializeComponent();
             loadCBEmployee();
@@ -352,6 +352,27 @@ namespace QuanLyCuaHangMayTinh.Views
             {
                 lbCustomer.Visible = false;
             }
+        }
+
+        private void tổngQuanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            //Tongquan tongquan = new Tongquan();
+            //tongquan.Show();
+        }
+
+        private void hàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            DanhSachhanghoa hanghoa= new DanhSachhanghoa();
+            hanghoa.Show();
+        }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            khachhang khachhang=new khachhang();
+            khachhang.Show();
         }
     }
 }

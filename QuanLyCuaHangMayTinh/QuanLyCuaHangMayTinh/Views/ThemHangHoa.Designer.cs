@@ -73,6 +73,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.txtSoluong = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.imgMayTinh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -473,11 +474,19 @@
             this.label20.TabIndex = 59;
             this.label20.Text = "Số lượng";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(285, 409);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
+            this.dateTimePicker1.TabIndex = 61;
+            // 
             // ThemHangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1229, 679);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtSoluong);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.txtBaoHanh);
@@ -579,6 +588,6 @@
         public System.Windows.Forms.ComboBox cbRam;
         public System.Windows.Forms.TextBox txtSoluong;
         public System.Windows.Forms.TextBox txtBaoHanh;
-
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

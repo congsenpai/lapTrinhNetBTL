@@ -72,3 +72,6 @@ D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangM
 >>>>>>> Stashed changes
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.ThemHangHoa.resources
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.DanhSachhanghoa.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.HoaDonNhap.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.BanHang.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.HoaDonBan.resources

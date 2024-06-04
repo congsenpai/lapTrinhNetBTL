@@ -28,5 +28,10 @@ namespace QuanLyCuaHangMayTinh.Presenter
                 DataTable a = prsMain.ConvertToDataTable(nhanViens);
                 return a;
         }
+        public bool CheckExits(String MaNV)
+        {
+            return Db.NhanViens.Any(nv => nv.MaNV == MaNV);
+        }
+
     }
 }

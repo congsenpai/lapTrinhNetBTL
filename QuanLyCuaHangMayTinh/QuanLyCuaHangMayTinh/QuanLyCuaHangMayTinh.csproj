@@ -178,8 +178,10 @@
     <Compile Include="Presenter\preComputer.cs" />
     <Compile Include="Presenter\PreCustomer.cs" />
     <Compile Include="Presenter\preEmployee.cs" />
+    <Compile Include="Presenter\PreImport.cs" />
     <Compile Include="Presenter\PreLogin.cs" />
     <Compile Include="Presenter\PreSale.cs" />
+    <Compile Include="Presenter\PreSupplier.cs" />
     <Compile Include="Presenter\prsMain.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -188,6 +190,12 @@
     </Compile>
     <Compile Include="Views\DanhSachhanghoa.Designer.cs">
       <DependentUpon>DanhSachhanghoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HoaDonNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HoaDonNhap.Designer.cs">
+      <DependentUpon>HoaDonNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\khachhang.cs">
       <SubType>Form</SubType>
@@ -201,11 +209,23 @@
     <Compile Include="Views\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sale.cs">
+    <Compile Include="Views\BanHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Sale.Designer.cs">
-      <DependentUpon>Sale.cs</DependentUpon>
+    <Compile Include="Views\BanHang.Designer.cs">
+      <DependentUpon>BanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HoaDonBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HoaDonBan.Designer.cs">
+      <DependentUpon>HoaDonBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NhapHang.Designer.cs">
+      <DependentUpon>NhapHang.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ThemHangHoa.cs">
       <SubType>Form</SubType>
@@ -225,14 +245,23 @@
     <EmbeddedResource Include="Views\DanhSachhanghoa.resx">
       <DependentUpon>DanhSachhanghoa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\HoaDonNhap.resx">
+      <DependentUpon>HoaDonNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\khachhang.resx">
       <DependentUpon>khachhang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sale.resx">
-      <DependentUpon>Sale.cs</DependentUpon>
+    <EmbeddedResource Include="Views\BanHang.resx">
+      <DependentUpon>BanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HoaDonBan.resx">
+      <DependentUpon>HoaDonBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NhapHang.resx">
+      <DependentUpon>NhapHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ThemHangHoa.resx">
       <DependentUpon>ThemHangHoa.cs</DependentUpon>

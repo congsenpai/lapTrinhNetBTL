@@ -117,6 +117,10 @@ namespace QuanLyCuaHangMayTinh.Presenter
                 return a;
             }
         }
+        public bool CheckExits(String MaKH)
+        {
+            return Db.KhachHangs.Any(nv => nv.MaKH == MaKH);
+        }
 
 
     }
