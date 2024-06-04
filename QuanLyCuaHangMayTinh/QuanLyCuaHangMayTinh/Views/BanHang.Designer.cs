@@ -90,6 +90,7 @@
             this.txtCusPay.Size = new System.Drawing.Size(155, 35);
             this.txtCusPay.TabIndex = 11;
             this.txtCusPay.TextChanged += new System.EventHandler(this.txtCusPay_TextChanged);
+            this.txtCusPay.Enter += new System.EventHandler(this.txtCusPay_Enter);
             this.txtCusPay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCusPay_KeyPress);
             // 
             // label6
@@ -173,6 +174,7 @@
             this.cbEmployee.Name = "cbEmployee";
             this.cbEmployee.Size = new System.Drawing.Size(241, 37);
             this.cbEmployee.TabIndex = 2;
+            this.cbEmployee.Click += new System.EventHandler(this.cbEmployee_Click);
             // 
             // button1
             // 
@@ -205,7 +207,6 @@
             this.txtSearch.TabIndex = 11;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // txtSoluong
             // 
@@ -214,6 +215,7 @@
             this.txtSoluong.Name = "txtSoluong";
             this.txtSoluong.Size = new System.Drawing.Size(88, 35);
             this.txtSoluong.TabIndex = 10;
+            this.txtSoluong.Enter += new System.EventHandler(this.txtSoluong_Enter);
             this.txtSoluong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCusPay_KeyPress);
             // 
             // button2
@@ -288,7 +290,6 @@
             this.txtCustomer.TabIndex = 13;
             this.txtCustomer.TextChanged += new System.EventHandler(this.txtCustomer_TextChanged);
             this.txtCustomer.Enter += new System.EventHandler(this.txtCustomer_Enter);
-            this.txtCustomer.Leave += new System.EventHandler(this.txtCustomer_Leave);
             // 
             // timer1
             // 
@@ -316,6 +317,7 @@
             this.lbComputerItems.Size = new System.Drawing.Size(494, 129);
             this.lbComputerItems.TabIndex = 11;
             this.lbComputerItems.SelectedIndexChanged += new System.EventHandler(this.lbComputerItems_SelectedIndexChanged);
+            this.lbComputerItems.Enter += new System.EventHandler(this.txtSearch_Enter);
             // 
             // tổngQuanToolStripMenuItem
             // 
@@ -364,7 +366,7 @@
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(246, 36);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
             // 
             // nhàCungCấpToolStripMenuItem
@@ -417,7 +419,7 @@
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // Sale
+            // BanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -427,8 +429,8 @@
             this.Controls.Add(this.groupbox);
             this.Controls.Add(this.DtgvItems);
             this.Controls.Add(this.menuStrip1);
-            this.Name = "Sale";
-            this.Text = "Sale1";
+            this.Name = "BanHang";
+            this.Text = "Bán hàng";
             this.Load += new System.EventHandler(this.Sale1_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

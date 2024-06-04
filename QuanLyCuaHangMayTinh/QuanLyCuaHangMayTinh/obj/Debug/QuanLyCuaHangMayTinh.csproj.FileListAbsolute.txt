@@ -75,3 +75,4 @@ D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangM
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.HoaDonNhap.resources
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.BanHang.resources
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.HoaDonBan.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.NhapHang.resources

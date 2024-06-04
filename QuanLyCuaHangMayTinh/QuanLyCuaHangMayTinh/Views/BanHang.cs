@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 namespace QuanLyCuaHangMayTinh.Views
 {
     public partial class BanHang : Form
@@ -37,6 +38,30 @@ namespace QuanLyCuaHangMayTinh.Views
             loadCBEmployee();
             loadLBCustomer();
             loadLBComputers();
+
+        }
+        public void FocusChanged(bool a,bool b)
+        {
+            if (a == true)
+            {
+                if (b == true)
+                {
+                    lbComputerItems.Visible = false;
+                    lbCustomer.Visible = false;
+                }
+                else
+                {
+                    lbComputerItems.Visible = false;
+                }
+            }
+            else
+            {
+                if (b == true)
+                {
+                    lbCustomer.Visible = false;
+                }
+            }
+
         }
         private void Sale1_Load(object sender, EventArgs e)
         {
@@ -156,6 +181,7 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            FocusChanged(true, true);
             if (txtSoluong.Text.Length == 0)
             {
                 MessageBox.Show("Chưa nhập số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -169,6 +195,12 @@ namespace QuanLyCuaHangMayTinh.Views
             }
             else
             {
+                int soLuong = computers.checkAmount(computers.getCodeByName(txtSearch.Text));
+                if (soLuong < Convert.ToInt32(txtSoluong.Text))
+                {
+                    MessageBox.Show("Số lượng hàng trong kho không đủ", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
                 DataTable source = computers.findComputer(txtSearch.Text);
                 if (checkExit() < 0)
                 {
@@ -189,6 +221,9 @@ namespace QuanLyCuaHangMayTinh.Views
 
                 DtgvItems.DataSource = hoadon;
             }
+
+            
+           
             double cost = 0, cuspay = 0;
             foreach (DataRow row in hoadon.Rows)
             {
@@ -324,12 +359,14 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void txtSearch_Enter(object sender, EventArgs e)
         {
+            FocusChanged(false, true);
             lbComputerItems.Visible = true;
         }
 
 
         private void txtCustomer_Enter(object sender, EventArgs e)
         {
+            FocusChanged(true,false);
             lbCustomer.Visible = true;
         }
 
@@ -339,20 +376,6 @@ namespace QuanLyCuaHangMayTinh.Views
             cbEmployee.Text = "";
         }
 
-        private void txtSearch_Leave(object sender, EventArgs e)
-        {
-            if (txtSearch.Text.Length == 0)
-            {
-                lbComputerItems.Visible = false;
-            }
-        }
-        private void txtCustomer_Leave(object sender, EventArgs e)
-        {
-            if (txtCustomer.Text.Length == 0)
-            {
-                lbCustomer.Visible = false;
-            }
-        }
 
         private void tổngQuanToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -373,6 +396,21 @@ namespace QuanLyCuaHangMayTinh.Views
             this.Close();
             khachhang khachhang=new khachhang();
             khachhang.Show();
+        }
+
+        private void txtSoluong_Enter(object sender, EventArgs e)
+        {
+            FocusChanged(true,true);
+        }
+
+        private void cbEmployee_Click(object sender, EventArgs e)
+        {
+            FocusChanged(true,true);
+        }
+
+        private void txtCusPay_Enter(object sender, EventArgs e)
+        {
+            FocusChanged(true, true);
         }
     }
 }

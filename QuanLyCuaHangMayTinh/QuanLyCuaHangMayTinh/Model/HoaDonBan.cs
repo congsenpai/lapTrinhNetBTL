@@ -16,6 +16,7 @@ namespace QuanLyCuaHangMayTinh.Model
 
     public partial class HoaDonBan
     {
+        Entity db = new Entity();
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HoaDonBan()
         {
@@ -37,6 +38,10 @@ namespace QuanLyCuaHangMayTinh.Model
                     {
                         code = "0" + temp.ToString();
                     }
+                    else
+                    {
+                        code= temp.ToString();
+                    }
                     string newcode = "HDB" + code;
                     return newcode;
                 }
@@ -47,14 +52,13 @@ namespace QuanLyCuaHangMayTinh.Model
                 }
             }
         }
-        public void addData(DateTime ngayban, String maNV, String maKH, Double TongTien)
+        public HoaDonBan addData(DateTime ngayban, String maNV, String maKH, Double TongTien)
         {
-            using (var db = new Entity())
-            {
-                HoaDonBan hoaDonBan = new HoaDonBan() { MaHDB = autoGenCode(), NgayBan = ngayban, MaNV = maNV, MaKH = maKH, TongTien = TongTien };
-                db.HoaDonBans.Add(hoaDonBan);
-                db.SaveChanges();
-            }
+
+            HoaDonBan hoaDonBan = new HoaDonBan() { MaHDB = autoGenCode(), NgayBan = ngayban, MaNV = maNV, MaKH = maKH, TongTien = TongTien };
+            db.HoaDonBans.Add(hoaDonBan);
+            db.SaveChanges();
+            return hoaDonBan;
         }
 
         public string MaHDB { get; set; }

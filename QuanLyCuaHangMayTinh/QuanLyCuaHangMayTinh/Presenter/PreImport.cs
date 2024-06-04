@@ -80,27 +80,38 @@ namespace QuanLyCuaHangMayTinh.Presenter
             return a;
         }
 
-        private HoaDonNhap Import(DateTime NgayNhap, String maNV, String maNCC, Double TongTien)
-        {
-            HoaDonNhap newHoadon = new HoaDonNhap();
-            newHoadon.addData(NgayNhap, maNV, maNCC, TongTien);
-            return newHoadon;
-        }
         public void AddImportDetails(DataTable hoadon, DateTime NgayNhap, String maNV, String maNCC, Double TongTien)
         {
-            HoaDonNhap a = Import(NgayNhap, maNV, maNCC, TongTien);
-            foreach (DataRow dr in hoadon.Rows)
+            using (var db = new Entity())
             {
-                ChiTietHDN chitiet = new ChiTietHDN
+                HoaDonNhap a = Import(db, NgayNhap, maNV, maNCC, TongTien);
+                foreach (DataRow dr in hoadon.Rows)
                 {
-                    MaHDN = a.MaHDN,
-                    MaMVT = dr["MaMVT"].ToString(),
-                    Soluong = (int?)dr["SoLuong"],
-                    Dongia = (double?)dr["DonGia"]
-                };
-                Db.ChiTietHDNs.Add(chitiet);
-                Db.SaveChanges();
+                    ChiTietHDN chitiet = new ChiTietHDN
+                    {
+                        MaHDN = a.MaHDN,
+                        MaMVT = dr["MaMVT"].ToString(),
+                        Soluong = (int?)dr["SoLuong"],
+                        Dongia = (double?)dr["DonGia"]
+                    };
+                    db.ChiTietHDNs.Add(chitiet);
+                    db.SaveChanges();
+                    var mayVTToUpdate = Db.MayVTs.FirstOrDefault(m => m.MaMVT == chitiet.MaMVT);
+                    if (mayVTToUpdate != null)
+                    {
+                        mayVTToUpdate.SoLuong += chitiet.Soluong ?? 0;
+                        Db.SaveChanges();
+                    }
+                }
+                
             }
+        }
+
+        private HoaDonNhap Import(Entity db, DateTime NgayNhap, String maNV, String maNCC, Double TongTien)
+        {
+            HoaDonNhap newHoadon = new HoaDonNhap();
+            HoaDonNhap a=newHoadon.addData(db, NgayNhap, maNV, maNCC, TongTien);
+            return a;
         }
 
     }

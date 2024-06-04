@@ -21,42 +21,42 @@ namespace QuanLyCuaHangMayTinh.Model
         {
             this.ChiTietHDNs = new HashSet<ChiTietHDN>();
         }
-        public string autoGenCode()
+        public HoaDonNhap addData(Entity db, DateTime ngaynhap, String maNV, String maNCC, Double TongTien)
         {
-            using (var context = new Entity())
-            {
-                var lastQuery = context.HoaDonNhaps.OrderByDescending(p => p.MaHDN).FirstOrDefault();
-                MaHDN = lastQuery.MaHDN;
+            HoaDonNhap HoaDonNhap = new HoaDonNhap() { MaHDN = autoGenCode(db), NgayNhap = ngaynhap, MaNV = maNV, MaNCC = maNCC, ThanhTien = TongTien };
+            db.HoaDonNhaps.Add(HoaDonNhap);
+            db.SaveChanges();
+            return HoaDonNhap;
+        }
 
-                if (lastQuery != null)
+        public string autoGenCode(Entity context)
+        {
+            var lastQuery = context.HoaDonNhaps.OrderByDescending(p => p.MaHDN).FirstOrDefault();
+            MaHDN = lastQuery.MaHDN;
+
+            if (lastQuery != null)
+            {
+                // Xử lý lastQuery
+                int temp = Convert.ToInt32(MaHDN.Substring(3)) + 1;
+                string code = "";
+                if (temp < 10)
                 {
-                    // Xử lý lastQuery
-                    int temp = Convert.ToInt32(MaHDN.Substring(3)) + 1;
-                    string code = "";
-                    if (temp < 10)
-                    {
-                        code = "0" + temp.ToString();
-                    }
-                    string newcode = "HDN" + code;
-                    return newcode;
+                    code = "0" + temp.ToString();
                 }
                 else
                 {
-                    MessageBox.Show("Cơ sở dữ liệu chưa có dữ liệu", "Lỗi tìm kiếm", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-                    return "HDN0";
+                    code= temp.ToString();
                 }
-            }
-        }
-        public void addData(DateTime ngayban, String maNV, String maNCC, Double TongTien)
-        {
-            using (var db = new Entity())
-            {
-                HoaDonNhap HoaDonNhap = new HoaDonNhap() { MaHDN = autoGenCode(), NgayNhap = ngayban, MaNV = maNV, MaNCC = maNCC, ThanhTien = TongTien };
-                db.HoaDonNhaps.Add(HoaDonNhap);
-                db.SaveChanges();
-            }
-        }
 
+                string newcode = "HDN" + code;
+                return newcode;
+            }
+            else
+            {
+                MessageBox.Show("Cơ sở dữ liệu chưa có dữ liệu", "Lỗi tìm kiếm", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                return "HDN0";
+            }
+        }
         public string MaHDN { get; set; }
         public Nullable<System.DateTime> NgayNhap { get; set; }
         public string MaNV { get; set; }

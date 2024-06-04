@@ -20,7 +20,22 @@ namespace QuanLyCuaHangMayTinh.Presenter
 
 
         public Entity Db { get => db; set => db = value; }
-
+        public int checkAmount(String MaMVT)
+        {
+            var result = Db.MayVTs
+            .Where(b => b.MaMVT == MaMVT)
+            .Select(b => b.SoLuong)
+            .FirstOrDefault();
+            return (int)result;
+        }
+        public string getCodeByName(String Name)
+        {
+            var result = Db.MayVTs
+            .Where(b => b.TenMVT.Contains(Name))
+            .Select(b => b.MaMVT)
+            .FirstOrDefault();
+            return (string)result;
+        }
         // Call List From DB
         private List<MayVT> listComputer()
         {

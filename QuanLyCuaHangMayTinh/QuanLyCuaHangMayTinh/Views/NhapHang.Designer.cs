@@ -80,6 +80,7 @@
             this.lbSupplier.Name = "lbSupplier";
             this.lbSupplier.Size = new System.Drawing.Size(234, 79);
             this.lbSupplier.TabIndex = 14;
+            this.lbSupplier.SelectedIndexChanged += new System.EventHandler(this.lbSupplier_SelectedIndexChanged);
             // 
             // timer1
             // 
@@ -94,6 +95,7 @@
             this.lbComputerItems.Name = "lbComputerItems";
             this.lbComputerItems.Size = new System.Drawing.Size(494, 129);
             this.lbComputerItems.TabIndex = 16;
+            this.lbComputerItems.SelectedIndexChanged += new System.EventHandler(this.lbComputerItems_SelectedIndexChanged);
             // 
             // DtgvItems
             // 
@@ -110,7 +112,7 @@
             // tổngQuanToolStripMenuItem
             // 
             this.tổngQuanToolStripMenuItem.Name = "tổngQuanToolStripMenuItem";
-            this.tổngQuanToolStripMenuItem.Size = new System.Drawing.Size(130, 32);
+            this.tổngQuanToolStripMenuItem.Size = new System.Drawing.Size(130, 31);
             this.tổngQuanToolStripMenuItem.Text = "Tổng quan";
             // 
             // groupBox2
@@ -133,6 +135,8 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(440, 35);
             this.txtSearch.TabIndex = 11;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
             // 
             // txtSoluong
             // 
@@ -141,6 +145,8 @@
             this.txtSoluong.Name = "txtSoluong";
             this.txtSoluong.Size = new System.Drawing.Size(88, 35);
             this.txtSoluong.TabIndex = 10;
+            this.txtSoluong.Enter += new System.EventHandler(this.txtSoluong_Enter);
+            this.txtSoluong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCusPay_KeyPress);
             // 
             // button2
             // 
@@ -151,6 +157,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Tạo hóa đơn mới";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnAdd
             // 
@@ -161,6 +168,7 @@
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lbTime
             // 
@@ -174,7 +182,7 @@
             // hàngHóaToolStripMenuItem
             // 
             this.hàngHóaToolStripMenuItem.Name = "hàngHóaToolStripMenuItem";
-            this.hàngHóaToolStripMenuItem.Size = new System.Drawing.Size(120, 32);
+            this.hàngHóaToolStripMenuItem.Size = new System.Drawing.Size(120, 31);
             this.hàngHóaToolStripMenuItem.Text = "Hàng hóa";
             // 
             // giaoDịchToolStripMenuItem
@@ -183,7 +191,7 @@
             this.hóaĐơnBánToolStripMenuItem,
             this.hóaĐơnNhậpToolStripMenuItem});
             this.giaoDịchToolStripMenuItem.Name = "giaoDịchToolStripMenuItem";
-            this.giaoDịchToolStripMenuItem.Size = new System.Drawing.Size(121, 32);
+            this.giaoDịchToolStripMenuItem.Size = new System.Drawing.Size(121, 31);
             this.giaoDịchToolStripMenuItem.Text = "Giao dịch";
             // 
             // hóaĐơnBánToolStripMenuItem
@@ -205,7 +213,7 @@
             this.nhàCungCấpToolStripMenuItem,
             this.nhânViênToolStripMenuItem});
             this.đốiTácToolStripMenuItem.Name = "đốiTácToolStripMenuItem";
-            this.đốiTácToolStripMenuItem.Size = new System.Drawing.Size(98, 32);
+            this.đốiTácToolStripMenuItem.Size = new System.Drawing.Size(98, 31);
             this.đốiTácToolStripMenuItem.Text = "Đối tác";
             // 
             // kháchHàngToolStripMenuItem
@@ -229,13 +237,13 @@
             // bánHàngToolStripMenuItem
             // 
             this.bánHàngToolStripMenuItem.Name = "bánHàngToolStripMenuItem";
-            this.bánHàngToolStripMenuItem.Size = new System.Drawing.Size(119, 32);
+            this.bánHàngToolStripMenuItem.Size = new System.Drawing.Size(119, 31);
             this.bánHàngToolStripMenuItem.Text = "Bán hàng";
             // 
             // thoátToolStripMenuItem
             // 
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(132, 32);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(132, 31);
             this.thoátToolStripMenuItem.Text = "Nhập hàng";
             // 
             // txtSupplier
@@ -245,6 +253,8 @@
             this.txtSupplier.Name = "txtSupplier";
             this.txtSupplier.Size = new System.Drawing.Size(206, 35);
             this.txtSupplier.TabIndex = 13;
+            this.txtSupplier.TextChanged += new System.EventHandler(this.txtSupplier_TextChanged);
+            this.txtSupplier.Enter += new System.EventHandler(this.txtSupplier_Enter);
             // 
             // groupbox
             // 
@@ -285,6 +295,9 @@
             this.txtCusPay.Name = "txtCusPay";
             this.txtCusPay.Size = new System.Drawing.Size(155, 35);
             this.txtCusPay.TabIndex = 11;
+            this.txtCusPay.TextChanged += new System.EventHandler(this.txtCusPay_TextChanged);
+            this.txtCusPay.Enter += new System.EventHandler(this.txtCusPay_Enter);
+            this.txtCusPay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCusPay_KeyPress);
             // 
             // label6
             // 
@@ -335,8 +348,9 @@
             this.btnBuy.Name = "btnBuy";
             this.btnBuy.Size = new System.Drawing.Size(171, 54);
             this.btnBuy.TabIndex = 6;
-            this.btnBuy.Text = "Thanh toán";
+            this.btnBuy.Text = "Hoàn thành";
             this.btnBuy.UseVisualStyleBackColor = false;
+            this.btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
             // 
             // label2
             // 
@@ -366,6 +380,7 @@
             this.cbEmployee.Name = "cbEmployee";
             this.cbEmployee.Size = new System.Drawing.Size(241, 37);
             this.cbEmployee.TabIndex = 2;
+            this.cbEmployee.Click += new System.EventHandler(this.cbEmployee_Click);
             // 
             // button1
             // 
@@ -392,14 +407,14 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1128, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(1128, 35);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // thoátToolStripMenuItem1
             // 
             this.thoátToolStripMenuItem1.Name = "thoátToolStripMenuItem1";
-            this.thoátToolStripMenuItem1.Size = new System.Drawing.Size(84, 32);
+            this.thoátToolStripMenuItem1.Size = new System.Drawing.Size(84, 31);
             this.thoátToolStripMenuItem1.Text = "Thoát";
             // 
             // NhapHang
@@ -413,7 +428,7 @@
             this.Controls.Add(this.groupbox);
             this.Controls.Add(this.menuStrip1);
             this.Name = "NhapHang";
-            this.Text = "NhapHang";
+            this.Text = "Nhập hàng";
             ((System.ComponentModel.ISupportInitialize)(this.DtgvItems)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
