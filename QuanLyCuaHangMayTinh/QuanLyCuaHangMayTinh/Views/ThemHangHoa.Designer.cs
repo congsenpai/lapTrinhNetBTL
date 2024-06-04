@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,6 +68,11 @@
             this.cbCoMH = new System.Windows.Forms.ComboBox();
             this.cbUSB = new System.Windows.Forms.ComboBox();
             this.cbRam = new System.Windows.Forms.ComboBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtBaoHanh = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtSoluong = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgMayTinh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,7 +142,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(278, 385);
+            this.label8.Location = new System.Drawing.Point(598, 279);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 20);
             this.label8.TabIndex = 7;
@@ -155,7 +160,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(601, 91);
+            this.label10.Location = new System.Drawing.Point(598, 86);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 20);
             this.label10.TabIndex = 9;
@@ -182,7 +187,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(598, 242);
+            this.label13.Location = new System.Drawing.Point(598, 238);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 20);
             this.label13.TabIndex = 12;
@@ -191,7 +196,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(598, 296);
+            this.label14.Location = new System.Drawing.Point(923, 39);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(76, 20);
             this.label14.TabIndex = 13;
@@ -200,7 +205,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(598, 349);
+            this.label15.Location = new System.Drawing.Point(923, 92);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(36, 20);
             this.label15.TabIndex = 14;
@@ -208,7 +213,7 @@
             // 
             // btnBoQua
             // 
-            this.btnBoQua.Location = new System.Drawing.Point(662, 496);
+            this.btnBoQua.Location = new System.Drawing.Point(822, 480);
             this.btnBoQua.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBoQua.Name = "btnBoQua";
             this.btnBoQua.Size = new System.Drawing.Size(109, 51);
@@ -219,7 +224,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(777, 496);
+            this.btnLuu.Location = new System.Drawing.Point(948, 480);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(109, 51);
@@ -251,16 +256,17 @@
             // 
             // txtGiaNhap
             // 
-            this.txtGiaNhap.Location = new System.Drawing.Point(397, 427);
+            this.txtGiaNhap.Location = new System.Drawing.Point(1044, 186);
             this.txtGiaNhap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGiaNhap.Name = "txtGiaNhap";
             this.txtGiaNhap.Size = new System.Drawing.Size(170, 26);
             this.txtGiaNhap.TabIndex = 37;
+            this.txtGiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(281, 433);
+            this.label16.Location = new System.Drawing.Point(925, 189);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(74, 20);
             this.label16.TabIndex = 36;
@@ -268,16 +274,17 @@
             // 
             // txtGiaBan
             // 
-            this.txtGiaBan.Location = new System.Drawing.Point(714, 401);
+            this.txtGiaBan.Location = new System.Drawing.Point(1045, 133);
             this.txtGiaBan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGiaBan.Name = "txtGiaBan";
             this.txtGiaBan.Size = new System.Drawing.Size(170, 26);
             this.txtGiaBan.TabIndex = 39;
+            this.txtGiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaBan_KeyPress);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(598, 407);
+            this.label17.Location = new System.Drawing.Point(925, 139);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(65, 20);
             this.label17.TabIndex = 38;
@@ -285,7 +292,7 @@
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(97, 472);
+            this.txtNote.Location = new System.Drawing.Point(80, 549);
             this.txtNote.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
@@ -295,7 +302,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(22, 496);
+            this.label18.Location = new System.Drawing.Point(12, 511);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(64, 20);
             this.label18.TabIndex = 40;
@@ -352,7 +359,7 @@
             // cbTocDo
             // 
             this.cbTocDo.FormattingEnabled = true;
-            this.cbTocDo.Location = new System.Drawing.Point(721, 83);
+            this.cbTocDo.Location = new System.Drawing.Point(719, 83);
             this.cbTocDo.Name = "cbTocDo";
             this.cbTocDo.Size = new System.Drawing.Size(170, 28);
             this.cbTocDo.TabIndex = 47;
@@ -384,7 +391,7 @@
             // cbBanPhim
             // 
             this.cbBanPhim.FormattingEnabled = true;
-            this.cbBanPhim.Location = new System.Drawing.Point(718, 288);
+            this.cbBanPhim.Location = new System.Drawing.Point(1043, 31);
             this.cbBanPhim.Name = "cbBanPhim";
             this.cbBanPhim.Size = new System.Drawing.Size(170, 28);
             this.cbBanPhim.TabIndex = 51;
@@ -392,7 +399,7 @@
             // cbLoa
             // 
             this.cbLoa.FormattingEnabled = true;
-            this.cbLoa.Location = new System.Drawing.Point(718, 341);
+            this.cbLoa.Location = new System.Drawing.Point(1043, 84);
             this.cbLoa.Name = "cbLoa";
             this.cbLoa.Size = new System.Drawing.Size(170, 28);
             this.cbLoa.TabIndex = 52;
@@ -416,16 +423,66 @@
             // cbRam
             // 
             this.cbRam.FormattingEnabled = true;
-            this.cbRam.Location = new System.Drawing.Point(394, 377);
+            this.cbRam.Location = new System.Drawing.Point(717, 276);
             this.cbRam.Name = "cbRam";
             this.cbRam.Size = new System.Drawing.Size(170, 28);
             this.cbRam.TabIndex = 55;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(696, 480);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(109, 51);
+            this.btnAdd.TabIndex = 56;
+            this.btnAdd.Text = "Thêm mới";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // txtBaoHanh
+            // 
+            this.txtBaoHanh.Location = new System.Drawing.Point(751, 330);
+            this.txtBaoHanh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtBaoHanh.Name = "txtBaoHanh";
+            this.txtBaoHanh.Size = new System.Drawing.Size(138, 26);
+            this.txtBaoHanh.TabIndex = 58;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(598, 336);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(144, 20);
+            this.label19.TabIndex = 57;
+            this.label19.Text = "Thời gian bảo hành";
+            // 
+            // txtSoluong
+            // 
+            this.txtSoluong.Location = new System.Drawing.Point(1045, 241);
+            this.txtSoluong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSoluong.Name = "txtSoluong";
+            this.txtSoluong.Size = new System.Drawing.Size(88, 26);
+            this.txtSoluong.TabIndex = 60;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(924, 241);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(72, 20);
+            this.label20.TabIndex = 59;
+            this.label20.Text = "Số lượng";
             // 
             // ThemHangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 562);
+            this.ClientSize = new System.Drawing.Size(1229, 679);
+            this.Controls.Add(this.txtSoluong);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.txtBaoHanh);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cbRam);
             this.Controls.Add(this.cbUSB);
             this.Controls.Add(this.cbCoMH);
@@ -492,30 +549,36 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button btnBoQua;
         private System.Windows.Forms.Button btnLuu;
-        private System.Windows.Forms.PictureBox imgMayTinh;
         private System.Windows.Forms.Button btnChoose;
-        private System.Windows.Forms.TextBox txtGiaNhap;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtGiaBan;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txtNote;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox cbLoaiMay;
-        private System.Windows.Forms.TextBox txtTenMVT;
-        private System.Windows.Forms.ComboBox cbOCD;
-        private System.Windows.Forms.ComboBox cbOCung;
-        private System.Windows.Forms.ComboBox cbChip;
-        private System.Windows.Forms.ComboBox cbHSX;
-        private System.Windows.Forms.ComboBox cbTocDo;
-        private System.Windows.Forms.ComboBox cbDungLuong;
-        private System.Windows.Forms.ComboBox cbManHinh;
-        private System.Windows.Forms.ComboBox cbChuot;
-        private System.Windows.Forms.ComboBox cbBanPhim;
-        private System.Windows.Forms.ComboBox cbLoa;
-        private System.Windows.Forms.ComboBox cbCoMH;
-        private System.Windows.Forms.ComboBox cbUSB;
-        private System.Windows.Forms.ComboBox cbRam;
+        private System.Windows.Forms.Button btnAdd;
+        public System.Windows.Forms.TextBox txtNote;
+        public System.Windows.Forms.TextBox txtGiaBan;
+        public System.Windows.Forms.TextBox txtGiaNhap;
+        public System.Windows.Forms.PictureBox imgMayTinh;
+        public System.Windows.Forms.ComboBox cbLoaiMay;
+        public System.Windows.Forms.TextBox txtTenMVT;
+        public System.Windows.Forms.ComboBox cbOCD;
+        public System.Windows.Forms.ComboBox cbOCung;
+        public System.Windows.Forms.ComboBox cbChip;
+        public System.Windows.Forms.ComboBox cbHSX;
+        public System.Windows.Forms.ComboBox cbTocDo;
+        public System.Windows.Forms.ComboBox cbDungLuong;
+        public System.Windows.Forms.ComboBox cbManHinh;
+        public System.Windows.Forms.ComboBox cbChuot;
+        public System.Windows.Forms.ComboBox cbBanPhim;
+        public System.Windows.Forms.ComboBox cbLoa;
+        public System.Windows.Forms.ComboBox cbCoMH;
+        public System.Windows.Forms.ComboBox cbUSB;
+        public System.Windows.Forms.ComboBox cbRam;
+        public System.Windows.Forms.TextBox txtSoluong;
+        public System.Windows.Forms.TextBox txtBaoHanh;
+
     }
 }

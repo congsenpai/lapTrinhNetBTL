@@ -50,23 +50,23 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.rdRam = new System.Windows.Forms.RadioButton();
+            this.rdTenMay = new System.Windows.Forms.RadioButton();
             this.rdLoaiMay = new System.Windows.Forms.RadioButton();
             this.rdLoaiChip = new System.Windows.Forms.RadioButton();
             this.rdOCung = new System.Windows.Forms.RadioButton();
-            this.rdManHinh = new System.Windows.Forms.RadioButton();
             this.rdCoManHinh = new System.Windows.Forms.RadioButton();
             this.rdUSB = new System.Windows.Forms.RadioButton();
             this.rdOCD = new System.Windows.Forms.RadioButton();
             this.rdHSX = new System.Windows.Forms.RadioButton();
+            this.rdDL = new System.Windows.Forms.RadioButton();
             this.rdTD = new System.Windows.Forms.RadioButton();
+            this.rdManHinh = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.rdDL = new System.Windows.Forms.RadioButton();
-            this.rdTenMay = new System.Windows.Forms.RadioButton();
+            this.rdKeyBoard = new System.Windows.Forms.RadioButton();
             this.rdMouse = new System.Windows.Forms.RadioButton();
             this.rdSpeaker = new System.Windows.Forms.RadioButton();
-            this.rdKeyBoard = new System.Windows.Forms.RadioButton();
-            this.rdRam = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.DTGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -110,6 +110,8 @@
             // 
             // DTGV
             // 
+            this.DTGV.AllowUserToAddRows = false;
+            this.DTGV.AllowUserToDeleteRows = false;
             this.DTGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DTGV.Location = new System.Drawing.Point(300, 184);
             this.DTGV.Margin = new System.Windows.Forms.Padding(2);
@@ -119,6 +121,7 @@
             this.DTGV.RowTemplate.Height = 33;
             this.DTGV.Size = new System.Drawing.Size(759, 495);
             this.DTGV.TabIndex = 32;
+            this.DTGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DTGV_CellDoubleClick);
             // 
             // btnAdd
             // 
@@ -130,6 +133,7 @@
             this.btnAdd.TabIndex = 31;
             this.btnAdd.Text = "Thêm Hàng hóa";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // bánHàngToolStripMenuItem
             // 
@@ -274,6 +278,28 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(275, 166);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
+            // rdRam
+            // 
+            this.rdRam.AutoSize = true;
+            this.rdRam.Location = new System.Drawing.Point(3, 3);
+            this.rdRam.Name = "rdRam";
+            this.rdRam.Size = new System.Drawing.Size(82, 31);
+            this.rdRam.TabIndex = 12;
+            this.rdRam.TabStop = true;
+            this.rdRam.Text = "Ram";
+            this.rdRam.UseVisualStyleBackColor = true;
+            // 
+            // rdTenMay
+            // 
+            this.rdTenMay.AutoSize = true;
+            this.rdTenMay.Location = new System.Drawing.Point(3, 40);
+            this.rdTenMay.Name = "rdTenMay";
+            this.rdTenMay.Size = new System.Drawing.Size(188, 31);
+            this.rdTenMay.TabIndex = 0;
+            this.rdTenMay.TabStop = true;
+            this.rdTenMay.Text = "Tên máy vi tính";
+            this.rdTenMay.UseVisualStyleBackColor = true;
+            // 
             // rdLoaiMay
             // 
             this.rdLoaiMay.AutoSize = true;
@@ -306,17 +332,6 @@
             this.rdOCung.TabStop = true;
             this.rdOCung.Text = "Loại ổ cứng";
             this.rdOCung.UseVisualStyleBackColor = true;
-            // 
-            // rdManHinh
-            // 
-            this.rdManHinh.AutoSize = true;
-            this.rdManHinh.Location = new System.Drawing.Point(3, 114);
-            this.rdManHinh.Name = "rdManHinh";
-            this.rdManHinh.Size = new System.Drawing.Size(176, 31);
-            this.rdManHinh.TabIndex = 4;
-            this.rdManHinh.TabStop = true;
-            this.rdManHinh.Text = "Loại màn hình";
-            this.rdManHinh.UseVisualStyleBackColor = true;
             // 
             // rdCoManHinh
             // 
@@ -362,6 +377,17 @@
             this.rdHSX.Text = "Hãng sản xuất";
             this.rdHSX.UseVisualStyleBackColor = true;
             // 
+            // rdDL
+            // 
+            this.rdDL.AutoSize = true;
+            this.rdDL.Location = new System.Drawing.Point(3, 336);
+            this.rdDL.Name = "rdDL";
+            this.rdDL.Size = new System.Drawing.Size(197, 31);
+            this.rdDL.TabIndex = 10;
+            this.rdDL.TabStop = true;
+            this.rdDL.Text = "Dung lượng máy";
+            this.rdDL.UseVisualStyleBackColor = true;
+            // 
             // rdTD
             // 
             this.rdTD.AutoSize = true;
@@ -372,6 +398,17 @@
             this.rdTD.TabStop = true;
             this.rdTD.Text = "Tốc độ máy";
             this.rdTD.UseVisualStyleBackColor = true;
+            // 
+            // rdManHinh
+            // 
+            this.rdManHinh.AutoSize = true;
+            this.rdManHinh.Location = new System.Drawing.Point(3, 114);
+            this.rdManHinh.Name = "rdManHinh";
+            this.rdManHinh.Size = new System.Drawing.Size(176, 31);
+            this.rdManHinh.TabIndex = 4;
+            this.rdManHinh.TabStop = true;
+            this.rdManHinh.Text = "Loại màn hình";
+            this.rdManHinh.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -397,27 +434,16 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(174, 166);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
-            // rdDL
+            // rdKeyBoard
             // 
-            this.rdDL.AutoSize = true;
-            this.rdDL.Location = new System.Drawing.Point(3, 336);
-            this.rdDL.Name = "rdDL";
-            this.rdDL.Size = new System.Drawing.Size(197, 31);
-            this.rdDL.TabIndex = 10;
-            this.rdDL.TabStop = true;
-            this.rdDL.Text = "Dung lượng máy";
-            this.rdDL.UseVisualStyleBackColor = true;
-            // 
-            // rdTenMay
-            // 
-            this.rdTenMay.AutoSize = true;
-            this.rdTenMay.Location = new System.Drawing.Point(3, 40);
-            this.rdTenMay.Name = "rdTenMay";
-            this.rdTenMay.Size = new System.Drawing.Size(188, 31);
-            this.rdTenMay.TabIndex = 0;
-            this.rdTenMay.TabStop = true;
-            this.rdTenMay.Text = "Tên máy vi tính";
-            this.rdTenMay.UseVisualStyleBackColor = true;
+            this.rdKeyBoard.AutoSize = true;
+            this.rdKeyBoard.Location = new System.Drawing.Point(3, 3);
+            this.rdKeyBoard.Name = "rdKeyBoard";
+            this.rdKeyBoard.Size = new System.Drawing.Size(130, 31);
+            this.rdKeyBoard.TabIndex = 2;
+            this.rdKeyBoard.TabStop = true;
+            this.rdKeyBoard.Text = "Bàn phím";
+            this.rdKeyBoard.UseVisualStyleBackColor = true;
             // 
             // rdMouse
             // 
@@ -441,29 +467,7 @@
             this.rdSpeaker.Text = "Loa";
             this.rdSpeaker.UseVisualStyleBackColor = true;
             // 
-            // rdKeyBoard
-            // 
-            this.rdKeyBoard.AutoSize = true;
-            this.rdKeyBoard.Location = new System.Drawing.Point(3, 3);
-            this.rdKeyBoard.Name = "rdKeyBoard";
-            this.rdKeyBoard.Size = new System.Drawing.Size(130, 31);
-            this.rdKeyBoard.TabIndex = 2;
-            this.rdKeyBoard.TabStop = true;
-            this.rdKeyBoard.Text = "Bàn phím";
-            this.rdKeyBoard.UseVisualStyleBackColor = true;
-            // 
-            // rdRam
-            // 
-            this.rdRam.AutoSize = true;
-            this.rdRam.Location = new System.Drawing.Point(3, 3);
-            this.rdRam.Name = "rdRam";
-            this.rdRam.Size = new System.Drawing.Size(82, 31);
-            this.rdRam.TabIndex = 12;
-            this.rdRam.TabStop = true;
-            this.rdRam.Text = "Ram";
-            this.rdRam.UseVisualStyleBackColor = true;
-            // 
-            // hanghoa
+            // DanhSachhanghoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -478,7 +482,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "hanghoa";
+            this.Name = "DanhSachhanghoa";
             this.Text = "Hàng hóa";
             this.Load += new System.EventHandler(this.hanghoa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DTGV)).EndInit();

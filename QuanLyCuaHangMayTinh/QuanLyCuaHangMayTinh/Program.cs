@@ -16,7 +16,7 @@ namespace QuanLyCuaHangMayTinh
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ThemHangHoa());
+            Application.Run(new DanhSachhanghoa());
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,14 @@ namespace QuanLyCuaHangMayTinh.Views
     public partial class ThemHangHoa : Form
     {
         preComputer present = new preComputer();
+        byte[] imageData;
         public ThemHangHoa()
         {
             InitializeComponent();
             loadCBInFormAdd();
+            btnLuu.Enabled = false;
+            txtBaoHanh.Enabled = false;
+            txtSoluong.Enabled = false;
         }
 
         private void btnBoQua_Click(object sender, EventArgs e)
@@ -173,19 +178,379 @@ namespace QuanLyCuaHangMayTinh.Views
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (checkInvalid() == false)
+            {
+                string MaLm = getCodeByNameChoice(cbLoaiMay.Text, "LM");
+                string MaChip = getCodeByNameChoice(cbChip.Text, "Chip");
+                String MaOC = getCodeByNameChoice(cbOCung.Text, "OC");
+                String MaDL = getCodeByNameChoice(cbDungLuong.Text, "DL");
+                String MaTD = getCodeByNameChoice(cbTocDo.Text, "TD");
+                String MaO = getCodeByNameChoice(cbOCD.Text, "OCD");
+                String MaMH = getCodeByNameChoice(cbManHinh.Text, "MH");
+                String MaCo = getCodeByNameChoice(cbCoMH.Text, "COMH");
+                String MaChuot = getCodeByNameChoice(cbChuot.Text, "C");
+                String MaBP = getCodeByNameChoice(cbBanPhim.Text, "BP");
+                String MaOUSB = getCodeByNameChoice(cbUSB.Text, "USB");
+                String MaR = getCodeByNameChoice(cbRam.Text, "RAM");
+                String MaLoa = getCodeByNameChoice(cbLoa.Text, "LOA");
+                String MaHSX = getCodeByNameChoice(cbHSX.Text, "HSX");
+                DataTable a = present.loadComputer();
+                bool found = false;
+                foreach (DataRow row in a.Rows)
+                {
+                    if (row["TenMVT"].ToString() == txtTenMVT.Text)
+                    {
+                        MessageBox.Show("Máy tính này đã tồn tại trong CSDL", "Thông báo", MessageBoxButtons.OK);
+                        found = true;
+                        return;
+                    }
+                }
+                double Giaban = Convert.ToDouble(txtGiaBan.Text);
+                double Gianhap = Convert.ToDouble(txtGiaNhap.Text);
+                DateTime thoiGianHienTai = DateTime.Now;
+                if (found == false)
+                {
+                    present.AddMayVT(txtTenMVT.Text, MaLm, MaChip, MaOC,
+                        MaDL, MaTD, MaO, MaMH, MaCo, MaChuot, MaBP,
+                        MaOUSB, MaR, MaLoa, MaHSX, Giaban, Gianhap, thoiGianHienTai, imageData, txtNote.Text);
+                    MessageBox.Show("Thêm dữ liệu thành công", "Thông báo", MessageBoxButtons.OK);
+                    reSetForm();
+                    return;
+                }
+            }
+        }
+        private string getCodeByNameChoice(String name, string type)
+        {
+            if (type == "LM")
+            {
+                DataTable LM = present.loadComputerType();
+                foreach (DataRow row in LM.Rows)
+                {
+                    if (row["TenLm"].ToString() == name)
+                    {
+                        return row["MaLm"].ToString();
+                    }
+                }
+            }
+            if (type == "Chip")
+            {
+                DataTable Chip = present.loadChip();
+                foreach (DataRow row in Chip.Rows)
+                {
+                    if (row["TenChip"].ToString() == name)
+                    {
+                        return row["MaChip"].ToString();
+                    }
+                }
+            }
+            if (type == "OC")
+            {
+                DataTable OC = present.loadOCung();
+                foreach (DataRow row in OC.Rows)
+                {
+                    if (row["TenOC"].ToString() == name)
+                    {
+                        return row["MaOC"].ToString();
+                    }
+                }
+            }
+            if (type == "DL")
+            {
+                DataTable DL = present.loadDungLuong();
+                foreach (DataRow row in DL.Rows)
+                {
+                    if (row["TenDL"].ToString() == name)
+                    {
+                        return row["MaDL"].ToString();
+                    }
+                }
+            }
+            if (type == "TD")
+            {
+                DataTable TD = present.loadTocDo();
+                foreach (DataRow row in TD.Rows)
+                {
+                    if (row["TenTD"].ToString() == name)
+                    {
+                        return row["MaTD"].ToString();
+                    }
+                }
+            }
+            if (type == "OCD")
+            {
+                DataTable OCD = present.loadOCD();
+                foreach (DataRow row in OCD.Rows)
+                {
+                    if (row["TenO"].ToString() == name)
+                    {
+                        return row["MaO"].ToString();
+                    }
+                }
+            }
+            if (type == "MH")
+            {
+                DataTable MH = present.loadScreen();
+                foreach (DataRow row in MH.Rows)
+                {
+                    if (row["TenMH"].ToString() == name)
+                    {
+                        return row["MaMH"].ToString();
+                    }
+                }
+            }
+            if (type == "COMH")
+            {
+                DataTable COMH = present.loadCoManHinh();
+                foreach (DataRow row in COMH.Rows)
+                {
+                    if (row["TenCo"].ToString() == name)
+                    {
+                        return row["MaCo"].ToString();
+                    }
+                }
+            }
+            if (type == "C")
+            {
+                DataTable C = present.loadChuot();
+                foreach (DataRow row in C.Rows)
+                {
+                    if (row["TenChuot"].ToString() == name)
+                    {
+                        return row["MaChuot"].ToString();
+                    }
+                }
+            }
+            if (type == "BP")
+            {
+                DataTable BP = present.loadKeyBoard();
+                foreach (DataRow row in BP.Rows)
+                {
+                    if (row["TenBP"].ToString() == name)
+                    {
+                        return row["MaBP"].ToString();
+                    }
+                }
+            }
+            if (type == "USB")
+            {
+                DataTable USB = present.loadUSB();
+                foreach (DataRow row in USB.Rows)
+                {
+                    if (row["TenOUSB"].ToString() == name)
+                    {
+                        return row["MaOUSB"].ToString();
+                    }
+                }
+            }
+            if (type == "RAM")
+            {
+                DataTable RAM = present.loadRam();
+                foreach (DataRow row in RAM.Rows)
+                {
+                    if (row["TenR"].ToString() == name)
+                    {
+                        return row["MaR"].ToString();
+                    }
+                }
+            }
+            if (type == "LOA")
+            {
+                DataTable LOA = present.loadSpeaker();
+                foreach (DataRow row in LOA.Rows)
+                {
+                    if (row["TenLoa"].ToString() == name)
+                    {
+                        return row["MaLoa"].ToString();
+                    }
+                }
+            }
+            if (type == "HSX")
+            {
+                DataTable HSX = present.loadHSX();
+                foreach (DataRow row in HSX.Rows)
+                {
+                    if (row["TenHSX"].ToString() == name)
+                    {
+                        return row["MaHSX"].ToString();
+                    }
+                }
+            }
+            return "";
 
+        }
+        private void reSetForm()
+        {
+            txtTenMVT.Text = "";
+            txtNote.Text = "";
+            txtGiaBan.Text = "";
+            txtGiaNhap.Text = "";
+            cbBanPhim.Text = "";
+            cbChip.Text = "";
+            cbChuot.Text = "";
+            cbCoMH.Text = "";
+            cbDungLuong.Text = "";
+            cbHSX.Text = "";
+            cbLoa.Text = "";
+            cbLoaiMay.Text = "";
+            cbManHinh.Text = "";
+            cbOCD.Text = "";
+            cbOCung.Text = "";
+            cbRam.Text = "";
+            cbTocDo.Text = "";
+            cbUSB.Text = "";
+            imgMayTinh.Image = null;
+
+        }
+        private bool checkInvalid()
+        {
+            if (txtTenMVT.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa nhập Tên máy vi tính", "Thông báo", MessageBoxButtons.OK);
+                txtTenMVT.Focus();
+                return true;
+            }
+            if (cbLoaiMay.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn loại máy", "Thông báo", MessageBoxButtons.OK);
+                cbLoaiMay.Focus();
+                return true;
+            }
+            if (cbChip.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn loại Chip", "Thông báo", MessageBoxButtons.OK);
+                cbChip.Focus();
+                return true;
+            }
+            if (cbOCung.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn ổ cứng", "Thông báo", MessageBoxButtons.OK);
+                cbOCung.Focus();
+                return true;
+            }
+            if (cbOCD.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn loại OCD", "Thông báo", MessageBoxButtons.OK);
+                cbOCD.Focus();
+                return true;
+            }
+            if (cbCoMH.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn cỡ màn hình", "Thông báo", MessageBoxButtons.OK);
+                cbCoMH.Focus();
+                return true;
+            }
+            if (cbUSB.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn ổ USB", "Thông báo", MessageBoxButtons.OK);
+                cbUSB.Focus();
+                return true;
+            }
+            if (cbRam.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn Ram", "Thông báo", MessageBoxButtons.OK);
+                cbRam.Focus();
+                return true;
+            }
+            if (cbHSX.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn hãng sản xuất", "Thông báo", MessageBoxButtons.OK);
+                cbHSX.Focus();
+                return true;
+            }
+            if (cbTocDo.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn tốc độ", "Thông báo", MessageBoxButtons.OK);
+                cbTocDo.Focus();
+                return true;
+            }
+            if (cbDungLuong.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn dung lượng", "Thông báo", MessageBoxButtons.OK);
+                cbDungLuong.Focus();
+                return true;
+            }
+            if (cbManHinh.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn loại màn hình", "Thông báo", MessageBoxButtons.OK);
+                cbManHinh.Focus();
+                return true;
+            }
+            if (cbChuot.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn chuột", "Thông báo", MessageBoxButtons.OK);
+                cbChuot.Focus();
+                return true;
+            }
+            if (cbBanPhim.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn bàn phím", "Thông báo", MessageBoxButtons.OK);
+                cbBanPhim.Focus();
+                return true;
+            }
+            if (cbLoa.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn loa", "Thông báo", MessageBoxButtons.OK);
+                cbLoa.Focus();
+                return true;
+            }
+            if (txtGiaBan.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa nhập giá bán", "Thông báo", MessageBoxButtons.OK);
+                txtGiaBan.Focus();
+                return true;
+            }
+            if (txtGiaNhap.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa nhập giá nhập", "Thông báo", MessageBoxButtons.OK);
+                txtGiaNhap.Focus();
+                return true;
+            }
+            if (imageData == null) {
+                MessageBox.Show("Bạn hãy vui lòng chọn ảnh", "Thông báo", MessageBoxButtons.OK);
+                return true;
+            }
+            return false;
         }
 
         private void btnChoose_Click(object sender, EventArgs e)
         {
+            string imgFilePath = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string filePath = openFileDialog.FileName;
-                imgMayTinh.Image = Image.FromFile(filePath);
+                imgFilePath = openFileDialog.FileName;
+                imgMayTinh.Image = Image.FromFile(imgFilePath);
+            }
+            using (FileStream stream = new FileStream(imgFilePath, FileMode.Open, FileAccess.Read))
+            {
+                imageData = new byte[stream.Length];
+                stream.Read(imageData, 0, (int)stream.Length);
             }
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            reSetForm();
+            MessageBox.Show("Bạn đang trong chế độ thêm mới", " Thông báo", MessageBoxButtons.OK);
+            btnLuu.Enabled = true;
+            return;
+        }
+
+        private void txtGiaBan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtGiaNhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

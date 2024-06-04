@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using QuanLyCuaHangMayTinh.Model;
 using QuanLyCuaHangMayTinh.Presenter;
 
@@ -28,7 +29,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
         }
         private List<LoaiMay> listComputerType()
         {
-            var type= Db.LoaiMays.ToList();
+            var type = Db.LoaiMays.ToList();
             return type;
         }
         private List<Chip> listChip()
@@ -109,7 +110,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
         public DataTable loadComputer()
         {
 
-            var computers=listComputer();
+            var computers = listComputer();
             DataTable a = prs.ConvertToDataTable(computers);
             return a;
         }
@@ -228,6 +229,8 @@ namespace QuanLyCuaHangMayTinh.Presenter
             dataTable.Columns.Add("Giá bán", typeof(string));
             dataTable.Columns.Add("Thời gian bảo hành", typeof(string));
             dataTable.Columns.Add("Số lượng", typeof(string));
+            dataTable.Columns.Add("Ghi chú", typeof(string));
+            dataTable.Columns.Add("Ảnh", typeof(string));
 
             foreach (DataRow comp in a.Rows)
             {
@@ -251,7 +254,9 @@ namespace QuanLyCuaHangMayTinh.Presenter
                         b.USB.TenOUSB,
                         b.Ram.TenR,
                         b.Loa.TenLoa,
-                        b.HangSX.TenHSX
+                        b.HangSX.TenHSX,
+                        b.Ghichu,
+                        b.Anh
                     })
                     .FirstOrDefault();
 
@@ -278,6 +283,8 @@ namespace QuanLyCuaHangMayTinh.Presenter
                     row["Giá bán"] = comp["Giaban"];
                     row["Thời gian bảo hành"] = comp["ThoiGianBH"];
                     row["Số lượng"] = comp["SoLuong"];
+                    row["Ghi chú"] = comp["Ghichu"];
+                    row["Ảnh"] = result.Anh != null ? Convert.ToBase64String(result.Anh) : string.Empty; // Chuyển đổi kiểu dữ liệu sang dạng base64String
                     dataTable.Rows.Add(row);
                 }
             }
@@ -405,8 +412,19 @@ namespace QuanLyCuaHangMayTinh.Presenter
             DataTable a = prs.ConvertToDataTable(query);
             return a;
         }
+        public void AddMayVT(string TenMVT, string Loai, string Chip, String OC,
+            string DL, string TD, string OCD, string MH, string CoMH, string Chuot,
+            string BP, string USB, string Ram, string Loa, string HSX, double giaNhap,
+            double giaBan, DateTime Thoigianhientai, byte[] imageData, string ghiChu)
+        {
+            DateTime baoHanh = Thoigianhientai.AddYears(2);
+            MayVT newMayVT = new MayVT();
+            newMayVT.addData(TenMVT, Loai, Chip, OC, DL, TD, OCD, MH, CoMH, Chuot, BP, USB, Ram, Loa, HSX, giaNhap, giaBan, baoHanh, imageData, ghiChu);
+
+        }
 
     }
+
 }
 
 

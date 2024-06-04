@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -135,5 +136,46 @@ namespace QuanLyCuaHangMayTinh.Views
             }
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            ThemHangHoa form = new ThemHangHoa();
+            form.Show();
+        }
+
+        private void DTGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ThemHangHoa form = new ThemHangHoa();
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row= this.DTGV.Rows[e.RowIndex];
+                form.txtTenMVT.Text = row.Cells["Tên máy"].Value.ToString();
+                form.cbLoaiMay.Text = row.Cells["Loại máy"].Value.ToString();
+                form.cbChip.Text = row.Cells["Chip"].Value.ToString();
+                form.cbOCung.Text = row.Cells["Ổ cứng"].Value.ToString();
+                form.cbDungLuong.Text = row.Cells["Dung lượng"].Value.ToString();
+                form.cbTocDo.Text = row.Cells["Tốc độ"].Value.ToString();
+                form.cbOCD.Text = row.Cells["OCD"].Value.ToString();
+                form.cbManHinh.Text = row.Cells["Loại màn hình"].Value.ToString();
+                form.cbCoMH.Text = row.Cells["Cỡ màn hình"].Value.ToString();
+                form.cbChuot.Text = row.Cells["Chuột"].Value.ToString();
+                form.cbBanPhim.Text = row.Cells["Bàn phím"].Value.ToString();
+                form.cbUSB.Text = row.Cells["USB"].Value.ToString();
+                form.cbRam.Text = row.Cells["Ram"].Value.ToString();
+                form.cbLoa.Text = row.Cells["Loa"].Value.ToString();
+                form.cbHSX.Text = row.Cells["Hãng sản xuất"].Value.ToString();
+                form.txtGiaNhap.Text = row.Cells["Giá nhập"].Value.ToString();
+                form.txtGiaBan.Text = row.Cells["Giá bán"].Value.ToString();
+                form.txtBaoHanh.Text = row.Cells["Thời gian bảo hành"].Value.ToString();
+                form.txtSoluong.Text = row.Cells["Số lượng"].Value.ToString();
+                string imageDataString = row.Cells["Ảnh"].Value.ToString();
+                byte[] imageData = Convert.FromBase64String(imageDataString);
+                using (MemoryStream ms = new MemoryStream(imageData))
+                {
+                    form.imgMayTinh.Image = Image.FromStream(ms);
+                }
+                form.txtNote.Text = row.Cells["Ghi chú"].Value.ToString();
+            }
+            form.Show();
+        }
     }
 }
