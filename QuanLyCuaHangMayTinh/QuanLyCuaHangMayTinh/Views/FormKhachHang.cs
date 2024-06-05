@@ -12,13 +12,14 @@ using OfficeOpenXml;
 using QuanLyCuaHangMayTinh.Presenter;
 namespace QuanLyCuaHangMayTinh.Views
 {
-    public partial class khachhang : Form
+    public partial class FormKhachHang : Form
     {
         PreCustomer present=new PreCustomer();
-        public khachhang()
+        public FormKhachHang()
         {
             InitializeComponent();
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            prsMain.AddMenuStripToForm(this);
         }
         private void khachhang_Load(object sender, EventArgs e)
         {

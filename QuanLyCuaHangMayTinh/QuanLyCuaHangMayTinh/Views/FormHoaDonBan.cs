@@ -11,21 +11,23 @@ using System.Windows.Forms;
 
 namespace QuanLyCuaHangMayTinh.Views
 {
-    public partial class HoaDonNhap : Form
+    public partial class FormHoaDonBan : Form
     {
-        PreImport present = new PreImport();
+        PreSale present = new PreSale();
         preEmployee employees = new preEmployee();
-        PreSupplier suppliers = new PreSupplier();
+        PreCustomer customers = new PreCustomer();
         preComputer computers = new preComputer();
+        prsMain prsMain = new prsMain();
         List<String> originalItemsEmploy = new List<string>();
         List<String> originalItemsCus = new List<string>();
         List<String> originalItemsCom = new List<string>();
-        public HoaDonNhap()
+        public FormHoaDonBan()
         {
             InitializeComponent();
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             loadCBEmployee();
-            loadCBsupplier();
+            loadCBCustomer();
+            prsMain.AddMenuStripToForm(this);
 
         }
 
@@ -43,15 +45,15 @@ namespace QuanLyCuaHangMayTinh.Views
             }
         }
 
-        public void loadCBsupplier()
+        public void loadCBCustomer()
         {
-            DataTable dt = suppliers.loadSupplier();
+            DataTable dt = customers.loadCustomer();
             if (dt != null && dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)
                 {
-                    cbNCC.Items.Add(row["TenNCC"].ToString());
-                    originalItemsCus.Add(row["TenNCC"].ToString());
+                    cbKH.Items.Add(row["TenKH"].ToString());
+                    originalItemsCus.Add(row["TenKH"].ToString());
                 }
             }
 
@@ -60,7 +62,7 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void Orders_Load(object sender, EventArgs e)
         {
-            DTGV.DataSource = present.loadHoaDonNhap();
+            DTGV.DataSource = present.loadHoaDonBan();
         }
         private string getCodeByNameChoice(String name, string type)
         {
@@ -75,14 +77,14 @@ namespace QuanLyCuaHangMayTinh.Views
                     }
                 }
             }
-            if (type == "NCC")
+            if (type == "KH")
             {
-                DataTable NCC = suppliers.loadSupplier();
-                foreach (DataRow row in NCC.Rows)
+                DataTable KH = customers.loadCustomer();
+                foreach (DataRow row in KH.Rows)
                 {
-                    if (row["TenNCC"].ToString() == name)
+                    if (row["TenKH"].ToString() == name)
                     {
-                        return row["MaNCC"].ToString();
+                        return row["MaKH"].ToString();
                     }
                 }
             }
@@ -91,17 +93,24 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            string manv = getCodeByNameChoice(cbNhanVien.Text, "NV");
-            string maNCC = getCodeByNameChoice(cbNhanVien.Text, "NCC");
-            DateTime From = dateTimePicker1.Value;
+            string manv=getCodeByNameChoice(cbNhanVien.Text,"NV");
+            string makh = getCodeByNameChoice(cbNhanVien.Text, "KH");
+            DateTime From= dateTimePicker1.Value;
             DateTime To = dateTimePicker2.Value;
-            DTGV.DataSource = present.FindHoaDon(txtSearch.Text, From, To, manv, maNCC);
+            DTGV.DataSource = present.FindHoaDon(txtSearch.Text,From,To,manv,makh);
         }
 
         private void btnXem_Click(object sender, EventArgs e)
         {
-            DTGV.DataSource = present.loadHoaDonNhap();
+            DTGV.DataSource = present.loadHoaDonBan();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            BanHang banhang=new BanHang();
+            banhang.Show();
         }
     }
-}
 
+}

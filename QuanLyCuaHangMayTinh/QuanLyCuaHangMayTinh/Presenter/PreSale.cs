@@ -23,12 +23,94 @@ namespace QuanLyCuaHangMayTinh.Presenter
             var hoadon = Db.HoaDonBans.ToList();
             return hoadon;
         }
+        public int SumOfOrder()
+        {
+            int i = 0;
+            DataTable a = loadHoaDonBan();
+            foreach(DataRow dr in a.Rows)
+            {
+                i += 1;
+            }
+            return i;
+        }
         public DataTable loadHoaDonBan()
         {
             var hoadons = listHoaDon();
             DataTable a = prsMain.ConvertToDataTable(hoadons);
             return a;
         }
+        public DataTable getOrderByDay(DateTime date)
+        {
+            var invoices = listHoaDon().ToList();
+            DataTable resultTable = new DataTable();
+            resultTable.Columns.Add("Date", typeof(DateTime));
+            resultTable.Columns.Add("TotalAmount", typeof(decimal));
+            var dailySales = from invoice in invoices
+                             where invoice.NgayBan.GetValueOrDefault().Day == date.Day
+                             group invoice by invoice.NgayBan into g
+                             select new
+                             {
+                                 Date = g.Key,
+                                 TotalAmount = g.Sum(i => i.TongTien)
+                             };
+
+            foreach (var dailySale in dailySales)
+            {
+                resultTable.Rows.Add(dailySale.Date, dailySale.TotalAmount);
+            }
+            return resultTable;
+        }
+        public DataTable getOrderByMonth(DateTime date)
+        {
+            var invoices = listHoaDon().ToList();
+            DataTable resultTable = new DataTable();
+            resultTable.Columns.Add("Date", typeof(DateTime));
+            resultTable.Columns.Add("TotalAmount", typeof(decimal));
+            var dailySales = from invoice in invoices
+                             where invoice.NgayBan.GetValueOrDefault().Month == date.Month && invoice.NgayBan.GetValueOrDefault().Year == date.Year
+                             group invoice by invoice.NgayBan into g
+                             select new
+                             {
+                                 Date = g.Key,
+                                 TotalAmount = g.Sum(i => i.TongTien)
+                             };
+
+            foreach (var dailySale in dailySales)
+            {
+                resultTable.Rows.Add(dailySale.Date, dailySale.TotalAmount);
+            }
+            return resultTable;
+        }
+        public DataTable getOrderByCurrentWeek()
+        {
+            var invoices = listHoaDon().ToList();
+            DataTable resultTable = new DataTable();
+            resultTable.Columns.Add("Date", typeof(DateTime));
+            resultTable.Columns.Add("TotalAmount", typeof(decimal));
+            DateTime Monday = GetMostRecentMonday();
+            var dailySales = from invoice in invoices
+                             where invoice.NgayBan.GetValueOrDefault() >= Monday && invoice.NgayBan.GetValueOrDefault() <= DateTime.Today
+                             group invoice by invoice.NgayBan into g
+                             select new
+                             {
+                                 Date = g.Key,
+                                 TotalAmount = g.Sum(i => i.TongTien)
+                             };
+
+
+            foreach (var dailySale in dailySales)
+            {
+                resultTable.Rows.Add(dailySale.Date, dailySale.TotalAmount);
+            }
+            return resultTable;
+        }
+        public DateTime GetMostRecentMonday()
+        {
+            DateTime today = DateTime.Today;
+            int daysSinceMonday = ((int)today.DayOfWeek - (int)DayOfWeek.Monday + 7) % 7;
+            return today.AddDays(-daysSinceMonday);
+        }
+
         public DataTable FindHoaDon(String SearchString, DateTime From, DateTime To, String MaNV, String MaKH)
         {
             List<HoaDonBan> hoadons = null;

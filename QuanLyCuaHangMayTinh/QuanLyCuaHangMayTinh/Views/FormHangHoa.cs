@@ -12,14 +12,15 @@ using System.Windows.Forms;
 
 namespace QuanLyCuaHangMayTinh.Views
 {
-    public partial class DanhSachhanghoa : Form
+    public partial class FormHangHoa : Form
     {
         preComputer present = new preComputer();
-        public DanhSachhanghoa()
+        public FormHangHoa()
         {
             InitializeComponent();
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             InitializeRadioButtons();
+            prsMain.AddMenuStripToForm(this);
         }
 
         private void hanghoa_Load(object sender, EventArgs e)

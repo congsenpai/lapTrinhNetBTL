@@ -24,6 +24,17 @@ namespace QuanLyCuaHangMayTinh.Presenter
             var suppliers = Db.NhaCCs.ToList();
             return suppliers;
         }
+        public void AddSupplier(String TenNCC, String DiaChi, String SoDienThoai)
+        {
+            NhaCC a = new NhaCC();
+            NhaCC NhaCCMoi = new NhaCC
+            {
+                TenNCC = TenNCC,
+                DiaChi = DiaChi,
+                Dienthoai = SoDienThoai
+            };
+            a.addData(NhaCCMoi);
+        }
         public DataTable loadSupplier()
         {
             var NCCs = listSupplier();
@@ -33,6 +44,92 @@ namespace QuanLyCuaHangMayTinh.Presenter
         public bool CheckExits(String MaNCC)
         {
             return Db.NhaCCs.Any(nv => nv.MaNCC == MaNCC);
+        }
+                public DataTable findByID(string id, string typeSort)
+        {
+            if (typeSort == "ASC")
+            {
+                var query = Db.NhaCCs
+                 .Where(NCC => NCC.MaNCC == id)
+                 .OrderBy(NCC => NCC.MaNCC)
+                 .ToList();
+                DataTable a = pre.ConvertToDataTable(query);
+                return a;
+            }
+            else
+            {
+                var query = Db.NhaCCs
+               .Where(NCC => NCC.MaNCC == id)
+               .OrderByDescending(NCC => NCC.MaNCC)
+               .ToList();
+                DataTable a = pre.ConvertToDataTable(query);
+                return a;
+            }
+
+        }
+        public DataTable findByName(string name, string typeSort)
+        {
+            if (typeSort == "ASC")
+            {
+                var query = Db.NhaCCs
+               .Where(NCC => NCC.TenNCC == name)
+               .OrderBy(NCC => NCC.MaNCC)
+               .ToList();
+                DataTable a = pre.ConvertToDataTable(query);
+                return a;
+            }
+            else
+            {
+                var query = Db.NhaCCs
+              .Where(NCC => NCC.TenNCC == name)
+              .OrderByDescending(NCC => NCC.MaNCC)
+              .ToList();
+                DataTable a = pre.ConvertToDataTable(query);
+                return a;
+            }
+        }
+        public DataTable findByPhone(string phone, string typeSort)
+        {
+            if (typeSort == "ASC")
+            {
+                var query = Db.NhaCCs
+                 .Where(NCC => NCC.Dienthoai == phone)
+                 .OrderBy(NCC => NCC.MaNCC)
+                 .ToList();
+                DataTable a = pre.ConvertToDataTable(query);
+                return a;
+            }
+            else
+            {
+                var query = Db.NhaCCs
+                 .Where(NCC => NCC.Dienthoai == phone)
+                 .OrderByDescending(NCC => NCC.MaNCC)
+                 .ToList();
+
+                DataTable a = pre.ConvertToDataTable(query);
+                return a;
+            }
+        }
+        public DataTable findByAddress(string address, string typeSort)
+        {
+            if (typeSort == "ASC")
+            {
+                var query = Db.NhaCCs
+              .Where(NCC => NCC.DiaChi == address)
+              .OrderBy(NCC => NCC.MaNCC)
+              .ToList();
+                DataTable a = pre.ConvertToDataTable(query);
+                return a;
+            }
+            else
+            {
+                var query = Db.NhaCCs
+              .Where(NCC => NCC.DiaChi == address)
+              .OrderByDescending(NCC => NCC.MaNCC)
+              .ToList();
+                DataTable a = pre.ConvertToDataTable(query);
+                return a;
+            }
         }
     }
 }

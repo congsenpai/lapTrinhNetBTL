@@ -30,6 +30,15 @@ namespace QuanLyCuaHangMayTinh.Presenter
             DataTable a = pre.ConvertToDataTable(khachHangs);
             return a;
         }
+        public void AddCustomer(String TenKH, String DiaChi, String SoDienThoai)
+        {
+            KhachHang a= new KhachHang();
+            KhachHang khachHangMoi = new KhachHang
+            {
+                TenKH = TenKH, DiaChi = DiaChi,Dienthoai = SoDienThoai
+            };
+            a.addData(khachHangMoi);
+        }
 
         public DataTable findByID(string id, string typeSort)
         {

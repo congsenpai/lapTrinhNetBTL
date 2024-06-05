@@ -76,3 +76,16 @@ D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangM
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.BanHang.resources
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.HoaDonBan.resources
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.NhapHang.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.Addkhachhang.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.AddNCC.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.NCC.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.Nhân_viên.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.Tongquan.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.AddNV.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.Nhanvien.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.FormHangHoa.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.FormHoaDonNhap.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.FormKhachHang.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.FormHoaDonBan.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.FormNCC.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.FormNhanVien.resources

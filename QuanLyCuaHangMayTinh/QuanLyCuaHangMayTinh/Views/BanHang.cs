@@ -38,7 +38,7 @@ namespace QuanLyCuaHangMayTinh.Views
             loadCBEmployee();
             loadLBCustomer();
             loadLBComputers();
-
+            prsMain.AddMenuStripToForm(this);
         }
         public void FocusChanged(bool a,bool b)
         {
@@ -387,14 +387,14 @@ namespace QuanLyCuaHangMayTinh.Views
         private void hàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-            DanhSachhanghoa hanghoa= new DanhSachhanghoa();
+            FormHangHoa hanghoa= new FormHangHoa();
             hanghoa.Show();
         }
 
         private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-            khachhang khachhang=new khachhang();
+            FormKhachHang khachhang=new FormKhachHang();
             khachhang.Show();
         }
 
