@@ -14,10 +14,10 @@ namespace QuanLyCuaHangMayTinh.Presenter
 
         public Entity Db { get => db; set => db = value; }
 
-        prsMain prsMain = new prsMain();
+        PreMain prsMain = new PreMain();
         PreSupplier suppliers = new PreSupplier();
-        preEmployee employees = new preEmployee();
-        preComputer computers = new preComputer();
+        PreEmployee employees = new PreEmployee();
+        PreComputer computers = new PreComputer();
         private List<HoaDonNhap> listHoaDon()
         {
             var hoadon = Db.HoaDonNhaps.ToList();
@@ -32,9 +32,9 @@ namespace QuanLyCuaHangMayTinh.Presenter
         public DataTable FindHoaDon(String SearchString, DateTime From, DateTime To, String MaNV, String MaNCC)
         {
             List<HoaDonNhap> hoadons = null;
-            if (employees.CheckExits(MaNV) == false)
+            if (prsMain.CheckExits(MaNV, "NV") == false)
             {
-                if (suppliers.CheckExits(MaNCC) == false)
+                if (prsMain.CheckExits(MaNCC, "NCC") == false)
                 {
                     hoadons = Db.HoaDonNhaps
                           .Where(m => m.MaHDN.Contains(SearchString)
@@ -54,7 +54,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
             }
             else
             {
-                if (suppliers.CheckExits(MaNCC) == false)
+                if (prsMain.CheckExits(MaNCC, "NCC") == false)
                 {
                     hoadons = Db.HoaDonNhaps
                           .Where(m => m.MaHDN.Contains(SearchString)
@@ -82,37 +82,34 @@ namespace QuanLyCuaHangMayTinh.Presenter
 
         public void AddImportDetails(DataTable hoadon, DateTime NgayNhap, String maNV, String maNCC, Double TongTien)
         {
-            using (var db = new Entity())
+            HoaDonNhap a = Import(NgayNhap, maNV, maNCC, TongTien);
+            foreach (DataRow dr in hoadon.Rows)
             {
-                HoaDonNhap a = Import(db, NgayNhap, maNV, maNCC, TongTien);
-                foreach (DataRow dr in hoadon.Rows)
+                ChiTietHDN chitiet = new ChiTietHDN
                 {
-                    ChiTietHDN chitiet = new ChiTietHDN
-                    {
-                        MaHDN = a.MaHDN,
-                        MaMVT = dr["MaMVT"].ToString(),
-                        Soluong = (int?)dr["SoLuong"],
-                        Dongia = (double?)dr["DonGia"]
-                    };
-                    db.ChiTietHDNs.Add(chitiet);
-                    db.SaveChanges();
-                    var mayVTToUpdate = Db.MayVTs.FirstOrDefault(m => m.MaMVT == chitiet.MaMVT);
-                    if (mayVTToUpdate != null)
-                    {
-                        mayVTToUpdate.SoLuong += chitiet.Soluong ?? 0;
-                        Db.SaveChanges();
-                    }
+                    MaHDN = a.MaHDN,
+                    MaMVT = dr["MaMVT"].ToString(),
+                    Soluong = (int?)dr["SoLuong"],
+                    Dongia = (double?)dr["DonGia"]
+                };
+                db.ChiTietHDNs.Add(chitiet);
+                db.SaveChanges();
+                var mayVTToUpdate = Db.MayVTs.FirstOrDefault(m => m.MaMVT == chitiet.MaMVT);
+                if (mayVTToUpdate != null)
+                {
+                    mayVTToUpdate.SoLuong += chitiet.Soluong;
+                    Db.SaveChanges();
                 }
-                
             }
+
         }
 
-        private HoaDonNhap Import(Entity db, DateTime NgayNhap, String maNV, String maNCC, Double TongTien)
+        private HoaDonNhap Import(DateTime NgayNhap, String maNV, String maNCC, Double TongTien)
         {
             HoaDonNhap newHoadon = new HoaDonNhap();
-            HoaDonNhap a=newHoadon.addData(db, NgayNhap, maNV, maNCC, TongTien);
+            HoaDonNhap a = newHoadon.addData(NgayNhap, maNV, maNCC, TongTien);
             return a;
         }
-
     }
+
 }

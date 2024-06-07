@@ -12,12 +12,6 @@ namespace QuanLyCuaHangMayTinh.Presenter
         Entity db = new Entity();
         public Entity Db { get => db; set => db = value; }
 
-        private List<loginAccout> listLogin()
-        {
-            var khachhangs = Db.loginAccouts.ToList();
-            return khachhangs;
-        }
-
         public bool findByID(string tk, string mk)
         {
             bool accountExists = Db.loginAccouts

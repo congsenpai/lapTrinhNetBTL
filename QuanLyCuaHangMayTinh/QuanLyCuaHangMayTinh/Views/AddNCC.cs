@@ -13,12 +13,10 @@ namespace QuanLyCuaHangMayTinh.Views
 {
     public partial class AddNCC : Form
     {
-        private FormNCC NCCForm;
         PreSupplier present = new PreSupplier();
-        public AddNCC(FormNCC nccForm)
+        public AddNCC()
         {
             InitializeComponent();
-            this.NCCForm = nccForm;
         }
         private void CheckKeyPress(object sender, KeyPressEventArgs e)
         {
@@ -35,13 +33,11 @@ namespace QuanLyCuaHangMayTinh.Views
             btn_Luu.Enabled = true;
             btn_Boqua.Enabled = true;
         }
-        DataTable btl; // khai báo ngoài 
 
         private void btn_Boqua_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            NCCForm.Show();
-            
+        
         }
 
         private void btn_Luu_Click(object sender, EventArgs e)
@@ -74,7 +70,6 @@ namespace QuanLyCuaHangMayTinh.Views
         private void AddNCC_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Dispose();
-            NCCForm.Show();
         }
     }
 }

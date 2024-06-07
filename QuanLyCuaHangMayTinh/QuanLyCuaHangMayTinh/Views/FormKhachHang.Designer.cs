@@ -77,6 +77,7 @@
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Thêm khách hàng";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // DTGV
             // 
@@ -215,7 +216,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // khachhang
+            // FormKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -230,7 +231,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "khachhang";
+            this.Name = "FormKhachHang";
             this.Text = "Khách hàng";
             this.Load += new System.EventHandler(this.khachhang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DTGV)).EndInit();

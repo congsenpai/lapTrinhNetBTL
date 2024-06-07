@@ -10,9 +10,9 @@ namespace QuanLyCuaHangMayTinh.Presenter
 {
     
 
-    public class preEmployee
+    public class PreEmployee
     {
-        prsMain pre=new prsMain();
+        PreMain pre=new PreMain();
         Entity db=new Entity();
        
 
@@ -27,10 +27,6 @@ namespace QuanLyCuaHangMayTinh.Presenter
                 var nhanViens = listEmployee();
                 DataTable a = pre.ConvertToDataTable(nhanViens);
                 return a;
-        }
-        public bool CheckExits(String MaNV)
-        {
-            return Db.NhanViens.Any(nv => nv.MaNV == MaNV);
         }
         public DataTable findByBirthDay(DateTime birth, string typeSort)
         {

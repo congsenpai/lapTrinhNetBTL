@@ -16,12 +16,13 @@ namespace QuanLyCuaHangMayTinh.Model
 
     public partial class HoaDonNhap
     {
+        Entity db=new Entity();
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HoaDonNhap()
         {
             this.ChiTietHDNs = new HashSet<ChiTietHDN>();
         }
-        public HoaDonNhap addData(Entity db, DateTime ngaynhap, String maNV, String maNCC, Double TongTien)
+        public HoaDonNhap addData(DateTime ngaynhap, String maNV, String maNCC, Double TongTien)
         {
             HoaDonNhap HoaDonNhap = new HoaDonNhap() { MaHDN = autoGenCode(db), NgayNhap = ngaynhap, MaNV = maNV, MaNCC = maNCC, ThanhTien = TongTien };
             db.HoaDonNhaps.Add(HoaDonNhap);

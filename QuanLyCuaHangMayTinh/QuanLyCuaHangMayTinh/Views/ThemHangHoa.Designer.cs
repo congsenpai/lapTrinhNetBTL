@@ -74,6 +74,7 @@
             this.txtSoluong = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgMayTinh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -249,7 +250,7 @@
             this.btnChoose.Location = new System.Drawing.Point(80, 296);
             this.btnChoose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnChoose.Name = "btnChoose";
-            this.btnChoose.Size = new System.Drawing.Size(109, 31);
+            this.btnChoose.Size = new System.Drawing.Size(109, 40);
             this.btnChoose.TabIndex = 35;
             this.btnChoose.Text = "Chọn";
             this.btnChoose.UseVisualStyleBackColor = true;
@@ -476,16 +477,27 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(285, 409);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(152, 387);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(170, 26);
             this.dateTimePicker1.TabIndex = 61;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(12, 393);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(128, 20);
+            this.label21.TabIndex = 62;
+            this.label21.Text = "Thời gian hiện tại";
             // 
             // ThemHangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1229, 679);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtSoluong);
             this.Controls.Add(this.label20);
@@ -589,5 +601,6 @@
         public System.Windows.Forms.TextBox txtSoluong;
         public System.Windows.Forms.TextBox txtBaoHanh;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label21;
     }
 }

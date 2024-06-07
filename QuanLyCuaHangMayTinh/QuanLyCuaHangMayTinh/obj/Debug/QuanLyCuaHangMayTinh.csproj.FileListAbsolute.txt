@@ -89,3 +89,4 @@ D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangM
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.FormHoaDonBan.resources
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.FormNCC.resources
 D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.FormNhanVien.resources
+D:\Monhoc\DotNet\BaiTapLonGit\lapTrinhNetBTL\QuanLyCuaHangMayTinh\QuanLyCuaHangMayTinh\obj\Debug\QuanLyCuaHangMayTinh.Views.Form1.resources

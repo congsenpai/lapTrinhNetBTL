@@ -15,10 +15,9 @@ namespace QuanLyCuaHangMayTinh.Views
     public partial class NhapHang : Form
     {
         PreImport present = new PreImport();
-        preEmployee employees = new preEmployee();
+        PreEmployee employees = new PreEmployee();
         PreSupplier Suppliers = new PreSupplier();
-        preComputer computers = new preComputer();
-        List<String> originalItemsEmploy = new List<string>();
+        PreComputer computers = new PreComputer();
         List<String> originalItemsSup = new List<string>();
         List<String> originalItemsCom = new List<string>();
         DataTable hoadon = new DataTable()
@@ -39,7 +38,7 @@ namespace QuanLyCuaHangMayTinh.Views
             loadLBComputers();
             lbComputerItems.Visible = false;
             lbSupplier.Visible = false;
-            prsMain.AddMenuStripToForm(this);
+            PreMain.AddMenuStripToForm(this);
         }
         public void FocusChanged(bool a, bool b)
         {
@@ -84,7 +83,6 @@ namespace QuanLyCuaHangMayTinh.Views
                 foreach (DataRow row in dt.Rows)
                 {
                     cbEmployee.Items.Add(row["TenNV"].ToString());
-                    originalItemsEmploy.Add(row["TenNV"].ToString());
                 }
             }
         }
@@ -240,8 +238,6 @@ namespace QuanLyCuaHangMayTinh.Views
 
             lbPayBack.Text = payback.ToString();
         }
-
-
         private void btnBuy_Click(object sender, EventArgs e)
         {
             if (hoadon.Rows.Count == 0)
@@ -301,6 +297,7 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void txtSupplier_TextChanged(object sender, EventArgs e)
         {
+            loadLBSupplier();
             lbSupplier.Visible = true;
             if (txtSupplier.Text != null)
             {
@@ -369,28 +366,6 @@ namespace QuanLyCuaHangMayTinh.Views
             cbEmployee.Text = "";
         }
 
-
-        private void tổngQuanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            //Tongquan tongquan = new Tongquan();
-            //tongquan.Show();
-        }
-
-        private void hàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            FormHangHoa hanghoa = new FormHangHoa();
-            hanghoa.Show();
-        }
-
-        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            FormKhachHang khachhang = new FormKhachHang();
-            khachhang.Show();
-        }
-
         private void txtSoluong_Enter(object sender, EventArgs e)
         {
             FocusChanged(true,true);
@@ -404,6 +379,12 @@ namespace QuanLyCuaHangMayTinh.Views
         private void txtCusPay_Enter(object sender, EventArgs e)
         {
             FocusChanged(true, true);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddNCC nCC=new AddNCC();
+            nCC.Show();
         }
     }
 }

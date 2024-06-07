@@ -13,9 +13,9 @@ namespace QuanLyCuaHangMayTinh.Presenter
 {
 
 
-    public class preComputer
+    public class PreComputer
     {
-        prsMain prs = new prsMain();
+        PreMain prs = new PreMain();
         Entity db = new Entity();
 
 
@@ -28,14 +28,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
             .FirstOrDefault();
             return (int)result;
         }
-        public string getCodeByName(String Name)
-        {
-            var result = Db.MayVTs
-            .Where(b => b.TenMVT.Contains(Name))
-            .Select(b => b.MaMVT)
-            .FirstOrDefault();
-            return (string)result;
-        }
+
         // Call List From DB
         private List<MayVT> listComputer()
         {

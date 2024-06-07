@@ -14,7 +14,8 @@ namespace QuanLyCuaHangMayTinh.Views
 {
     public partial class ThemHangHoa : Form
     {
-        preComputer present = new preComputer();
+        PreComputer present = new PreComputer();
+        PreMain PreMain = new PreMain();
         byte[] imageData;
         public ThemHangHoa()
         {
@@ -180,20 +181,20 @@ namespace QuanLyCuaHangMayTinh.Views
         {
             if (checkInvalid() == false)
             {
-                string MaLm = getCodeByNameChoice(cbLoaiMay.Text, "LM");
-                string MaChip = getCodeByNameChoice(cbChip.Text, "Chip");
-                String MaOC = getCodeByNameChoice(cbOCung.Text, "OC");
-                String MaDL = getCodeByNameChoice(cbDungLuong.Text, "DL");
-                String MaTD = getCodeByNameChoice(cbTocDo.Text, "TD");
-                String MaO = getCodeByNameChoice(cbOCD.Text, "OCD");
-                String MaMH = getCodeByNameChoice(cbManHinh.Text, "MH");
-                String MaCo = getCodeByNameChoice(cbCoMH.Text, "COMH");
-                String MaChuot = getCodeByNameChoice(cbChuot.Text, "C");
-                String MaBP = getCodeByNameChoice(cbBanPhim.Text, "BP");
-                String MaOUSB = getCodeByNameChoice(cbUSB.Text, "USB");
-                String MaR = getCodeByNameChoice(cbRam.Text, "RAM");
-                String MaLoa = getCodeByNameChoice(cbLoa.Text, "LOA");
-                String MaHSX = getCodeByNameChoice(cbHSX.Text, "HSX");
+                string MaLm = PreMain.getCodeByNameChoice(cbLoaiMay.Text, "LM");
+                string MaChip = PreMain.getCodeByNameChoice(cbChip.Text, "Chip");
+                String MaOC = PreMain.getCodeByNameChoice(cbOCung.Text, "OC");
+                String MaDL = PreMain.getCodeByNameChoice(cbDungLuong.Text, "DL");
+                String MaTD = PreMain.getCodeByNameChoice(cbTocDo.Text, "TD");
+                String MaO = PreMain.getCodeByNameChoice(cbOCD.Text, "OCD");
+                String MaMH = PreMain.getCodeByNameChoice(cbManHinh.Text, "MH");
+                String MaCo = PreMain.getCodeByNameChoice(cbCoMH.Text, "COMH");
+                String MaChuot = PreMain.getCodeByNameChoice(cbChuot.Text, "C");
+                String MaBP = PreMain.getCodeByNameChoice(cbBanPhim.Text, "BP");
+                String MaOUSB = PreMain.getCodeByNameChoice(cbUSB.Text, "USB");
+                String MaR = PreMain.getCodeByNameChoice(cbRam.Text, "RAM");
+                String MaLoa = PreMain.getCodeByNameChoice(cbLoa.Text, "LOA");
+                String MaHSX = PreMain.getCodeByNameChoice(cbHSX.Text, "HSX");
                 DataTable a = present.loadComputer();
                 bool found = false;
                 foreach (DataRow row in a.Rows)
@@ -218,165 +219,6 @@ namespace QuanLyCuaHangMayTinh.Views
                     return;
                 }
             }
-        }
-        private string getCodeByNameChoice(String name, string type)
-        {
-            if (type == "LM")
-            {
-                DataTable LM = present.loadComputerType();
-                foreach (DataRow row in LM.Rows)
-                {
-                    if (row["TenLm"].ToString() == name)
-                    {
-                        return row["MaLm"].ToString();
-                    }
-                }
-            }
-            if (type == "Chip")
-            {
-                DataTable Chip = present.loadChip();
-                foreach (DataRow row in Chip.Rows)
-                {
-                    if (row["TenChip"].ToString() == name)
-                    {
-                        return row["MaChip"].ToString();
-                    }
-                }
-            }
-            if (type == "OC")
-            {
-                DataTable OC = present.loadOCung();
-                foreach (DataRow row in OC.Rows)
-                {
-                    if (row["TenOC"].ToString() == name)
-                    {
-                        return row["MaOC"].ToString();
-                    }
-                }
-            }
-            if (type == "DL")
-            {
-                DataTable DL = present.loadDungLuong();
-                foreach (DataRow row in DL.Rows)
-                {
-                    if (row["TenDL"].ToString() == name)
-                    {
-                        return row["MaDL"].ToString();
-                    }
-                }
-            }
-            if (type == "TD")
-            {
-                DataTable TD = present.loadTocDo();
-                foreach (DataRow row in TD.Rows)
-                {
-                    if (row["TenTD"].ToString() == name)
-                    {
-                        return row["MaTD"].ToString();
-                    }
-                }
-            }
-            if (type == "OCD")
-            {
-                DataTable OCD = present.loadOCD();
-                foreach (DataRow row in OCD.Rows)
-                {
-                    if (row["TenO"].ToString() == name)
-                    {
-                        return row["MaO"].ToString();
-                    }
-                }
-            }
-            if (type == "MH")
-            {
-                DataTable MH = present.loadScreen();
-                foreach (DataRow row in MH.Rows)
-                {
-                    if (row["TenMH"].ToString() == name)
-                    {
-                        return row["MaMH"].ToString();
-                    }
-                }
-            }
-            if (type == "COMH")
-            {
-                DataTable COMH = present.loadCoManHinh();
-                foreach (DataRow row in COMH.Rows)
-                {
-                    if (row["TenCo"].ToString() == name)
-                    {
-                        return row["MaCo"].ToString();
-                    }
-                }
-            }
-            if (type == "C")
-            {
-                DataTable C = present.loadChuot();
-                foreach (DataRow row in C.Rows)
-                {
-                    if (row["TenChuot"].ToString() == name)
-                    {
-                        return row["MaChuot"].ToString();
-                    }
-                }
-            }
-            if (type == "BP")
-            {
-                DataTable BP = present.loadKeyBoard();
-                foreach (DataRow row in BP.Rows)
-                {
-                    if (row["TenBP"].ToString() == name)
-                    {
-                        return row["MaBP"].ToString();
-                    }
-                }
-            }
-            if (type == "USB")
-            {
-                DataTable USB = present.loadUSB();
-                foreach (DataRow row in USB.Rows)
-                {
-                    if (row["TenOUSB"].ToString() == name)
-                    {
-                        return row["MaOUSB"].ToString();
-                    }
-                }
-            }
-            if (type == "RAM")
-            {
-                DataTable RAM = present.loadRam();
-                foreach (DataRow row in RAM.Rows)
-                {
-                    if (row["TenR"].ToString() == name)
-                    {
-                        return row["MaR"].ToString();
-                    }
-                }
-            }
-            if (type == "LOA")
-            {
-                DataTable LOA = present.loadSpeaker();
-                foreach (DataRow row in LOA.Rows)
-                {
-                    if (row["TenLoa"].ToString() == name)
-                    {
-                        return row["MaLoa"].ToString();
-                    }
-                }
-            }
-            if (type == "HSX")
-            {
-                DataTable HSX = present.loadHSX();
-                foreach (DataRow row in HSX.Rows)
-                {
-                    if (row["TenHSX"].ToString() == name)
-                    {
-                        return row["MaHSX"].ToString();
-                    }
-                }
-            }
-            return "";
-
         }
         private void reSetForm()
         {
@@ -505,7 +347,8 @@ namespace QuanLyCuaHangMayTinh.Views
                 txtGiaNhap.Focus();
                 return true;
             }
-            if (imageData == null) {
+            if (imageData == null)
+            {
                 MessageBox.Show("Bạn hãy vui lòng chọn ảnh", "Thông báo", MessageBoxButtons.OK);
                 return true;
             }

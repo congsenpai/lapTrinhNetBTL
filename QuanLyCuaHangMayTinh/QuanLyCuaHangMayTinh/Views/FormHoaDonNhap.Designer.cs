@@ -221,7 +221,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // HoaDonNhap
+            // FormHoaDonNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -235,8 +235,9 @@
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.button1);
-            this.Name = "HoaDonNhap";
+            this.Name = "FormHoaDonNhap";
             this.Text = "Hóa Đơn Nhập";
+            this.Load += new System.EventHandler(this.Orders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DTGV)).EndInit();
             this.grbNhanVien.ResumeLayout(false);
             this.grbNCC.ResumeLayout(false);

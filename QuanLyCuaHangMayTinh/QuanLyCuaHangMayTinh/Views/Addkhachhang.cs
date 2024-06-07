@@ -19,7 +19,7 @@ namespace QuanLyCuaHangMayTinh.Views
         {
             InitializeComponent();
         }
-        private void KeyPress(object sender, KeyPressEventArgs e)
+        private void CheckKeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
@@ -35,7 +35,6 @@ namespace QuanLyCuaHangMayTinh.Views
 
             btn_Boqua.Enabled = true;
         }
-        DataTable btl; // khai báo ngoài 
 
         private void btn_Boqua_Click(object sender, EventArgs e)
         {

@@ -19,7 +19,7 @@ namespace QuanLyCuaHangMayTinh.Views
         {
             InitializeComponent();
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            prsMain.AddMenuStripToForm(this);
+            PreMain.AddMenuStripToForm(this);
         }
         private void khachhang_Load(object sender, EventArgs e)
         {
@@ -78,6 +78,10 @@ namespace QuanLyCuaHangMayTinh.Views
             DTGV.DataSource = present.loadCustomer();
         }
 
-
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Addkhachhang addkhachhang = new Addkhachhang();
+            addkhachhang.Show();
+        }
     }
 }

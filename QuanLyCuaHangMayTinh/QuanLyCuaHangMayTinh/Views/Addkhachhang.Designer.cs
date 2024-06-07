@@ -107,7 +107,7 @@
             this.txt_SDT.Name = "txt_SDT";
             this.txt_SDT.Size = new System.Drawing.Size(265, 34);
             this.txt_SDT.TabIndex = 11;
-            this.txt_SDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress);
+            this.txt_SDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckKeyPress);
             // 
             // txt_Diachi
             // 

@@ -202,7 +202,7 @@
             this.btnAdd.Location = new System.Drawing.Point(896, 101);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(200, 40);
+            this.btnAdd.Size = new System.Drawing.Size(228, 40);
             this.btnAdd.TabIndex = 30;
             this.btnAdd.Text = "Thêm nhà cung cấp";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -220,7 +220,7 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "Nhà cung cấp";
             // 
-            // NCC
+            // FormNCC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -234,7 +234,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "NCC";
+            this.Name = "FormNCC";
             this.Text = "Nhà cung cấp";
             this.Load += new System.EventHandler(this.NCC_Load);
             this.groupBox2.ResumeLayout(false);

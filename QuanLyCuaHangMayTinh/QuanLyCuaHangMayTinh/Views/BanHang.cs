@@ -16,10 +16,10 @@ namespace QuanLyCuaHangMayTinh.Views
     public partial class BanHang : Form
     {
         PreSale present = new PreSale();
-        preEmployee employees = new preEmployee();
+        PreEmployee employees = new PreEmployee();
         PreCustomer customers = new PreCustomer();
-        preComputer computers = new preComputer();
-        List<String> originalItemsEmploy = new List<string>();
+        PreComputer computers = new PreComputer();
+        PreMain main = new PreMain();
         List<String> originalItemsCus = new List<string>();
         List<String> originalItemsCom = new List<string>();
         DataTable hoadon = new DataTable()
@@ -38,7 +38,7 @@ namespace QuanLyCuaHangMayTinh.Views
             loadCBEmployee();
             loadLBCustomer();
             loadLBComputers();
-            prsMain.AddMenuStripToForm(this);
+            PreMain.AddMenuStripToForm(this);
         }
         public void FocusChanged(bool a,bool b)
         {
@@ -83,7 +83,6 @@ namespace QuanLyCuaHangMayTinh.Views
                 foreach (DataRow row in dt.Rows)
                 {
                     cbEmployee.Items.Add(row["TenNV"].ToString());
-                    originalItemsEmploy.Add(row["TenNV"].ToString());
                 }
             }
         }
@@ -101,7 +100,6 @@ namespace QuanLyCuaHangMayTinh.Views
             }
 
         }
-
 
         public void loadLBComputers()
         {
@@ -133,32 +131,20 @@ namespace QuanLyCuaHangMayTinh.Views
                 loadLBComputers();
             }
         }
-        public string getCodeByNameChoice(string Name, Boolean a)
+        private void txtCustomer_TextChanged(object sender, EventArgs e)
         {
-            if (a == true)
+            loadLBCustomer();
+            lbCustomer.Visible = true;
+            if (txtCustomer.Text != null)
             {
-                DataTable employeesTable = employees.loadEmployee();
-                foreach (DataRow row in employeesTable.Rows)
+                List<string> foundItems = originalItemsCus.FindAll(x => x.ToLower().Contains(txtCustomer.Text.ToLower()));
+                lbCustomer.Items.Clear();
+                foreach (string item in foundItems)
                 {
-                    if (row["TenNV"].ToString() == Name)
-                    {
-                        return row["MaNV"].ToString();
-                    }
+                    lbCustomer.Items.Add(item);
                 }
+                txtCustomer.SelectionStart = txtCustomer.Text.Length;
             }
-            else
-            {
-                DataTable customerTable = customers.loadCustomer();
-                foreach (DataRow row in customerTable.Rows)
-                {
-                    if (row["TenKH"].ToString() == Name)
-                    {
-                        return row["MaKH"].ToString();
-                    }
-                }
-            }
-            return null;
-
         }
 
         private int checkExit()
@@ -195,7 +181,8 @@ namespace QuanLyCuaHangMayTinh.Views
             }
             else
             {
-                int soLuong = computers.checkAmount(computers.getCodeByName(txtSearch.Text));
+               string maMVT= main.getCodeByNameChoice(txtSearch.Text, "COM");
+                int soLuong = computers.checkAmount(maMVT);
                 if (soLuong < Convert.ToInt32(txtSoluong.Text))
                 {
                     MessageBox.Show("Số lượng hàng trong kho không đủ", "Thông báo", MessageBoxButtons.OK);
@@ -295,7 +282,7 @@ namespace QuanLyCuaHangMayTinh.Views
             }
             else
             {
-                manv = getCodeByNameChoice(cbEmployee.Text, true);
+                manv = main.getCodeByNameChoice(cbEmployee.Text, "NV");
 
             }
             if (txtCustomer.Text.Length == 0)
@@ -304,7 +291,7 @@ namespace QuanLyCuaHangMayTinh.Views
             }
             else
             {
-                makh = getCodeByNameChoice(txtCustomer.Text, false);
+                makh = main.getCodeByNameChoice(txtCustomer.Text, "NV");
             }
             present.AddBuyDetails(hoadon, ngayban, manv, makh, totalcost);
             resetOrder();
@@ -324,20 +311,7 @@ namespace QuanLyCuaHangMayTinh.Views
             DtgvItems.DataSource = null;
         }
 
-        private void txtCustomer_TextChanged(object sender, EventArgs e)
-        {
-            lbCustomer.Visible = true;
-            if (txtCustomer.Text != null)
-            {
-                List<string> foundItems = originalItemsCus.FindAll(x => x.ToLower().Contains(txtCustomer.Text.ToLower()));
-                lbCustomer.Items.Clear();
-                foreach (string item in foundItems)
-                {
-                    lbCustomer.Items.Add(item);
-                }
-                txtCustomer.SelectionStart = txtCustomer.Text.Length;
-            }
-        }
+
 
         private void lbComputerItems_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -356,46 +330,26 @@ namespace QuanLyCuaHangMayTinh.Views
             }
             lbCustomer.Visible = false;
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            resetOrder();
+            cbEmployee.Text = "";
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Addkhachhang addkhachhang = new Addkhachhang();
+            addkhachhang.Show();
+        }
 
         private void txtSearch_Enter(object sender, EventArgs e)
         {
             FocusChanged(false, true);
             lbComputerItems.Visible = true;
         }
-
-
         private void txtCustomer_Enter(object sender, EventArgs e)
         {
             FocusChanged(true,false);
             lbCustomer.Visible = true;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            resetOrder();
-            cbEmployee.Text = "";
-        }
-
-
-        private void tổngQuanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            //Tongquan tongquan = new Tongquan();
-            //tongquan.Show();
-        }
-
-        private void hàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            FormHangHoa hanghoa= new FormHangHoa();
-            hanghoa.Show();
-        }
-
-        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            FormKhachHang khachhang=new FormKhachHang();
-            khachhang.Show();
         }
 
         private void txtSoluong_Enter(object sender, EventArgs e)
@@ -412,5 +366,7 @@ namespace QuanLyCuaHangMayTinh.Views
         {
             FocusChanged(true, true);
         }
+
+
     }
 }

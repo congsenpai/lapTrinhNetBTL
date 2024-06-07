@@ -13,8 +13,8 @@ namespace QuanLyCuaHangMayTinh.Views
 {
     public partial class AddNV : Form
     {
-        private FormNhanVien NVForm;
-        preEmployee present = new preEmployee();
+        private FormNhanVien NVForm; 
+        PreEmployee present = new PreEmployee();
         public AddNV(FormNhanVien NVForm)
         {
             InitializeComponent();

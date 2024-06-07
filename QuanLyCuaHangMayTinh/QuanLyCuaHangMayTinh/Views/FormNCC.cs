@@ -18,7 +18,7 @@ namespace QuanLyCuaHangMayTinh.Views
         public FormNCC()
         {
             InitializeComponent();
-            prsMain.AddMenuStripToForm(this);
+            PreMain.AddMenuStripToForm(this);
         }
         private void NCC_Load(object sender, EventArgs e)
         {
@@ -79,8 +79,7 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddNCC AddNCCForm = new AddNCC(this);
-            this.Hide();
+            AddNCC AddNCCForm = new AddNCC();
             AddNCCForm.Show();
         }
     }

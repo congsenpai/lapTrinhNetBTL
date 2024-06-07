@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,13 +15,13 @@ namespace QuanLyCuaHangMayTinh.Views
 {
     public partial class FormHangHoa : Form
     {
-        preComputer present = new preComputer();
+        PreComputer present = new PreComputer();
         public FormHangHoa()
         {
             InitializeComponent();
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             InitializeRadioButtons();
-            prsMain.AddMenuStripToForm(this);
+            PreMain.AddMenuStripToForm(this);
         }
 
         private void hanghoa_Load(object sender, EventArgs e)
@@ -145,6 +146,7 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void DTGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
             ThemHangHoa form = new ThemHangHoa();
             if (e.RowIndex >= 0)
             {
@@ -176,7 +178,30 @@ namespace QuanLyCuaHangMayTinh.Views
                 }
                 form.txtNote.Text = row.Cells["Ghi chú"].Value.ToString();
             }
+            DisableAllItem(form);
             form.Show();
+        }
+        public void DisableAllItem(ThemHangHoa form)
+        {
+            form.txtTenMVT.Enabled = false;
+            form.cbLoaiMay.Enabled = false;
+            form.cbChip.Enabled = false;
+            form.cbOCung.Enabled = false;                    
+            form.cbDungLuong.Enabled = false;
+            form.cbTocDo.Enabled = false;
+            form.cbOCD.Enabled = false;
+            form.cbManHinh.Enabled = false;
+            form.cbCoMH.Enabled = false;
+            form.cbChuot.Enabled = false;
+            form.cbBanPhim.Enabled = false;
+            form.cbUSB.Enabled = false;
+            form.cbRam.Enabled = false;
+            form.cbLoa.Enabled = false;
+            form.cbHSX.Enabled = false;
+            form.txtGiaNhap.Enabled = false;
+            form.txtGiaBan.Enabled = false;
+            form.txtBaoHanh.Enabled = false;
+            form.txtSoluong.Enabled = false;
         }
     }
 }

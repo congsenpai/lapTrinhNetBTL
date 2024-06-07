@@ -15,11 +15,11 @@ namespace QuanLyCuaHangMayTinh.Views
     public partial class Tongquan : Form
     {
         PreSale order = new PreSale();
-        prsMain prsMain = new prsMain();
+        PreMain prsMain = new PreMain();
         public Tongquan()
         {
             InitializeComponent();
-            prsMain.AddMenuStripToForm(this);
+            PreMain.AddMenuStripToForm(this);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -28,58 +28,44 @@ namespace QuanLyCuaHangMayTinh.Views
             LoadComparePrevDay();
             LoadComparePrevMonth();
         }
-        private void showChartByMonth()
+        private void InitializeChart(string xTitle, string yTitle)
         {
             chartSales.Series.Clear();
             chartSales.ChartAreas.Clear();
+            chartSales.Series.Add("Tổng tiền hàng bán được");
+            chartSales.ChartAreas.Add(new System.Windows.Forms.DataVisualization.Charting.ChartArea());
+            chartSales.ChartAreas[0].AxisX.Title = xTitle;
+            chartSales.ChartAreas[0].AxisY.Title = yTitle;
+            chartSales.Series["Tổng tiền hàng bán được"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+        }
+        private void showChartByMonth()
+        {
+            InitializeChart("Ngày", "Tổng tiền");
             DateTime now = DateTime.Now;
             DataTable dt = order.getOrderByMonth(now);
 
-            // Thêm chuỗi dữ liệu vào biểu đồ
-            chartSales.Series.Add("Tổng tiền hàng bán được");
-
-            // Thêm các điểm dữ liệu vào chuỗi dữ liệu
             foreach (DataRow row in dt.Rows)
             {
                 DateTime date = (DateTime)row["Date"];
                 decimal totalAmount = (decimal)row["TotalAmount"];
                 chartSales.Series["Tổng tiền hàng bán được"].Points.AddXY(date.Day, totalAmount);
             }
-            chartSales.ChartAreas.Add(new System.Windows.Forms.DataVisualization.Charting.ChartArea());
-            // Đặt tên cho trục X và trục Y
-            chartSales.ChartAreas[0].AxisX.Title = "Ngày";
-            chartSales.ChartAreas[0].AxisY.Title = "Tổng tiền";
-
-            // Đặt loại biểu đồ là cột (Column)
-            chartSales.Series["Tổng tiền hàng bán được"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
         }
+
         private void showChartByDayOfWeek()
         {
-            chartSales.Series.Clear();
-            chartSales.ChartAreas.Clear();
-
+            InitializeChart("Thứ", "Tổng tiền");
             DataTable dt = order.getOrderByCurrentWeek();
 
-            // Thêm chuỗi dữ liệu vào biểu đồ
-            chartSales.Series.Add("Tổng tiền hàng bán được");
-
-            // Thêm các điểm dữ liệu vào chuỗi dữ liệu
             foreach (DataRow row in dt.Rows)
             {
                 DateTime date = (DateTime)row["Date"];
                 decimal totalAmount = (decimal)row["TotalAmount"];
-                // Chuyển đổi DayOfWeek thành string
                 string dayOfWeek = date.DayOfWeek.ToString();
                 chartSales.Series["Tổng tiền hàng bán được"].Points.AddXY(dayOfWeek, totalAmount);
             }
-            chartSales.ChartAreas.Add(new System.Windows.Forms.DataVisualization.Charting.ChartArea());
-            // Đặt tên cho trục X và trục Y
-            chartSales.ChartAreas[0].AxisX.Title = "Thứ";
-            chartSales.ChartAreas[0].AxisY.Title = "Tổng tiền";
-
-            // Đặt loại biểu đồ là cột (Column)
-            chartSales.Series["Tổng tiền hàng bán được"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
         }
+
 
         private void btn_Theongay_Click(object sender, EventArgs e)
         {
@@ -98,7 +84,7 @@ namespace QuanLyCuaHangMayTinh.Views
             .Sum(row => row.Field<decimal>("TotalAmount"));
             lbDailySale1.Text=totalAmount.ToString();
             lbDailySale2.Text=totalAmount.ToString();
-            lbDailyOrderCount.Text = order.SumOfOrder().ToString();
+            lbDailyOrderCount.Text = order.SumOfOrder(order.getOrderByDay(now)).ToString();
 
         }
         private void LoadComparePrevDay()

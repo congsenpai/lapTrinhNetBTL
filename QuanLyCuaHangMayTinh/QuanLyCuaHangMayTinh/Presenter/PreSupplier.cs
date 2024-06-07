@@ -16,7 +16,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
     public class PreSupplier
     {
         Entity db = new Entity();
-        prsMain pre = new prsMain();
+        PreMain pre = new PreMain();
         public Entity Db { get => db; set => db = value; }
 
         private List<NhaCC> listSupplier()
@@ -40,10 +40,6 @@ namespace QuanLyCuaHangMayTinh.Presenter
             var NCCs = listSupplier();
             DataTable a = pre.ConvertToDataTable(NCCs);
             return a;
-        }
-        public bool CheckExits(String MaNCC)
-        {
-            return Db.NhaCCs.Any(nv => nv.MaNCC == MaNCC);
         }
                 public DataTable findByID(string id, string typeSort)
         {

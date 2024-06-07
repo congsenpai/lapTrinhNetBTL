@@ -23,7 +23,7 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            txtpassword.PasswordChar = '*';
         }
         private void btnlogin_Click(object sender, EventArgs e)
         {
@@ -37,9 +37,10 @@ namespace QuanLyCuaHangMayTinh.Views
                 if (prelogin.findByID(MaNV, password))// Kiểm tra xem dtable có dữ liệu hay không
                 if (prelogin.findByID(MaNV, password))
                 {
+                        this.Hide();
                     BanHang sale = new BanHang();
-                    sale.Show();
-                    this.Hide();
+                    sale.ShowDialog();
+                    this.Dispose();
                 }
 
                 else
@@ -60,8 +61,6 @@ namespace QuanLyCuaHangMayTinh.Views
         {
             txtusername.Clear();
             txtpassword.Clear();
-
-
             txtusername.Focus();
         }
 

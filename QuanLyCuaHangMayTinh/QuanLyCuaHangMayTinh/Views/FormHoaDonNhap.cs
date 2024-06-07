@@ -14,23 +14,19 @@ namespace QuanLyCuaHangMayTinh.Views
     public partial class FormHoaDonNhap : Form
     {
         PreImport present = new PreImport();
-        preEmployee employees = new preEmployee();
+        PreEmployee employees = new PreEmployee();
         PreSupplier suppliers = new PreSupplier();
-        preComputer computers = new preComputer();
-        List<String> originalItemsEmploy = new List<string>();
-        List<String> originalItemsCus = new List<string>();
-        List<String> originalItemsCom = new List<string>();
+        PreMain main = new PreMain();
         public FormHoaDonNhap()
         {
             InitializeComponent();
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            loadCBEmployee();
-            loadCBsupplier();
-            prsMain.AddMenuStripToForm(this);
+            loadCB();
+            PreMain.AddMenuStripToForm(this);
 
         }
 
-        public void loadCBEmployee()
+        public void loadCB()
         {
             DataTable dt = employees.loadEmployee();
 
@@ -39,20 +35,15 @@ namespace QuanLyCuaHangMayTinh.Views
                 foreach (DataRow row in dt.Rows)
                 {
                     cbNhanVien.Items.Add(row["TenNV"].ToString());
-                    originalItemsEmploy.Add(row["TenNV"].ToString());
                 }
             }
-        }
 
-        public void loadCBsupplier()
-        {
-            DataTable dt = suppliers.loadSupplier();
-            if (dt != null && dt.Rows.Count > 0)
+            DataTable dt1 = suppliers.loadSupplier();
+            if (dt1 != null && dt1.Rows.Count > 0)
             {
-                foreach (DataRow row in dt.Rows)
+                foreach (DataRow row in dt1.Rows)
                 {
                     cbNCC.Items.Add(row["TenNCC"].ToString());
-                    originalItemsCus.Add(row["TenNCC"].ToString());
                 }
             }
 
@@ -63,37 +54,11 @@ namespace QuanLyCuaHangMayTinh.Views
         {
             DTGV.DataSource = present.loadHoaDonNhap();
         }
-        private string getCodeByNameChoice(String name, string type)
-        {
-            if (type == "NV")
-            {
-                DataTable NV = employees.loadEmployee();
-                foreach (DataRow row in NV.Rows)
-                {
-                    if (row["TenNV"].ToString() == name)
-                    {
-                        return row["MaNV"].ToString();
-                    }
-                }
-            }
-            if (type == "NCC")
-            {
-                DataTable NCC = suppliers.loadSupplier();
-                foreach (DataRow row in NCC.Rows)
-                {
-                    if (row["TenNCC"].ToString() == name)
-                    {
-                        return row["MaNCC"].ToString();
-                    }
-                }
-            }
-            return null;
-        }
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            string manv = getCodeByNameChoice(cbNhanVien.Text, "NV");
-            string maNCC = getCodeByNameChoice(cbNhanVien.Text, "NCC");
+            string manv = main.getCodeByNameChoice(cbNhanVien.Text, "NV");
+            string maNCC = main.getCodeByNameChoice(cbNCC.Text, "NCC");
             DateTime From = dateTimePicker1.Value;
             DateTime To = dateTimePicker2.Value;
             DTGV.DataSource = present.FindHoaDon(txtSearch.Text, From, To, manv, maNCC);
@@ -106,9 +71,10 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            NhapHang nhaphang=new NhapHang();
-            nhaphang.Show();
             this.Hide();
+            NhapHang nhaphang = new NhapHang();
+            nhaphang.ShowDialog();
+            this.Dispose();
         }
     }
 }

@@ -14,11 +14,11 @@ namespace QuanLyCuaHangMayTinh.Views
 {
     public partial class FormNhanVien : Form
     {
-        preEmployee present=new preEmployee();
+        PreEmployee present=new PreEmployee();
         public FormNhanVien()
         {
             InitializeComponent();
-            prsMain.AddMenuStripToForm(this);
+            PreMain.AddMenuStripToForm(this);
         }
         private void nhanvien_Load(object sender, EventArgs e)
         {
@@ -90,8 +90,6 @@ namespace QuanLyCuaHangMayTinh.Views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.Hide();
-
             // Hiển thị Form AddNV
             AddNV addNVForm = new AddNV(this);
             addNVForm.Show();

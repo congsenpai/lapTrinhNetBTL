@@ -16,7 +16,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
     public class PreCustomer
     {
         Entity db = new Entity();
-        prsMain pre = new prsMain();
+        PreMain pre = new PreMain();
         public Entity Db { get => db; set => db = value; }
 
         private List<KhachHang> listCustomer()
@@ -125,10 +125,6 @@ namespace QuanLyCuaHangMayTinh.Presenter
                 DataTable a = pre.ConvertToDataTable(query);
                 return a;
             }
-        }
-        public bool CheckExits(String MaKH)
-        {
-            return Db.KhachHangs.Any(nv => nv.MaKH == MaKH);
         }
 
 

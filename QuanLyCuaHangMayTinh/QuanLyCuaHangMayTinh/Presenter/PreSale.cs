@@ -14,19 +14,18 @@ namespace QuanLyCuaHangMayTinh.Presenter
 
         public Entity Db { get => db; set => db = value; }
 
-        prsMain prsMain = new prsMain();
+        PreMain prsMain = new PreMain();
         PreCustomer customers = new PreCustomer();
-        preEmployee employees = new preEmployee();
-        preComputer computers = new preComputer();
+        PreEmployee employees = new PreEmployee();
+        PreComputer computers = new PreComputer();
         private List<HoaDonBan> listHoaDon()
         {
             var hoadon = Db.HoaDonBans.ToList();
             return hoadon;
         }
-        public int SumOfOrder()
+        public int SumOfOrder(DataTable a)
         {
             int i = 0;
-            DataTable a = loadHoaDonBan();
             foreach(DataRow dr in a.Rows)
             {
                 i += 1;
@@ -41,7 +40,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
         }
         public DataTable getOrderByDay(DateTime date)
         {
-            var invoices = listHoaDon().ToList();
+            var invoices = listHoaDon();
             DataTable resultTable = new DataTable();
             resultTable.Columns.Add("Date", typeof(DateTime));
             resultTable.Columns.Add("TotalAmount", typeof(decimal));
@@ -62,7 +61,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
         }
         public DataTable getOrderByMonth(DateTime date)
         {
-            var invoices = listHoaDon().ToList();
+            var invoices = listHoaDon();
             DataTable resultTable = new DataTable();
             resultTable.Columns.Add("Date", typeof(DateTime));
             resultTable.Columns.Add("TotalAmount", typeof(decimal));
@@ -83,7 +82,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
         }
         public DataTable getOrderByCurrentWeek()
         {
-            var invoices = listHoaDon().ToList();
+            var invoices = listHoaDon();
             DataTable resultTable = new DataTable();
             resultTable.Columns.Add("Date", typeof(DateTime));
             resultTable.Columns.Add("TotalAmount", typeof(decimal));
@@ -114,9 +113,9 @@ namespace QuanLyCuaHangMayTinh.Presenter
         public DataTable FindHoaDon(String SearchString, DateTime From, DateTime To, String MaNV, String MaKH)
         {
             List<HoaDonBan> hoadons = null;
-            if (employees.CheckExits(MaNV) == false)
+            if (prsMain.CheckExits(MaNV,"NV") == false)
             {
-                if (customers.CheckExits(MaKH) == false)
+                if (prsMain.CheckExits(MaKH,"KH") == false)
                 {
                     hoadons = Db.HoaDonBans
                           .Where(m => m.MaHDB.Contains(SearchString)
@@ -136,7 +135,7 @@ namespace QuanLyCuaHangMayTinh.Presenter
             }
             else
             {
-                if (customers.CheckExits(MaKH) == false)
+                if (prsMain.CheckExits(MaKH,"KH") == false)
                 {
                     hoadons = Db.HoaDonBans
                           .Where(m => m.MaHDB.Contains(SearchString)
